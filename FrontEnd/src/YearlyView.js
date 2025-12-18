@@ -17,7 +17,7 @@ function DailyView() {
     let [task, setTask] = useState([]);
     let [compTask, setCompTask] = useState(0);
     useEffect(() => {
-        axios.post('http://localhost:7000/Check-Yearly-Score', {}, {
+        axios.post(`${REACT_APP_URL}/Check-Yearly-Score`, {}, {
             headers: {
                 authorization: `Bearer ${token}`
             }
@@ -50,7 +50,7 @@ function DailyView() {
         })
     }, []);
     useEffect(() => {
-        axios.get('http://localhost:7000/taskInfo', {
+        axios.get(`${REACT_APP_URL}/taskInfo`, {
             headers: {
                 authorization: `Bearer ${token}`,
                 'content-type': 'application/json'

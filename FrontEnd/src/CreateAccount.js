@@ -17,7 +17,7 @@ export function CreateAccount() {
   }
   let postMan = async (event) => {
     event.preventDefault();
-    axios.post("http://localhost:7000/addRecord", userData)
+    axios.post(`${REACT_APP_URL}/addRecord`, userData)
       .then((res) => {
         if (res.data.message === 'Done') {
           toast.success("Account created!");

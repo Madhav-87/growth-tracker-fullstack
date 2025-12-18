@@ -64,7 +64,7 @@ export default function App() {
     if (visible === false) {
 
     }
-    axios.post('http://localhost:7000/daily-goals-submit', Goalslist, {
+    axios.post(`${REACT_APP_URL}/daily-goals-submit`, Goalslist, {
       headers: {
         authorization: `Bearer ${token}`,
         'content-type': 'application/json'

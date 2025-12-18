@@ -19,7 +19,7 @@ export default function App() {
     }
     const token = localStorage.getItem("token");
     useEffect(() => {
-        axios.post("http://localhost:7000/Monthly/Response", {}, {
+        axios.post(`${REACT_APP_URL}/Monthly/Response`, {}, {
             headers: {
                 authorization: `Bearer ${token}`,
                 "Content-Type": "application/json"
@@ -50,7 +50,7 @@ export default function App() {
     }
     let submitForm = () => {
         let avg = count["Marks"] / count["Total"];
-        axios.post('http://localhost:7000/Monthly/Response/Score/Check', {}, {
+        axios.post(`${REACT_APP_URL}/Monthly/Response/Score/Check`, {}, {
             headers: {
                 authorization: `Bearer ${token}`,
                 "Content-Type": "application/json"
@@ -60,7 +60,7 @@ export default function App() {
                 toast.error("Record already submited!");
             }
             else if (res.data.data === "allowed") {
-                axios.post('http://localhost:7000/Monthly/Response/Score', {
+                axios.post(`${REACT_APP_URL}/Monthly/Response/Score`, {
                     marks: avg
                 }, {
                     headers: {
