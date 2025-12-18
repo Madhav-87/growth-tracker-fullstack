@@ -1,0 +1,84 @@
+body{
+    background-color: white;
+}
+.mc-web-title{
+    color: blue !important;
+    font-size: 40px;
+}
+.mc-img-poster{
+    display: inline;
+    height:40vh !important;
+}
+.credit-title{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: blue;
+        color:white !important;
+        font-weight: 600 !important;
+}
+.mc-credit-img{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 10vh;
+}
+.icon{
+    height:100%;
+    padding: 10px !important;
+}
+.mc-set-cards{
+    width:20vw;
+}
+.mc-credit-cards{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    height:auto;
+    gap:10px;
+}
+.para-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width:60vw;
+    border:1px solid black;
+    padding:20px;
+    border-radius: 20px;
+}
+.footer-container{
+    display: flex;
+    justify-content: center !important;
+    align-items: center !important;
+    color: blue;
+    background-color: aliceblue;
+    font-size: 18px;
+}
+.para{
+    font-size: 20px;
+}
+@media (max-width:480px) {
+    .mc-mobile-section1{
+        display: flex;
+        flex-direction: column-reverse !important;
+    }
+    p{
+        font-size: 16px;
+    }
+    .mc-set-cards{
+    width:100%;
+    }
+    .para-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width:80vw;
+    border:1px solid black;
+    padding:20px;
+    }
+    .mc-web-title{
+    color: blue !important;
+    font-size: 20px;
+}
+}

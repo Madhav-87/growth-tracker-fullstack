@@ -1,0 +1,18 @@
+.mc-container-circularbar {
+    display: flex;
+    align-items: center;
+    justify-content: center !important;
+    flex-direction: column;
+}
+.mc-container-title {
+    margin: 20px;
+    font-size: 20px;
+    font-weight: 600;
+}
+.mc-circularbar {
+    height: 100px !important;
+    width: 100px !important;
+    text-anchor: middle !important;
+    dominant-baseline: middle !important;
+    alignment-baseline: middle !important;
+}

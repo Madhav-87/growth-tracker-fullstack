@@ -1,0 +1,344 @@
+.body {
+    height: 400vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+}
+.header-title {
+    height: 3% !important;
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+    margin-bottom: 40px;
+    padding-left: 40px;
+}
+
+.line {
+    width: 5px;
+    height: 60px;
+    background: linear-gradient(135deg, #6A5CFF, #8C5BFF);
+    border-radius: 20px;
+    margin-right: 20px;
+    align-self: center;
+    margin-top: 10px;
+}
+
+.weely-view-main {
+    height: 500%;
+    background-color: whitesmoke;
+    margin-bottom: 0px !important;
+}
+
+.titles {
+    height: 20%;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    margin-left: 40px;
+}
+
+.calender-icon {
+    color: white;
+    height: 60px;
+    width: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 500 !important;
+    border-radius: 10px;
+    font-size: 20px;
+    background: linear-gradient(135deg, #6A5CFF, #8C5BFF);
+}
+
+.circular-bar-box {
+    height: 35%;
+    border: 1px soild black;
+    box-shadow: 0px 8px 28px rgba(0, 0, 0, 0.22);
+    margin-right: 40px !important;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 80%;
+    justify-self: center;
+    padding-bottom: 20px !important;
+    background-color: white;
+    margin-bottom: 10px;
+}
+
+.bar-box {
+    height: 21%;
+    border: 1px soild black;
+    box-shadow: 0px 8px 28px rgba(0, 0, 0, 0.22);
+    margin-right: 40px !important;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 80%;
+    justify-self: center;
+    background-color: white;
+    margin-bottom: 40px;
+}
+
+.bar-container {
+    height: 90% !important;
+    background-color: #C8EEDB;
+    width: 90%;
+}
+
+.progress-box {
+    height: 18% !important;
+    width: 60%;
+    border: 1px solid black;
+    border-radius: 10px;
+    box-shadow: 0px 2px 18px rgba(0, 0, 0, 0.22);
+    transition: width 0.5s ease;
+    cursor: pointer;
+    padding-left: 30px;
+}
+
+.progress-box:hover {
+    width: 65%;
+}
+
+.bar-box-1 {
+    height: 50%;
+    width: 100%;
+    padding-top: 10px;
+    padding-right: 10px;
+    padding-left: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.bar-box-2 {
+    height: 10%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.bar-box-3 {
+    height: 30%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.bar-box-icon-right {
+    width: 90%;
+    display: flex;
+    justify-content: flex-end !important;
+}
+
+.circle {
+    height: 40px;
+    width: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.green-theme {
+    background-color: greenyellow;
+    color: green;
+}
+
+.blue-theme {
+    background-color: lightblue;
+    color: blue;
+}
+
+.background-none {
+    background: transparent !important;
+}
+
+.border-grey {
+    border-color: grey !important;
+}
+
+.green-box {
+    background: linear-gradient(135deg, #E4F9EC 0%, #C8EEDB 100%);
+}
+
+.blue-box {
+    background: linear-gradient(135deg, #E7EFFA 0%, #D6E4F1 100%);
+
+}
+
+.performace-icon {
+    height: 60px;
+    width: 60px;
+    background-color: #B15BFF;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    transition: all 0.5s ease;
+}
+
+.performace-icon:hover {
+    height: 65px;
+    width: 65px;
+    font-size: 30px;
+}
+
+.purple-theme {
+    color: purple;
+    background: linear-gradient(135deg, #F8E6FF 0%, #EED6FF 100%);
+}
+
+#icon2 {
+    background: linear-gradient(135deg, #9327FF 0%, #E82AB9 100%);
+    height: 50px;
+    width: 50px;
+    border-radius: 10px;
+    /* to match rounded shape */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+}
+
+.weekly-icon-container {
+    height: 5% !important;
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    margin-left: 40px;
+}
+
+.text-grey {
+    color: gray;
+}
+.panels{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    height:25%;
+    width: 70%;
+    border: 1px solid black;
+    border-radius: 10px;
+    box-shadow: 0px 2px 18px rgba(0, 0, 0, 0.22);
+    margin-bottom: 30px;
+}
+.weekly-icons-1{
+    background-color: skyblue;
+    color: #1A56C7;
+
+}
+.panel-blue{
+    background: linear-gradient(135deg, #E7F1FF 0%, #b2d1ff 100%);
+    color:#1A56C7 ;
+}
+.panel-purple{
+    background:linear-gradient(135deg, #F1E7FF 0%, #E8D8FF 100%);
+    color:purple;
+}
+.weekly-icons-2{
+    background-color: plum;
+    color: purple;
+}
+.reddish-theme{
+    background: linear-gradient(135deg, #FFE5E8 0%, #F8D1D6 100%);
+    color:#B11E32;
+}
+.weekly-icons-3{
+    background:#F6D4DA;
+    color:#C12A3D;
+}
+.last-panel{
+    background: linear-gradient(135deg, #417DFF 0%, #8C35FF 45%, #E53E7C 100%);
+    min-height: 6%;
+    max-height: 7%;
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    justify-self: center;
+    margin-right: 40px;
+    border-radius: 10px;
+    color:white;
+    padding: 40px;
+}
+.pie-chart{
+    height: 30%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.Insight-icon{
+    background-color: #A564FF;
+    border-radius: 5px;
+}
+.insight-heading{
+    height: 45px;
+    display: flex;
+    align-items: center;
+}
+@media (max-width:480px) {
+    .body{
+        height: 300vh;
+    }
+    .weekly-header{
+        min-height: 2% !important;
+    }
+    .weely-view-main{
+        height: 450% !important;
+    }
+    .header-title{
+        padding-left: 20px;
+        align-self: flex-start;
+    }
+    .circular-bar-box{
+        height: 35%;
+        margin-right: 0px !important;
+        width: 90%;
+        justify-content: unset !important;
+    }
+    .titles{
+        height: 10% !important;
+    }
+    .progress-box{
+        width: 90%;
+        height: 15% !important;
+    }
+    .progress-box:hover{
+        width: 90% !important;
+    }
+    .weekly-icon-container{
+        align-self: flex-start;
+        margin-left: 20px;
+        height: 3% !important;
+    }
+    .bar-box{
+        align-self: center !important;
+        margin-right: 0px !important;
+        width: 90%;
+    }
+    #bar-box2{
+        align-self: center !important;
+        margin-right: 0px !important;
+        width: 90%;
+        height: 20%;
+    }
+    .panels{
+        padding-top: 6px;
+        height: 26%;
+    }
+    .last-panel{
+        margin-right: 0px;
+        width: 90%;
+        max-height: 8% !important;
+    }
+    footer{
+        text-align: center;
+    }
+}

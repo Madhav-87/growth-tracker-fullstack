@@ -1,0 +1,29 @@
+.mc-progress-cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center !important;
+    gap: 50px !important;
+}
+.mc-progress-card{
+    height: 500px !important;
+    margin-top: 40px !important;
+    box-shadow: 0px 1px 14px 3px rgba(0, 0, 0, 1) !important;
+    
+}
+@media (max-width:480px) {
+
+    .mc-progress-cards {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center !important;
+    }
+    .mc-progress-card{
+        margin-top: 20px;
+        margin-top: 40px !important;
+        margin-right: 20px;
+        margin-left: 20px;
+        width:360px !important;
+        height: 560px !important;
+        padding-bottom: 10px !important;
+}
+}

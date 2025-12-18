@@ -1,0 +1,10 @@
+.mc-container-cirbar{
+    height: 180px;
+    width: 180px;
+}
+.mc-circbar{
+    height: 100%;
+    text-anchor: middle;
+    dominant-baseline: middle;
+    transition: all 1s ease;
+}

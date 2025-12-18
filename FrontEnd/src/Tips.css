@@ -1,0 +1,23 @@
+.Header{
+    margin-bottom: 2px;
+}
+.nav-underline,.nav-link.active{
+    color:#0d6efd !important;
+}
+.img-panel{
+    width:100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #ABE0FB;
+}
+.img{
+    height:50vh !important;
+    width:auto !important;
+}
+@media (max-width:480px){
+    .img{
+        height:auto !important;
+        max-width:100%!important;
+    }
+}

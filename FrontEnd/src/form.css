@@ -1,0 +1,55 @@
+
+body{
+   overflow-y: scroll;
+  overflow-x:hidden ;
+  
+}
+.mc-login-background{
+ min-height: 100vh;
+ width: 100vw;
+  background: linear-gradient(135deg, #e8fdf5, #f0fdfa);
+  margin: 0;
+  padding: 0;
+}
+.mc-login-box{
+  height:80px;
+  width:80px;
+  background: linear-gradient(135deg, #12C886, #109C9F);
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.mc-login-txt{
+    color:#059669!important;
+    cursor: pointer;
+    text-decoration: none;
+}
+.mc-login-txt:hover{
+  color:#047857 !important;
+}
+.mc-login-btn{
+  background: linear-gradient(90deg, #12C886, #109C9F);
+  height:50px;
+  box-shadow: 0 4px 12px rgba(18, 200, 134, 0.3);
+}
+.mc-login-btn:hover{
+  background: linear-gradient(90deg, #0f766e ,#0f766e);
+  height:50px;
+  transform:scale(1.01);
+  transition: all 0.5s ease;
+}
+.mc-login-form{
+  background-color: white;
+  width:30vw;
+  border-radius: 5px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+@media (max-width:480px) {
+  .mc-login-form{
+  background-color: white;
+  width:95vw;
+  border-radius: 5px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+}
