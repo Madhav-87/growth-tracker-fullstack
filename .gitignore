@@ -1,0 +1,9 @@
+# Ignore everything inside any node_modules folder
+**/node_modules/
+
+# Ignore any .env file in any folder
+**/.env
+
+# Ignore build/dist folders
+**/dist/
+**/build/
