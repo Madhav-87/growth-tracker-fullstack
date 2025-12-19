@@ -26,7 +26,7 @@ export default function App() {
     Total: "0"
   });
   useEffect(() => {
-    axios.post(`${REACT_APP_URL}/Yearly/Response`, {}, {
+    axios.post(`${process.env.REACT_APP_API_URL}/Yearly/Response`, {}, {
       headers: {
         authorization: `Bearer ${token}`,
         "Content-Type": "application/json"
@@ -51,7 +51,7 @@ export default function App() {
     setButton(oldData);
   }
   let submitForm = () => {
-    axios.post(`${REACT_APP_URL}/Year/Response/Check`, {}, {
+    axios.post(`${process.env.REACT_APP_API_URL}/Year/Response/Check`, {}, {
       headers: {
         authorization: `Bearer ${token}`,
         "Content-Type": "application/json"
@@ -62,7 +62,7 @@ export default function App() {
         toast.error("Response already submited!");
       }
       else {
-       axios.post(`${REACT_APP_URL}/Year/Response/Score`, count, {
+       axios.post(`${process.env.REACT_APP_API_URL}/Year/Response/Score`, count, {
           headers: {
             authorization: `Bearer ${token}`,
             "Content-Type": "application/json"

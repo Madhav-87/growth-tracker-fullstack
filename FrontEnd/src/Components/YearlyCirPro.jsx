@@ -7,7 +7,7 @@ export default function YearlyGoals() {
     let [Response, setResponse] = useState(true);
     let [Score, setScore] = useState(0);
     useEffect(() => {
-        axios.post(`${REACT_APP_URL}/Year/Score`, {}, {
+        axios.post(`${process.env.REACT_APP_API_URL}/Year/Score`, {}, {
             headers: {
                 authorization: `Bearer ${token}`,
                 "Content-Type": "application/json"

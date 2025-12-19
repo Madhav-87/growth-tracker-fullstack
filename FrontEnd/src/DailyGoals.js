@@ -51,7 +51,7 @@ export default function DailyGoals() {
         if (visible === false) {
 
         }
-        axios.post(`${REACT_APP_URL}/daily-goals-submit`, Goalslist, {
+        axios.post(`${process.env.REACT_APP_API_URL}/daily-goals-submit`, Goalslist, {
             headers: {
                 authorization: `Bearer ${token}`,
                 'content-type': 'application/json'

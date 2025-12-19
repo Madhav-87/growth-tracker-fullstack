@@ -21,7 +21,7 @@ function App() {
   }
   let postMan = async (event) => {
     event.preventDefault();
-    axios.post(`${REACT_APP_URL}/Login`, userData)
+    axios.post(`${process.env.REACT_APP_API_URL}/Login`, userData)
       .then((res) => {
         if (res.data.message === 'Fail') {
           toast.error("Invalid credentials");
@@ -31,7 +31,7 @@ function App() {
           toast.success("Login successfully!");
         }
       }).then((res) => {
-        axios.post(`${REACT_APP_URL}/report`, {}, {
+        axios.post(`${process.env.REACT_APP_API_URL}/report`, {}, {
           headers: {
             authorization: `Bearer ${localStorage.getItem("token")}`,
             "Content-Type": "application/json"

@@ -61,7 +61,7 @@ export default function App() {
             toast.error("Add your targets firstly");
             return
         }
-        axios.post(`${REACT_APP_URL}/YearGoals/Submit`,list,{
+        axios.post(`${process.env.REACT_APP_API_URL}/YearGoals/Submit`,list,{
             headers:{
                 authorization:`Bearer ${token}`,
                 "Content-Type":"application/json"

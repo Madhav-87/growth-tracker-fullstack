@@ -9,7 +9,7 @@ export default function MCirProgress() {
     let [marks,setmarks]=useState(0);
     let [response,setResponse]=useState(true);
     useEffect(()=>{
-        axios.post(`${REACT_APP_URL}/Month/Score`,{},{
+        axios.post(`${process.env.REACT_APP_API_URL}/Month/Score`,{},{
             headers:{
                 authorization:`Bearer ${token}`,
                 "content-type":"application/json"

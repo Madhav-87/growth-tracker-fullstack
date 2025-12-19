@@ -30,7 +30,7 @@ export default function App() {
   useEffect(
     () => {
       //Task2:--
-      axios.get(`${REACT_APP_URL}/send-goals`, {
+      axios.get(`${process.env.REACT_APP_API_URL}/send-goals`, {
         headers: {
           authorization: `Bearer ${token}`,
           'content-type': 'application/json'
@@ -61,7 +61,7 @@ export default function App() {
   let [submit, setSubmit] = useState(0);
   let submitForm = (event) => {
     event.preventDefault();
-    axios.get(`${REACT_APP_URL}/Is-Submit`, {
+    axios.get(`${process.env.REACT_APP_API_URL}/Is-Submit`, {
       headers: {
         authorization: `Bearer ${token}`,
         'content-type': 'application/json'
@@ -76,7 +76,7 @@ export default function App() {
             toast.error("Please provide all checks!");
             return;
           }
-          axios.post(`${REACT_APP_URL}/Submit-Response`, count, {
+          axios.post(`${process.env.REACT_APP_API_URL}/Submit-Response`, count, {
             headers: {
               authorization: `Bearer ${token}`,
             }

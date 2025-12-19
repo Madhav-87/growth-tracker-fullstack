@@ -17,7 +17,7 @@ export default function Chatbot() {
         const text = input.trim();
         if (!text) return;
         setMessages(prev=>[...prev,{role:"user",text:text}]);
-        axios.post(`${REACT_APP_URL}/chatbot`,{history:messages,data:text},{
+        axios.post(`${process.env.REACT_APP_API_URL}/chatbot`,{history:messages,data:text},{
             headers:{
                 Authorization:`Bearer ${token}`,
                 'Content-Type':'application/json'

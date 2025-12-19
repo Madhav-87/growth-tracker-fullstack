@@ -8,7 +8,7 @@ export default function YCirProgress() {
     let [Score, setScore] = useState(0);
     let [marks, setMarks] = useState(0);
     useEffect(() => {
-        axios.post(`${REACT_APP_URL}/Score`, {}, {
+        axios.post(`${process.env.REACT_APP_API_URL}/Score`, {}, {
             headers: {
                 authorization: `Bearer ${token}`,
                 'content-type': 'application/json'
