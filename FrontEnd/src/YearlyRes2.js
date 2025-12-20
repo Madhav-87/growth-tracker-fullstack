@@ -130,7 +130,7 @@ export default function App() {
         </nav>
       </header>
       <main>
-        <div className="section-header">
+        <div className="section-header mt-0">
           <div className='fs-2 h1'>
             Yearly Response Section
           </div>
