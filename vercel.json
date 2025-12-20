@@ -1,7 +1,7 @@
 {
   "functions": {
     "**/*.js": {
-      "includeFiles": "BackEnd/certs/**"
+      "includeFiles": "./certs/**"
     }
   }
 }
