@@ -2,6 +2,7 @@ import mysql from 'mysql2';
 import dotenv from 'dotenv';
 import fs from 'fs';
 dotenv.config();
+const caPath = path.join(process.cwd(), "certs", "isrgrootx1.pem");
 const pool = mysql.createPool({
     host: process.env.MYSQL_HOST,
     user: process.env.MYSQL_USER,
@@ -9,7 +10,7 @@ const pool = mysql.createPool({
     port:process.env.MYSQL_PORT,
     database:process.env.MYSQL_DATABASE,
     ssl: {
-        ca: fs.readFileSync("./certs/isrgrootx1.pem"),
+        ca: fs.readFileSync(caPath),
         minVersion: 'TLSv1.2',
         rejectUnauthorized: true
     },
