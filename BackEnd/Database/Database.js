@@ -3,7 +3,7 @@ import dotenv from 'dotenv';
 import fs from 'fs';
 import path from 'path';
 dotenv.config();
-const caPath = path.join(process.cwd(), "BackEnd","certs", "isrgrootx1.pem");
+const caPath = path.join(process.cwd(), "certs", "isrgrootx1.pem");
 const pool = mysql.createPool({
     host: process.env.MYSQL_HOST,
     user: process.env.MYSQL_USER,
