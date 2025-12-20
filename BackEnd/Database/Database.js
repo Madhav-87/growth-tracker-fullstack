@@ -1,6 +1,7 @@
 import mysql from 'mysql2';
 import dotenv from 'dotenv';
 import fs from 'fs';
+import path from 'path';
 dotenv.config();
 const caPath = path.join(process.cwd(), "certs", "isrgrootx1.pem");
 const pool = mysql.createPool({
