@@ -11,7 +11,7 @@ const pool = mysql.createPool({
     port:process.env.MYSQL_PORT,
     database:process.env.MYSQL_DATABASE,
     ssl: {
-        ca: fs.readFileSync(caPath),
+        ca: process.env.CA,
         minVersion: 'TLSv1.2',
         rejectUnauthorized: true
     },
