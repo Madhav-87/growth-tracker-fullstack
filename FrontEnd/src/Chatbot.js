@@ -56,12 +56,9 @@ export default function Chatbot() {
                             AI Growth Coach
                         </div>
                         <div className='header-subtxt'>
-                            Your personal development companion
+                            personal development companion
                         </div>
                     </div>
-                     <div className='d-flex justify-content-end' style={{width:"-webkit-fill-available"}}>
-                            <Link to="/Home" className="nav-Link mc-normalbtn text-primary d-flex justify-content-center">Back</Link>
-                        </div>
                 </div>
             </header>
             <main>

@@ -7,7 +7,6 @@ import './DailyView.css';
 import { isMobile } from 'react-device-detect';
 import Ycircularbar from './Components/Ycircularbar.jsx';
 function DailyView() {
-    let [btn, setbtn] = useState(false);
     let token = localStorage.getItem('token');
     let [data, setData] = useState([]);
     let [bestScore, setBestScore] = useState(0);
@@ -116,14 +115,21 @@ function DailyView() {
         let completeTask = (yesScore*task.length)/100;
         setCompTask(completeTask);
     }, [task])
+    const toggleNavbar = () => {
+    const nav = document.getElementById("navbarSupportedContent");
+    if (!nav) return;
+    const bootstrap = require("bootstrap");
+    const collapse = bootstrap.Collapse.getOrCreateInstance(nav);
+    collapse.toggle();
+     }
     return (
         <div className='body'>
             <header>
                 <nav className="navbar navbar-expand-lg">
                     <div className="mc-navbar">
                         <Link className="navbar-brand text-color" href="#">GrowthTracker</Link>
-                        <button className="navbar-toggler me-5" onClick={() => { setbtn(!btn) }} type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                            <span className={`${btn ? 'btn-close' : 'navbar-toggler-icon'}`}></span>
+                        <button className="navbar-toggler me-5" onClick={() => {toggleNavbar()}} type="button" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                            <span className={`navbar-toggler-icon`}></span>
                         </button>
                     </div>
                     <div className='mc-close-width d-flex'>

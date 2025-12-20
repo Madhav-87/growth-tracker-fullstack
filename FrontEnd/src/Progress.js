@@ -9,6 +9,13 @@ import ChartEx from './ChartEx.png';
 import Alert from './Components/Alert.jsx';
 export default function Progress() {
         let [btn, setbtn] = useState(false);
+         const toggleNavbar = () => {
+    const nav = document.getElementById("navbarSupportedContent");
+    if (!nav) return;
+    const bootstrap = require("bootstrap");
+    const collapse = bootstrap.Collapse.getOrCreateInstance(nav);
+    collapse.toggle();
+         }
     return (
         <div>
             <Alert />
@@ -16,7 +23,7 @@ export default function Progress() {
                 <nav class="navbar navbar-expand-lg">
                     <div class="mc-navbar pe-5">
                         <Link class="navbar-brand text-color" href="#">GrowthTracker</Link>
-                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <button class="navbar-toggler" type="button" onClick={()=>{toggleNavbar()}} aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                             <span class={`${btn ? 'btn-close' : 'navbar-toggler-icon'}`}></span>
                         </button>
                     </div>

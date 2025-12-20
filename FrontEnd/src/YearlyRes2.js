@@ -89,6 +89,13 @@ export default function App() {
     e.target.style.backgroundColor = "red";
     e.target.style.color = "white";
   }
+  const toggleNavbar = () => {
+    const nav = document.getElementById("navbarSupportedContent");
+    if (!nav) return;
+    const bootstrap = require("bootstrap");
+    const collapse = bootstrap.Collapse.getOrCreateInstance(nav);
+    collapse.toggle();
+     }
   return (
     <div>
           <Drawer/>
@@ -98,18 +105,9 @@ export default function App() {
         <nav class="navbar navbar-expand-lg">
           <div class="mc-navbar">
             <Link class="navbar-brand text-color" href="#">GrowthTracker</Link>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-              <span class={`${btn ? 'btn-close' : 'navbar-toggler-icon'}`}></span>
+            <button class="navbar-toggler me-4" type="button" onClick={()=>{toggleNavbar()}} aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class={`navbar-toggler-icon`}></span>
             </button>
-            <div className='icon-Home'>
-              <div className={profile ? 'mc-profile d-flex flex-column align-items-center' : 'nonvisible'}>
-                <div className='mc-profile-icon'><img src={person} height={"40px"} className='profile-icon-Home'></img></div>
-                <div className='d-flex flex-column mb-2'><div className='mc-profile-txt'>{userName.split(' ')[0]}</div><div className='mc-profile-subtxt'>Goal Acheiver</div></div>
-                <Link className='mb-2 mc-profile-btn' to="/About">About</Link>
-                <div className='mc-profile-btn' onClick={() => { clearCash() }}>Log out</div>
-              </div>
-              <img src={person} height={"40px"} onClick={() => { setProfile(!profile) }}></img>
-            </div>
           </div>
           <div className='mc-close-width d-flex'>
             <div class="collapse navbar-collapse mc-nav-center" id="navbarSupportedContent">

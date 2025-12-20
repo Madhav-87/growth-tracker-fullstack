@@ -13,6 +13,7 @@
 
 .small-txt {
     color: grey;
+    text-align: center;
 }
 
 .status-panel {
@@ -156,6 +157,7 @@
 @media (max-width:480px){
     .section-header{
         height: 15vh !important;
+        margin-top: 10px;
     }
     .status-panel {
         display: flex;
@@ -170,6 +172,7 @@
     justify-content: start;
     padding-top:20px;
     }
+   
     .small-txt{
       justify-content: start; 
     }
@@ -184,11 +187,24 @@
     }
     .mobile-width{
         width: 90vw !important;
+       
     }
     .Goal-panel{
         width: 90vw;  
     }
     .section-header{
         margin-bottom: 20px;
+    }
+    @media (max-width:360px) {
+        .status-bar{
+           padding-top:15px !important; 
+        }
+    .DailyGoalMess{
+        margin-top: 20px;
+    }
+        .mobile-width{
+        height: 90%;
+        margin-top: 10px;
+        }
     }
 }

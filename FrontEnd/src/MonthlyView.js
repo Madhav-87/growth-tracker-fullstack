@@ -117,14 +117,21 @@ function DailyView() {
         let completeTask=(yesScore*task.length)/100;
         setCompTask(completeTask);
     }, [task])
+    const toggleNavbar = () => {
+    const nav = document.getElementById("navbarSupportedContent");
+    if (!nav) return;
+    const bootstrap = require("bootstrap");
+    const collapse = bootstrap.Collapse.getOrCreateInstance(nav);
+    collapse.toggle();
+     }
     return (
         <div className='body'>
             <header>
                 <nav className="navbar navbar-expand-lg">
                     <div className="mc-navbar">
                         <Link className="navbar-brand text-color" href="#">GrowthTracker</Link>
-                        <button className="navbar-toggler me-5" onClick={() => { setbtn(!btn) }} type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                            <span className={`${btn ? 'btn-close' : 'navbar-toggler-icon'}`}></span>
+                        <button className="navbar-toggler me-5" onClick={() => { toggleNavbar() }} type="button"  aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                            <span className={`navbar-toggler-icon`}></span>
                         </button>
                     </div>
                     <div className='mc-close-width d-flex'>
@@ -151,9 +158,9 @@ function DailyView() {
                 <div className='header-title'>
                     <div className='d-flex'>
                         <div className='line'></div>
-                        <div>
+                        <div className='d-flex flex-column justify-content-center'>
                             <div className='fs-1 ' style={{ fontWeight: "600" }}>Task Progress</div>
-                            <div style={{ color: "grey" }}>Monitor your daily and Monthly achievements</div>
+                            <div style={{ color: "grey" }}>Monitor your Monthly achievements</div>
                         </div>
                     </div>
                 </div>

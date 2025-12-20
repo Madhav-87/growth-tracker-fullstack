@@ -13,9 +13,8 @@ import {Link} from 'react-router-dom';
 import Drawer from './Components/Drawer';
 export default function App() {
   let [btn,setbtn]=useState(false);
-  let [profile,setProfile]=useState(false);
-   const carouselRef = useRef(null);
-  
+  let [navbarOpen, setNavbarOpen] = useState(false);
+  const carouselRef = useRef(null);
     useEffect(() => {
       const bootstrap = require('bootstrap');
       const carousel = new bootstrap.Carousel(carouselRef.current, {
@@ -25,6 +24,13 @@ export default function App() {
        //To avoid memory leak
           return () => carousel.dispose();
     }, []);
+     const toggleNavbar = () => {
+    const nav = document.getElementById("navbarSupportedContent");
+    if (!nav) return;
+    const bootstrap = require("bootstrap");
+    const collapse = bootstrap.Collapse.getOrCreateInstance(nav);
+    collapse.toggle();
+  };
   return (
     <div>
           <Drawer/>
@@ -32,8 +38,8 @@ export default function App() {
         <nav class="navbar navbar-expand-lg">
           <div class="mc-navbar">
             <Link class="navbar-brand text-color" href="#">GrowthTracker</Link>
-            <button class="navbar-toggler me-5" onClick={() => { setbtn(!btn) }} type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-              <span class={`${btn ? 'btn-close' : 'navbar-toggler-icon'}`}></span>
+            <button class="navbar-toggler me-5" onClick={() => { toggleNavbar()}} type="button" aria-controls="navbarSupportedContent" aria-expanded={navbarOpen} aria-label="Toggle navigation">
+              <span class={`navbar-toggler-icon`}></span>
             </button>
           </div>
           <div className='mc-close-width d-flex'>

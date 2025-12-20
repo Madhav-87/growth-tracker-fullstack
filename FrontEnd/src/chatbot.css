@@ -219,27 +219,33 @@
         flex-direction: column;
         align-items: center !important;
     }
+    .header-subtxt{
+        font-size: 16px;
+    }
     .chat-panel {
-    margin-left: 20px;
-    margin-right: 20px;
+    margin-left: 10px;
+    margin-right: 10px;
    
+}
+.chat-input-box button{
+    width: 15% !important;
 }
     .chats {
     padding-right: 20px !important;
 }
     .ai-messagebox{
-    max-width:90%;
+    max-width:95%;
 }
 .user-messagebox{
     max-width:90% !important;
 }
 
 .focus-area {
-    margin-left: 20px;
-    margin-right: 20px;
+    margin-left: 10px;
+    margin-right: 10px;
 }
 .message-box, .message-box2 {
-    margin-left: 20px;
-    margin-right: 20px;
+    margin-left: 10px;
+    margin-right: 10px;
 }
 }

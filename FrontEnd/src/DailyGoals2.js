@@ -18,6 +18,7 @@ import Drawer from './Components/Drawer.jsx';
 export default function App() {
   let [btn, setbtn] = useState(false);
   let [profile, setProfile] = useState(false);
+  let [navbarOpen, setNavbarOpen] = useState(false);
   let userName = jwtDecode(localStorage.getItem('token')).name;
   let clearCash = () => {
     localStorage.clear();
@@ -82,6 +83,13 @@ export default function App() {
         console.log(err);
       })
   }
+  const toggleNavbar = () => {
+    const nav = document.getElementById("navbarSupportedContent");
+    if (!nav) return;
+    const bootstrap = require("bootstrap");
+    const collapse = bootstrap.Collapse.getOrCreateInstance(nav);
+    collapse.toggle();
+  };
   return (
     <div>
           <Drawer/>
@@ -92,8 +100,8 @@ export default function App() {
         <nav class="navbar navbar-expand-lg">
           <div class="mc-navbar">
             <Link class="navbar-brand text-color" href="#">GrowthTracker</Link>
-            <button class="navbar-toggler" onClick={() => { setbtn(!btn) }} type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-              <span class={`${btn ? 'btn-close' : 'navbar-toggler-icon'}`}></span>
+            <button class="navbar-toggler" onClick={() => { toggleNavbar()}} type="button" aria-controls="navbarSupportedContent" aria-expanded={navbarOpen} aria-label="Toggle navigation">
+              <span class={`navbar-toggler-icon`}></span>
             </button>
             <div className='icon-Home'>
               <div className={profile ? 'mc-profile d-flex flex-column align-items-center' : 'nonvisible'}>

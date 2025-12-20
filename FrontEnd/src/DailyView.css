@@ -4,6 +4,7 @@
     display: flex;
     flex-direction: column;
 }
+
 .header-title {
     height: 3% !important;
     display: flex;
@@ -20,7 +21,6 @@
     border-radius: 20px;
     margin-right: 20px;
     align-self: center;
-    margin-top: 10px;
 }
 
 .weely-view-main {
@@ -85,8 +85,7 @@
 
 .bar-container {
     height: 90% !important;
-    background-color: #C8EEDB;
-    width: 90%;
+    width: 100%;
 }
 
 .progress-box {
@@ -198,7 +197,6 @@
     height: 50px;
     width: 50px;
     border-radius: 10px;
-    /* to match rounded shape */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -217,44 +215,52 @@
 .text-grey {
     color: gray;
 }
-.panels{
+
+.panels {
     display: flex;
     align-items: center;
     flex-direction: column;
     justify-content: center;
-    height:25%;
+    height: 25%;
     width: 70%;
     border: 1px solid black;
     border-radius: 10px;
     box-shadow: 0px 2px 18px rgba(0, 0, 0, 0.22);
     margin-bottom: 30px;
 }
-.weekly-icons-1{
+
+.weekly-icons-1 {
     background-color: skyblue;
     color: #1A56C7;
 
 }
-.panel-blue{
+
+.panel-blue {
     background: linear-gradient(135deg, #E7F1FF 0%, #b2d1ff 100%);
-    color:#1A56C7 ;
+    color: #1A56C7;
 }
-.panel-purple{
-    background:linear-gradient(135deg, #F1E7FF 0%, #E8D8FF 100%);
-    color:purple;
+
+.panel-purple {
+    background: linear-gradient(135deg, #F1E7FF 0%, #E8D8FF 100%);
+    color: purple;
 }
-.weekly-icons-2{
+
+.weekly-icons-2 {
     background-color: plum;
     color: purple;
 }
-.reddish-theme{
+
+.reddish-theme {
     background: linear-gradient(135deg, #FFE5E8 0%, #F8D1D6 100%);
-    color:#B11E32;
+    color: #B11E32;
 }
-.weekly-icons-3{
-    background:#F6D4DA;
-    color:#C12A3D;
+
+.weekly-icons-3 {
+    background: #F6D4DA;
+    color: #C12A3D;
 }
-.last-panel{
+
+.last-panel {
     background: linear-gradient(135deg, #417DFF 0%, #8C35FF 45%, #E53E7C 100%);
     min-height: 6%;
     max-height: 7%;
@@ -265,80 +271,174 @@
     justify-self: center;
     margin-right: 40px;
     border-radius: 10px;
-    color:white;
+    color: white;
     padding: 40px;
 }
-.pie-chart{
+
+.pie-chart {
     height: 30%;
     display: flex;
     justify-content: center;
     align-items: center;
 }
-.Insight-icon{
+
+.Insight-icon {
     background-color: #A564FF;
     border-radius: 5px;
 }
-.insight-heading{
+
+.insight-heading {
     height: 45px;
     display: flex;
     align-items: center;
 }
+
+.margin-top {
+    margin-top: 1rem;
+}
+
+.daily-insight-box {
+    margin-top: 15px;
+}
+
 @media (max-width:480px) {
-    .body{
+    .body {
         height: 300vh;
     }
-    .weekly-header{
+
+    .weekly-header {
         min-height: 2% !important;
     }
-    .weely-view-main{
+
+    .weely-view-main {
         height: 450% !important;
     }
-    .header-title{
+
+    .header-title {
         padding-left: 20px;
         align-self: flex-start;
     }
-    .circular-bar-box{
+
+    .circular-bar-box {
         height: 35%;
         margin-right: 0px !important;
         width: 90%;
         justify-content: unset !important;
     }
-    .titles{
+
+    .titles {
         height: 10% !important;
     }
-    .progress-box{
+
+    .progress-box {
         width: 90%;
         height: 15% !important;
     }
-    .progress-box:hover{
+
+    .progress-box:hover {
         width: 90% !important;
     }
-    .weekly-icon-container{
-        align-self: flex-start;
-        margin-left: 20px;
-        height: 3% !important;
-    }
-    .bar-box{
-        align-self: center !important;
+
+    .weekly-icon-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 6% !important;
+        margin-left: 0px !important;
         margin-right: 0px !important;
-        width: 90%;
+        margin-top: 10px !important;
+        margin-bottom: 20px !important;
     }
-    #bar-box2{
+
+    .bar-box {
         align-self: center !important;
-        margin-right: 0px !important;
-        width: 90%;
+        margin-right: 10px !important;
+        margin-left: 10px;
+        width: 95%;
+    }
+
+    #bar-box2 {
+        align-self: center !important;
+        margin-right: 10px !important;
+        margin-left: 10px;
+        width: 95%;
         height: 20%;
     }
-    .panels{
+
+    .panels {
         padding-top: 6px;
         height: 26%;
     }
-    .last-panel{
-        margin-right: 0px;
-        width: 90%;
+
+    .last-panel {
+        margin-right: 10px;
+        width: 95%;
         max-height: 8% !important;
+        margin-left: 10px;
     }
-    footer{
+
+    .insight-heading {
+        margin-top: 10px;
+    }
+
+    footer {
         text-align: center;
+    }
+}
+
+@media (max-width:360px) {
+    .circular-bar-box {
+        width: 95%;
+        padding-top: 20px;
+    }
+
+    .mc-container-cirbar {
+        margin-bottom: 100px !important;
+    }
+
+    .progress-box {
+        height: 20% !important;
+    }
+
+    .heading-titles {
+        font-size: 20px !important;
+        margin-left: 16px !important;
+        font-weight: bold !important;
+
+    }
+
+    .weekly-icon-container {
+        height: 6% !important;
+    }
+
+    #bar-box2 {
+        height: 25%;
+    }
+
+    .panels {
+        height: 25%;
+    }
+
+    .last-panel {
+        max-height: 10% !important;
+        margin-bottom: 15px;
+    }
+
+    .weekly-icons-1 {
+        height: 35px;
+        width: 35px;
+    }
+
+    .margin-top {
+        margin-top: 2px;
+    }
+
+    .mc-barChart .recharts-wrapper {
+        left:-20px !important;
+    }
+    .circle{
+        height: 30px !important;
+        width:30px !important;
     }
 }
