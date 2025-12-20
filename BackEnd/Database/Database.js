@@ -3,7 +3,10 @@ import dotenv from 'dotenv';
 import fs from 'fs';
 import path from 'path';
 dotenv.config();
-const caPath = path.join(process.cwd(), "certs", "isrgrootx1.pem");
+const ca = Buffer.from(
+  process.env.TIDB_CA_CERT_BASE64,
+  "base64"
+);
 const pool = mysql.createPool({
     host: process.env.MYSQL_HOST,
     user: process.env.MYSQL_USER,
@@ -11,7 +14,7 @@ const pool = mysql.createPool({
     port:process.env.MYSQL_PORT,
     database:process.env.MYSQL_DATABASE,
     ssl: {
-        ca: fs.readFileSync(caPath),
+        ca,
         minVersion: 'TLSv1.2',
         rejectUnauthorized: true
     },
