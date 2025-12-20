@@ -4,7 +4,7 @@ import fs from 'fs';
 import path from 'path';
 dotenv.config();
 const ca = Buffer.from(
-  process.env.TIDB_CA_CERT_BASE64,
+  process.env.CA,
   "base64"
 );
 const pool = mysql.createPool({
