@@ -82,13 +82,5 @@ This frontend is configured to communicate with a backend server.
 * **Proxy:** The `package.json` includes `"proxy": "http://localhost:7000"`.
 * Ensure your Node.js/Express backend is running on port 7000 to avoid CORS issues during development.
 
-
-## 📝 License
-
-This project is licensed under the MIT License.
-
----
-
 **Author:** Madhav Bondhare
 
-```
