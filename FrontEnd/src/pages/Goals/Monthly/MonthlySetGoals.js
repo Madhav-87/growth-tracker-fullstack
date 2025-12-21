@@ -1,18 +1,19 @@
 
-import React, { useState } from 'react'
+import { useState } from 'react'
 import '../../../styles/DailyGoals2.css';
 import axios from 'axios';
 import Alert from '../../../components/common/Alert.jsx';
 import { isMobile } from 'react-device-detect';
 import addTask from '../../../assets/images/addTask.svg';
 import { toast, ToastContainer } from 'react-toastify';
-import YCirProgress from '../../../YCirProgress.jsx';
-import {Link} from 'react-router-dom';
+import YlineCirProgress from '../../../components/ui/YlineCirProgress.jsx';
 import GoalWarningBox from '../../../components/common/GoalWarningBox.jsx';
 import GoalPlus from '../../../assets/images/addGoal.svg';
 import animeMan from '../../../assets/images/animeMan.png';
 import Drawer from '../../../components/common/Drawer.jsx';
-export default function App() {
+import Footer from '../../../components/layout/Footer.jsx';
+import Header from '../../../components/layout/Header.jsx';
+export default function MonthlySetGoals() {
     let [Items, setItem] = useState([]);
     let token = localStorage.getItem("token" )|| null;
     let [submitBTN, setsubmitBTN] = useState(false);
@@ -38,7 +39,7 @@ export default function App() {
         return (
             <div key={indexNumber}>
                 <div className="alert alert-dismissible fade show mc-items-list d-flex align-items-center" role="alert">
-                    <div style={{ height: "50px" }} className='d-flex align-items-center'><img src={GoalPlus} class="h-50 me-3"></img></div>
+                    <div style={{ height: "50px" }} className='d-flex align-items-center'><img src={GoalPlus} className="h-50 me-3"></img></div>
                     <div className='p-2'>{value}</div>
                    
                     <button type="button" className="btn-close" aria-label="RemoveItem" onClick={() => removeItem(indexNumber)}></button>
@@ -61,47 +62,14 @@ export default function App() {
             setsubmitBTN(true);
         });
     }
-    const toggleNavbar = () => {
-    const nav = document.getElementById("navbarSupportedContent");
-    if (!nav) return;
-    const bootstrap = require("bootstrap");
-    const collapse = bootstrap.Collapse.getOrCreateInstance(nav);
-    collapse.toggle();
-     }
+    
     return (
        <div>
             <Drawer/>
          <Alert />
             <GoalWarningBox />
             <ToastContainer />
-        <header>
-        <nav class="navbar navbar-expand-lg">
-          <div class="mc-navbar">
-            <Link class="navbar-brand text-color" href="#">GrowthTracker</Link>
-            <button class="navbar-toggler me-5" onClick={() => {toggleNavbar() }} type="button"  aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-              <span class={`navbar-toggler-icon`}></span>
-            </button>
-          </div>
-          <div className='mc-close-width d-flex'>
-            <div class="collapse navbar-collapse mc-nav-center" id="navbarSupportedContent">
-              <ul class="navbar-nav me-auto ms-0 ms-md-5  mb-2 mb-lg-0">
-                <li class="nav-item">
-                  <Link class="nav-Link mc-normalbtn" aria-current="page" to="/Home">Day</Link>
-                </li>
-                <li class="nav-item">
-                  <Link class="nav-Link mc-normalbtn" to="/Month">Month</Link>
-                </li>
-                <li class="nav-item">
-                  <Link class="nav-Link mc-normalbtn" to="/Year">Year</Link>
-                </li>
-                <li class="nav-item">
-                  <Link class="nav-Link mc-normalbtn text-primary" to="#" style={{width:"200px"}}>Monthly Goals</Link>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </nav>
-      </header>
+        <Header title={'Monthly Goals'}/>
       <main className='panel-body'>
         {
           isMobile
@@ -123,7 +91,7 @@ export default function App() {
           </div>
             <div className='mc-progress-box'>
                 <div className='mc-progress'>
-                    <YCirProgress/>
+                    <YlineCirProgress/>
                 </div>
             </div>
             <div className='mc-input-boxes'>
@@ -157,17 +125,7 @@ export default function App() {
            
         </div>
       </main>
-       <footer className='text-center'>
-        <div className='h4'>
-          GoalTracker
-        </div>
-        <div>
-          Empowering you to achieve your dreams, one goal at Link time.
-        </div>
-        <div>
-          © 2024 GoalTracker. All rights reserved.
-        </div>
-      </footer>
+       <Footer/>
        </div>
     )
 }

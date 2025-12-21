@@ -16,6 +16,7 @@ import tip from '../../assets/images/tip.svg';
 import reportsvg from '../../assets/images/reportsvg.svg';
 import progress from '../../assets/images/progress.svg';
 import goal from '../../assets/images/goal.svg';
+import Footer from '../../components/layout/Footer.jsx';
 export default function About() {
     return (
         <div>
@@ -67,133 +68,133 @@ export default function About() {
                     Credits
                 </div>
                 <div className='mc-credit-cards'>
-                    <div class="card mc-set-cards">
+                    <div className="card mc-set-cards">
                         <div className='mc-credit-img'>
-                            <img src={plus} class="icon" alt="..." />
+                            <img src={plus} className="icon" alt="..." />
                         </div>
-                        <div class="card-body">
-                            <p class="card-text">The icon "Add Interface Multimedia" was created by Icon Lauk, available on SVGRepo under the Creative Commons Attribution (CC BY) License.
+                        <div className="card-body">
+                            <p className="card-text">The icon "Add Interface Multimedia" was created by Icon Lauk, available on SVGRepo under the Creative Commons Attribution (CC BY) License.
                                 Part of the Multimedia Flat Icons collection. Free for personal and commercial use with attribution.</p>
                         </div>
                     </div>
-                    <div class="card mc-set-cards">
+                    <div className="card mc-set-cards">
                         <div className='mc-credit-img'>
-                            <img src={message} class="icon" alt="..." />
+                            <img src={message} className="icon" alt="..." />
                         </div>
-                        <div class="card-body">
-                            <p class="card-text">The icon "Add Chat Email" was created by Icon Lauk and is part of the Interface Lineal Icons collection available on SVGRepo.
+                        <div className="card-body">
+                            <p className="card-text">The icon "Add Chat Email" was created by Icon Lauk and is part of the Interface Lineal Icons collection available on SVGRepo.
                                 This icon is licensed under the Creative Commons Attribution (CC BY) License, which permits use with credit to the creator.</p>
                         </div>
-                    </div> <div class="card mc-set-cards">
+                    </div> <div className="card mc-set-cards">
                         <div className='mc-credit-img'>
-                            <img src={profile} class="icon" alt="..." />
+                            <img src={profile} className="icon" alt="..." />
                         </div>
-                        <div class="card-body">
-                            <p class="card-text">The icon "Account Avatar Profile User 6" was created by Maxicons and is part of the Avatar Flat Icons collection on SVGRepo.
+                        <div className="card-body">
+                            <p className="card-text">The icon "Account Avatar Profile User 6" was created by Maxicons and is part of the Avatar Flat Icons collection on SVGRepo.
                                 It is licensed under the Creative Commons Attribution (CC BY) License, which permits reuse with proper attribution.</p>
                         </div>
-                    </div> <div class="card mc-set-cards">
+                    </div> <div className="card mc-set-cards">
                         <div className='mc-credit-img'>
-                            <img src={annualtip} class="icon" alt="..." />
+                            <img src={annualtip} className="icon" alt="..." />
                         </div>
-                        <div class="card-body">
-                            <p class="card-text">The icon "Email Notification Message Envelope Letter Chat" was created by Good Ware, from the Interface Solid Icons collection on SVGRepo.
+                        <div className="card-body">
+                            <p className="card-text">The icon "Email Notification Message Envelope Letter Chat" was created by Good Ware, from the Interface Solid Icons collection on SVGRepo.
                                 It is licensed under the Creative Commons Attribution (CC BY) License, which allows free use with proper credit.</p>
                         </div>
                     </div>
-                    <div class="card mc-set-cards">
+                    <div className="card mc-set-cards">
                         <div className='mc-credit-img'>
-                            <img src={sword} class="icon" alt="..." />
+                            <img src={sword} className="icon" alt="..." />
                         </div>
-                        <div class="card-body">
-                            <p class="card-text">The icon "Excalibur Legend" was created by Freepik, part of the Game Flat Icons collection available on SVGRepo.
+                        <div className="card-body">
+                            <p className="card-text">The icon "Excalibur Legend" was created by Freepik, part of the Game Flat Icons collection available on SVGRepo.
                                 It is licensed under the Creative Commons Attribution (CC BY) License, which permits use with proper credit.</p>
                         </div>
                     </div>
-                    <div class="card mc-set-cards">
+                    <div className="card mc-set-cards">
                         <div className='mc-credit-img'>
-                            <img src={annualReport} class="icon" alt="..." />
+                            <img src={annualReport} className="icon" alt="..." />
                         </div>
-                        <div class="card-body">
-                            <p class="card-text">The icon "Report" was created by Cyber Olympus and is part of the Strategy Management Flat Vectors collection available on SVGRepo.
+                        <div className="card-body">
+                            <p className="card-text">The icon "Report" was created by Cyber Olympus and is part of the Strategy Management Flat Vectors collection available on SVGRepo.
                                 It is licensed under the Creative Commons Attribution (CC BY) License, which permits reuse with credit.</p>
                         </div>
                     </div>
-                    <div class="card mc-set-cards">
+                    <div className="card mc-set-cards">
                         <div className='mc-credit-img'>
-                            <img src={annual} class="icon" alt="..." />
+                            <img src={annual} className="icon" alt="..." />
                         </div>
-                        <div class="card-body">
-                            <p class="card-text">The icon "Annual Year" is from the Business Flat Icons collection on SVGRepo and is licensed under the Creative Commons Zero (CC0) License.</p>
+                        <div className="card-body">
+                            <p className="card-text">The icon "Annual Year" is from the Business Flat Icons collection on SVGRepo and is licensed under the Creative Commons Zero (CC0) License.</p>
                         </div>
                     </div>
-                    <div class="card mc-set-cards">
+                    <div className="card mc-set-cards">
                         <div className='mc-credit-img'>
-                            <img src={support} class="icon" alt="..." />
+                            <img src={support} className="icon" alt="..." />
                         </div>
-                        <div class="card-body">
-                            <p class="card-text">The icon "Telemarketer Support" is from the Business Flat Icons collection on SVGRepo and is licensed under the Creative Commons Zero (CC0) License.</p>
+                        <div className="card-body">
+                            <p className="card-text">The icon "Telemarketer Support" is from the Business Flat Icons collection on SVGRepo and is licensed under the Creative Commons Zero (CC0) License.</p>
                         </div>
                     </div>
-                    <div class="card mc-set-cards">
+                    <div className="card mc-set-cards">
                         <div className='mc-credit-img'>
-                            <img src={medal} class="icon" alt="..." />
+                            <img src={medal} className="icon" alt="..." />
                         </div>
-                        <div class="card-body">
-                            <p class="card-text">The icon "Medal" is from the Awards and Badges collection on SVGRepo, licensed under the Creative Commons Zero (CC0) License.</p>
+                        <div className="card-body">
+                            <p className="card-text">The icon "Medal" is from the Awards and Badges collection on SVGRepo, licensed under the Creative Commons Zero (CC0) License.</p>
                         </div>
                     </div>
-                    <div class="card mc-set-cards">
+                    <div className="card mc-set-cards">
                         <div className='mc-credit-img'>
-                            <img src={monthReport} class="icon" alt="..." />
+                            <img src={monthReport} className="icon" alt="..." />
                         </div>
-                        <div class="card-body">
-                            <p class="card-text">The icon "Analytics Statistics" is from the Business Flat Icons collection on SVGRepo, and is licensed under the Creative Commons Zero (CC0) License.</p>
+                        <div className="card-body">
+                            <p className="card-text">The icon "Analytics Statistics" is from the Business Flat Icons collection on SVGRepo, and is licensed under the Creative Commons Zero (CC0) License.</p>
                         </div>
                     </div>
-                    <div class="card mc-set-cards">
+                    <div className="card mc-set-cards">
                         <div className='mc-credit-img'>
-                            <img src={monthlyGoal} class="icon" alt="..." />
+                            <img src={monthlyGoal} className="icon" alt="..." />
                         </div>
-                        <div class="card-body">
-                            <p class="card-text">The icon "Appointment Calendar Date Event Month Plan" was created by Icon Lauk and is part of the Calendar Icons collection on SVGRepo.
+                        <div className="card-body">
+                            <p className="card-text">The icon "Appointment Calendar Date Event Month Plan" was created by Icon Lauk and is part of the Calendar Icons collection on SVGRepo.
                                 It is licensed under the Creative Commons Attribution (CC BY) License.
                             </p>
                         </div>
                     </div>
-                    <div class="card mc-set-cards">
+                    <div className="card mc-set-cards">
                         <div className='mc-credit-img'>
-                            <img src={tip} class="icon" alt="..." />
+                            <img src={tip} className="icon" alt="..." />
                         </div>
-                        <div class="card-body">
-                            <p class="card-text">The icon "Operator Support" is from the Communication Flat Icons collection on SVGRepo and is licensed under the Creative Commons Zero (CC0) License.</p>
+                        <div className="card-body">
+                            <p className="card-text">The icon "Operator Support" is from the Communication Flat Icons collection on SVGRepo and is licensed under the Creative Commons Zero (CC0) License.</p>
                         </div>
                     </div>
-                    <div class="card mc-set-cards">
+                    <div className="card mc-set-cards">
                         <div className='mc-credit-img'>
-                            <img src={reportsvg} class="icon" alt="..." />
+                            <img src={reportsvg} className="icon" alt="..." />
                         </div>
-                        <div class="card-body">
-                            <p class="card-text">The icon "Report Document File" was created by Cyber Olympus and is part of the Strategy Management Flat Vectors collection on SVGRepo.
+                        <div className="card-body">
+                            <p className="card-text">The icon "Report Document File" was created by Cyber Olympus and is part of the Strategy Management Flat Vectors collection on SVGRepo.
                                 It is licensed under the Creative Commons Attribution (CC BY) License.</p>
                         </div>
                     </div>
-                    <div class="card mc-set-cards">
+                    <div className="card mc-set-cards">
                         <div className='mc-credit-img'>
-                            <img src={progress} class="icon" alt="..." />
+                            <img src={progress} className="icon" alt="..." />
                         </div>
-                        <div class="card-body">
-                            <p class="card-text">The icon "Achievement Business Mission" was created by Icon Lauk and is part of the Business Success Vectors collection on SVGRepo.
+                        <div className="card-body">
+                            <p className="card-text">The icon "Achievement Business Mission" was created by Icon Lauk and is part of the Business Success Vectors collection on SVGRepo.
                                 It is licensed under the Creative Commons Attribution (CC BY) License.
                             </p>
                         </div>
                     </div>
-                    <div class="card mc-set-cards">
+                    <div className="card mc-set-cards">
                         <div className='mc-credit-img'>
-                            <img src={goal} class="icon" alt="..." />
+                            <img src={goal} className="icon" alt="..." />
                         </div>
-                        <div class="card-body">
-                            <p class="card-text">The icon "Goals Target Aim" was created by Cyber Olympus and is part of the Strategy Management Flat Vectors collection on SVGRepo.
+                        <div className="card-body">
+                            <p className="card-text">The icon "Goals Target Aim" was created by Cyber Olympus and is part of the Strategy Management Flat Vectors collection on SVGRepo.
                                 It is licensed under the Creative Commons Attribution (CC BY) License.
                             </p>
                         </div>
@@ -203,6 +204,7 @@ export default function About() {
             <div className='footer-container'>
                 Thank You
             </div>
+            <Footer/>
         </div>
     )
 }

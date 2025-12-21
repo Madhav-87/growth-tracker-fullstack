@@ -1,11 +1,11 @@
 import { ResponsiveContainer, XAxis, YAxis, Tooltip, Legend, CartesianGrid, Bar, BarChart } from 'recharts';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import '../../../styles/DailyView.css';
 import Ycircularbar from '../../../components/ui/Ycircularbar.jsx';
-function DailyView() {
-    let [btn, setbtn] = useState(false);
+import Footer from '../../../components/layout/Footer.jsx';
+import Header from '../../../components/layout/Header.jsx';
+function MonthlyView() {
     let token = localStorage.getItem('token');
     let [data, setData] = useState([]);
     let [bestScore, setBestScore] = useState(0);
@@ -115,43 +115,9 @@ function DailyView() {
         let completeTask=(yesScore*task.length)/100;
         setCompTask(completeTask);
     }, [task])
-    const toggleNavbar = () => {
-    const nav = document.getElementById("navbarSupportedContent");
-    if (!nav) return;
-    const bootstrap = require("bootstrap");
-    const collapse = bootstrap.Collapse.getOrCreateInstance(nav);
-    collapse.toggle();
-     }
     return (
         <div className='body'>
-            <header>
-                <nav className="navbar navbar-expand-lg">
-                    <div className="mc-navbar">
-                        <Link className="navbar-brand text-color" href="#">GrowthTracker</Link>
-                        <button className="navbar-toggler me-5" onClick={() => { toggleNavbar() }} type="button"  aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                            <span className={`navbar-toggler-icon`}></span>
-                        </button>
-                    </div>
-                    <div className='mc-close-width d-flex'>
-                        <div className="collapse navbar-collapse mc-nav-center" id="navbarSupportedContent">
-                            <ul className="navbar-nav me-auto ms-0 ms-md-5  mb-2 mb-lg-0">
-                                <li className="nav-item">
-                                    <Link className="nav-Link mc-normalbtn" aria-current="page" to="/Home">Day</Link>
-                                </li>
-                                <li className="nav-item">
-                                    <Link className="nav-Link mc-normalbtn" to="/Month">Month</Link>
-                                </li>
-                                <li className="nav-item">
-                                    <Link className="nav-Link mc-normalbtn" to="/Year">Year</Link>
-                                </li>
-                                <li className="nav-item">
-                                    <Link className="nav-Link mc-normalbtn text-primary" to="#" style={{ width: "200px" }}>Monthly Progress</Link>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </nav>
-            </header>
+           <Header title={'Monthly Progress'}/>
             <main className='weely-view-main'>
                 <div className='header-title'>
                     <div className='d-flex'>
@@ -331,18 +297,8 @@ function DailyView() {
                 </div>
 
             </main>
-            <footer className='p-5'>
-                <div className='h4'>
-                    GoalTracker
-                </div>
-                <div>
-                    Empowering you to achieve your dreams, one goal at Link time.
-                </div>
-                <div>
-                    © 2024 GoalTracker. All rights reserved.
-                </div>
-            </footer>
+            <Footer/>
         </div>
     )
 }
-export default DailyView;
+export default MonthlyView;

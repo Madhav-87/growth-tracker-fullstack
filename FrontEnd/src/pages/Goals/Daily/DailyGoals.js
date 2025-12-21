@@ -6,7 +6,7 @@ import axios from 'axios';
 import Alert from '../../../components/common/Alert.jsx';
 import addTask from '../../../assets/images/addTask.svg';
 import { toast, ToastContainer } from 'react-toastify';
-import YCirProgress from '../../../YCirProgress.jsx';
+import YlineCirProgress from '../../../components/ui/YlineCirProgress.jsx';
 import { Link } from 'react-router-dom';
 import { jwtDecode } from 'jwt-decode';
 import GoalWarningBox from '../../../components/common/GoalWarningBox.jsx';
@@ -14,15 +14,9 @@ import GoalPlus from '../../../assets/images/addGoal.svg';
 import animeMan from '../../../assets/images/animeMan.png';
 import { isMobile } from 'react-device-detect';
 import Drawer from '../../../components/common/Drawer.jsx';
-export default function App() {
-  let [btn, setbtn] = useState(false);
-  let [profile, setProfile] = useState(false);
-  let [navbarOpen, setNavbarOpen] = useState(false);
-  let userName = jwtDecode(localStorage.getItem('token')).name;
-  let clearCash = () => {
-    localStorage.clear();
-    window.location.reload();
-  }
+import Footer from '../../../components/layout/Footer.jsx';
+import Header from '../../../components/layout/Header.jsx';
+export default function DailyGoals() {
   let token = localStorage.getItem('token');
   let [Goalslist, setGoals] = useState([]);
   let [visible, setVisible] = useState(true);
@@ -41,7 +35,7 @@ export default function App() {
     return (
       <div key={indexNumber}>
         <div className="alert alert-dismissible fade show mc-items-list d-flex align-items-center" role="alert">
-          <div style={{ height: "50px" }} className='d-flex align-items-center'><img src={GoalPlus} class="h-50 me-3"></img></div>
+          <div style={{ height: "50px" }} className='d-flex align-items-center'><img src={GoalPlus} className="h-50 me-3"></img></div>
           <div className='p-2'>{value}</div>
 
           <button type="button" className="btn-close" aria-label="RemoveItem" onClick={() => removeItem(indexNumber)}></button>
@@ -82,56 +76,14 @@ export default function App() {
         console.log(err);
       })
   }
-  const toggleNavbar = () => {
-    const nav = document.getElementById("navbarSupportedContent");
-    if (!nav) return;
-    const bootstrap = require("bootstrap");
-    const collapse = bootstrap.Collapse.getOrCreateInstance(nav);
-    collapse.toggle();
-  };
+ 
   return (
     <div>
           <Drawer/>
       <Alert />
       <GoalWarningBox />
       <ToastContainer />
-      <header>
-        <nav class="navbar navbar-expand-lg">
-          <div class="mc-navbar">
-            <Link class="navbar-brand text-color" href="#">GrowthTracker</Link>
-            <button class="navbar-toggler" onClick={() => { toggleNavbar()}} type="button" aria-controls="navbarSupportedContent" aria-expanded={navbarOpen} aria-label="Toggle navigation">
-              <span class={`navbar-toggler-icon`}></span>
-            </button>
-            <div className='icon-Home'>
-              <div className={profile ? 'mc-profile d-flex flex-column align-items-center' : 'nonvisible'}>
-                <div className='mc-profile-icon'><img src={person} height={"40px"} className='profile-icon-Home'></img></div>
-                <div className='d-flex flex-column mb-2'><div className='mc-profile-txt'>{userName.split(' ')[0]}</div><div className='mc-profile-subtxt'>Goal Acheiver</div></div>
-                <Link className='mb-2 mc-profile-btn' to="/About">About</Link>
-                <div className='mc-profile-btn' onClick={() => { clearCash() }}>Log out</div>
-              </div>
-              <img src={person} height={"40px"} onClick={() => { setProfile(!profile) }}></img>
-            </div>
-          </div>
-          <div className='mc-close-width d-flex'>
-            <div class="collapse navbar-collapse mc-nav-center" id="navbarSupportedContent">
-              <ul class="navbar-nav me-auto ms-0 ms-md-5  mb-2 mb-lg-0">
-                <li class="nav-item">
-                  <Link class="nav-Link mc-normalbtn" aria-current="page" to="/Home">Day</Link>
-                </li>
-                <li class="nav-item">
-                  <Link class="nav-Link mc-normalbtn" to="/Month">Month</Link>
-                </li>
-                <li class="nav-item">
-                  <Link class="nav-Link mc-normalbtn" to="/Year">Year</Link>
-                </li>
-                <li class="nav-item">
-                  <Link class="nav-Link mc-normalbtn text-primary" to="#" style={{width:"200px"}}>Daily Goals</Link>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </nav>
-      </header>
+      <Header title={'Daily Goals'}/>
       <main className='panel-body'>
         {
           isMobile
@@ -153,7 +105,7 @@ export default function App() {
           </div>
           <div className='mc-progress-box'>
             <div className='mc-progress'>
-              <YCirProgress />
+              <YlineCirProgress />
             </div>
           </div>
           <div className='mc-input-boxes'>
@@ -187,17 +139,7 @@ export default function App() {
 
         </div>
       </main>
-      <footer>
-        <div className='h4'>
-          GoalTracker
-        </div>
-        <div>
-          Empowering you to achieve your dreams, one goal at Link time.
-        </div>
-        <div>
-          © 2024 GoalTracker. All rights reserved.
-        </div>
-      </footer>
+     <Footer/>
     </div>
   )
 }

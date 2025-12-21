@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 export default function Notification({element}) {
     let [state,setState]=useState(true);
     useEffect(()=>{

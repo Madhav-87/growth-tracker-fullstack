@@ -1,41 +1,13 @@
-import { Link } from 'react-router-dom';
 import dog from '../../assets/images/dog.png';
-import { useState } from 'react';
 import './Tips.css';
 import Drawer from '../../components/common/Drawer.jsx';
+import Footer from '../../components/layout/Footer.jsx';
+import Header from '../../components/layout/Header.jsx';
 function Tips() {
-    let [btn, setbtn] = useState(false);
     return (
         <div>
             <Drawer/>
-            <header>
-                <nav class="navbar navbar-expand-lg">
-                    <div class="mc-navbar pe-5">
-                        <Link class="navbar-brand text-color" href="#">GrowthTracker</Link>
-                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                            <span class={`${btn ? 'btn-close' : 'navbar-toggler-icon'}`}></span>
-                        </button>
-                    </div>
-                    <div className='mc-close-width d-flex'>
-                        <div class="collapse navbar-collapse mc-nav-center" id="navbarSupportedContent">
-                            <ul class="navbar-nav me-auto ms-0 ms-md-5  mb-2 mb-lg-0">
-                                <li class="nav-item">
-                                    <Link class="nav-Link mc-normalbtn" aria-current="page" to="/Home">Day</Link>
-                                </li>
-                                <li class="nav-item">
-                                    <Link class="nav-Link mc-normalbtn" to="/Month">Month</Link>
-                                </li>
-                                <li class="nav-item">
-                                    <Link class="nav-Link mc-normalbtn" to="/Year">Year</Link>
-                                </li>
-                                <li class="nav-item">
-                                    <Link class="nav-Link mc-normalbtn text-primary" to="#" style={{ width: "200px" }}>Tips</Link>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </nav>
-            </header>
+            <Header title={'Tips'}/>
             <main>
                 <div className='img-panel'>
                     <img src={dog} className="img-fluid img" alt="dog img"></img>
@@ -398,17 +370,7 @@ function Tips() {
                     </div>
                 </div>
             </main>
-            <footer>
-                <div className='h4'>
-                    GoalTracker
-                </div>
-                <div>
-                    Empowering you to achieve your dreams, one goal at a time.
-                </div>
-                <div>
-                    © 2024 GoalTracker. All rights reserved.
-                </div>
-            </footer>
+           <Footer/>
         </div>
     );
 }

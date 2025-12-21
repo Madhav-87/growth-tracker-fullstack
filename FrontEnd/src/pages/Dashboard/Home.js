@@ -12,20 +12,13 @@ import setGoals from '../../assets/images/setGoals.png';
 import submitGoals from '../../assets/images/submitGoals.png';
 import Progressimg from '../../assets/images/CheckProgress.png';
 import GetTips from '../../assets/images/GetTips.png';
-import person from '../../assets/images/person.png';
 import { Link } from 'react-router-dom';
-import { jwtDecode } from 'jwt-decode';
 import handNote from '../../assets/images/handNote.png';
 import focus from '../../assets/images/focus.png';
 import boy from '../../assets/images/boy.png';
+import Footer from '../../components/layout/Footer.jsx';
+import Header from '../../components/layout/Header.jsx';
 export default function App() {
-  let [navbarOpen, setNavbarOpen] = useState(false);
-  let [profile, setProfile] = useState(false);
-  let userName = jwtDecode(localStorage.getItem('token')).name;
-  let clearCash = () => {
-    localStorage.clear();
-    window.location.reload();
-  }
   const carouselRef = useRef(null);
 
   useEffect(() => {
@@ -37,58 +30,10 @@ export default function App() {
     //To avoid memory leak
     return () => carousel.dispose();
   }, []);
-  const toggleNavbar = () => {
-    const nav = document.getElementById("navbarSupportedContent");
-    if (!nav) return;
-    const bootstrap = require("bootstrap");
-    const collapse = bootstrap.Collapse.getOrCreateInstance(nav);
-    collapse.toggle();
-  };
   return (
     <div>
       <Drawer />
-      <header>
-        <nav className="navbar navbar-expand-lg">
-          <div className="mc-navbar">
-            <Link className="navbar-brand text-color" to="#">GrowthTracker</Link>
-            <button
-              className="navbar-toggler"
-              type="button"
-              onClick={toggleNavbar}
-              aria-controls="navbarSupportedContent"
-              aria-label="Toggle navigation"
-              aria-expanded={navbarOpen}
-            >
-
-              <span className="navbar-toggler-icon"></span>
-            </button>
-            <div className='icon-Home'>
-              <div className={profile ? 'mc-profile d-flex flex-column align-items-center' : 'nonvisible'}>
-                <div className='mc-profile-icon'><img src={person} height={"40px"} className='profile-icon-Home'></img></div>
-                <div className='d-flex flex-column mb-2'><div className='mc-profile-txt'>{userName.split(' ')[0]}</div><div className='mc-profile-subtxt'>Goal Acheiver</div></div>
-                <Link className='mb-2 mc-profile-btn' to="/About">About</Link>
-                <div className='mc-profile-btn' onClick={() => { clearCash() }}>Log out</div>
-              </div>
-              <img src={person} height={"40px"} onClick={() => { setProfile(!profile) }}></img>
-            </div>
-          </div>
-          <div className='mc-close-width d-flex'>
-            <div className="collapse navbar-collapse mc-nav-center" id="navbarSupportedContent">
-              <ul className="navbar-nav text-align-left me-auto ms-0 ms-md-5  mb-2 mb-lg-0">
-                <li className="nav-item">
-                  <Link className="nav-Link mc-normalbtn text-primary" aria-current="page" to="#">Day</Link>
-                </li>
-                <li className="nav-item">
-                  <Link className="nav-Link mc-normalbtn" to="/Month">Month</Link>
-                </li>
-                <li className="nav-item">
-                  <Link className="nav-Link mc-normalbtn" to="/Year">Year</Link>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </nav>
-      </header>
+      <Header title={'Day'}/>
       <main>
         <div className='mc-crousel'>
           <div ref={carouselRef} id="carouselExampleIndicators" className="carousel slide shadow" data-bs-ride="carousel" data-bs-interval="3000" >
@@ -161,17 +106,7 @@ export default function App() {
           </div>
         </div>
       </main>
-      <footer>
-        <div className='h4'>
-          GoalTracker
-        </div>
-        <div>
-          Empowering you to achieve your dreams, one goal at a time.
-        </div>
-        <div>
-          © 2024 GoalTracker. All rights reserved.
-        </div>
-      </footer>
+      <Footer/>
     </div>
   )
 }

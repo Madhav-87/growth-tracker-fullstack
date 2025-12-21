@@ -5,6 +5,7 @@ import React, { useState, useRef, useEffect } from "react";
 import axios from 'axios';
 import ReactMarkdown from 'react-markdown';
 import Drawer from '../../components/common/Drawer.jsx';
+import Footer from '../../components/layout/Footer.jsx';
 export default function Chatbot() {
     const token=localStorage.getItem("token");
     const [messages, setMessages] = useState([
@@ -98,7 +99,7 @@ export default function Chatbot() {
                             onChange={e => setInput(e.target.value)}
                             onKeyDown={e => e.key === "Enter" && sendMessage()}
                         ></input>
-                        <button onClick={sendMessage}><span class="material-symbols-outlined">
+                        <button onClick={sendMessage}><span className="material-symbols-outlined">
                             arrow_upward
                         </span></button>
                     </div>
@@ -109,7 +110,7 @@ export default function Chatbot() {
                     </div>
                     <div className='focus-area'>
                         <div className='focus-heading'>
-                            <span class="material-symbols-outlined me-2" style={{ fontSize: "40px" }}>
+                            <span className="material-symbols-outlined me-2" style={{ fontSize: "40px" }}>
                                 target
                             </span>
                             <span style={{ color: "black", fontWeight: "700" }}>
@@ -118,7 +119,7 @@ export default function Chatbot() {
                         </div>
                         <div className='box-container'>
                             <div className='box-icons'>
-                                <span class="material-symbols-outlined">
+                                <span className="material-symbols-outlined">
                                     auto_stories
                                 </span>
                             </div>
@@ -133,7 +134,7 @@ export default function Chatbot() {
                         </div>
                         <div className='box-container'>
                             <div className='box-icons'>
-                                <span class="material-symbols-outlined">
+                                <span className="material-symbols-outlined">
                                     favorite
                                 </span>
                             </div>
@@ -148,7 +149,7 @@ export default function Chatbot() {
                         </div>
                         <div className='box-container'>
                             <div className='box-icons'>
-                                <span class="material-symbols-outlined">
+                                <span className="material-symbols-outlined">
                                     neurology
                                 </span>
                             </div>
@@ -163,7 +164,7 @@ export default function Chatbot() {
                         </div>
                         <div className='box-container'>
                             <div className='box-icons'>
-                                <span class="material-symbols-outlined">
+                                <span className="material-symbols-outlined">
                                     electric_bolt
                                 </span>
                             </div>
@@ -179,7 +180,7 @@ export default function Chatbot() {
                     </div>
                     <div className='message-box'>
                         <div>
-                            <span class="material-symbols-outlined">
+                            <span className="material-symbols-outlined">
                                 stars_2
                             </span>
                         </div>
@@ -192,7 +193,7 @@ export default function Chatbot() {
                     </div>
                     <div className='message-box2'>
                         <div>
-                            <span class="material-symbols-outlined">
+                            <span className="material-symbols-outlined">
                                 bolt
                             </span>
                         </div>
@@ -205,17 +206,7 @@ export default function Chatbot() {
                     </div>
                 </div>
             </main>
-            <footer>
-                <div className='h4'>
-                    GoalTracker
-                </div>
-                <div>
-                    Empowering you to achieve your dreams, one goal at Link time.
-                </div>
-                <div>
-                    © 2024 GoalTracker. All rights reserved.
-                </div>
-            </footer>
+           <Footer/>
         </div>
     )
 }

@@ -57,16 +57,16 @@ export default function App() {
                         <form onSubmit={postMan}>
                             <div className='p-4'>
                                 <div className='mb-3'>
-                                    <label for="exampleFormControlInput1" class="form-label">Name</label>
-                                    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Enter your name" name="userName" value={userData.userName} onChange={getData} required ></input>
+                                    <label for="exampleFormControlInput1" className="form-label">Name</label>
+                                    <input type="text" className="form-control" id="exampleFormControlInput1" placeholder="Enter your name" name="userName" value={userData.userName} onChange={getData} required ></input>
                                 </div>
                                 <div className='mb-3'>
-                                    <label for="exampleFormControlInput1" class="form-label">Email address</label>
-                                    <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Enter your email" name="userEmail" value={userData.userEmail} onChange={getData} required ></input>
+                                    <label for="exampleFormControlInput1" className="form-label">Email address</label>
+                                    <input type="email" className="form-control" id="exampleFormControlInput1" placeholder="Enter your email" name="userEmail" value={userData.userEmail} onChange={getData} required ></input>
                                 </div>
                                 <div className='mb-3'>
-                                    <label for="exampleFormControlInput1" class="form-label">Password</label>
-                                    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Enter your password" name="userPassword" value={userData.userPassword} onChange={getData} required ></input>
+                                    <label for="exampleFormControlInput1" className="form-label">Password</label>
+                                    <input type="text" className="form-control" id="exampleFormControlInput1" placeholder="Enter your password" name="userPassword" value={userData.userPassword} onChange={getData} required ></input>
                                 </div>
                                 <div>
                                     <button className="mc-login-btn w-100 text-white btn mt-3 mb-3">

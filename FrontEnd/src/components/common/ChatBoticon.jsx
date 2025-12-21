@@ -1,4 +1,3 @@
-import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import './chatbot.css';
 import chatBot from '../../assets/images/chatBot.png';

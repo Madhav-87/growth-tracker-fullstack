@@ -72,16 +72,16 @@ function App() {
           <form onSubmit={postMan}>
             <div className='p-4'>
               <div className='mb-3'>
-                <label for="exampleFormControlInput1" class="form-label">Name</label>
-                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Enter your name" onChange={getData} value={userData.userName} name="userName" required></input>
+                <label for="exampleFormControlInput1" className="form-label">Name</label>
+                <input type="text" className="form-control" id="exampleFormControlInput1" placeholder="Enter your name" onChange={getData} value={userData.userName} name="userName" required></input>
               </div>
               <div className='mb-3'>
-                <label for="exampleFormControlInput1" class="form-label">Email address</label>
-                <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Enter your email" name="userEmail" onChange={getData} value={userData.userEmail} required ></input>
+                <label for="exampleFormControlInput1" className="form-label">Email address</label>
+                <input type="email" className="form-control" id="exampleFormControlInput1" placeholder="Enter your email" name="userEmail" onChange={getData} value={userData.userEmail} required ></input>
               </div>
               <div className='mb-3'>
-                <label for="exampleFormControlInput1" class="form-label">Password</label>
-                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Enter your password" name="userPassword" onChange={getData} value={userData.userPassword} required></input>
+                <label for="exampleFormControlInput1" className="form-label">Password</label>
+                <input type="text" className="form-control" id="exampleFormControlInput1" placeholder="Enter your password" name="userPassword" onChange={getData} value={userData.userPassword} required></input>
               </div>
               <div className='d-flex flex-column align-items-end mc-login-txt'>
                 forgot password?
