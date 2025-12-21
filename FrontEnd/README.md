@@ -1,8 +1,8 @@
-# Growth Tracker FrontEnd
+# 🚀 Growth Tracker FrontEnd
 
 A comprehensive React-based web application designed to help users set, track, and analyze their personal goals. The application features daily, monthly, and yearly goal management, visualized progress tracking, and an integrated chatbot assistant.
 
-## 🚀 Features
+## 🧩 Features
 
 * **User Authentication:** Secure Login and Account Creation.
 * **Goal Management:**
