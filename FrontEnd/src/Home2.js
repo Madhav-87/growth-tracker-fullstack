@@ -38,7 +38,7 @@ export default function App() {
     const bootstrap = require('bootstrap');
     const carousel = new bootstrap.Carousel(carouselRef.current, {
       interval: 3000,
-      ride: 'carousel'
+      ride: 'carousel' //Auto-initializes and starts the carousel cycling
     });
     //To avoid memory leak
     return () => carousel.dispose();

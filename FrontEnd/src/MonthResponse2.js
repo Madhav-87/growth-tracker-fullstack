@@ -8,6 +8,7 @@ import { toast, ToastContainer } from 'react-toastify';
 import YCirProgress from './Components/YCirProgress.jsx';
 import ResWarningBox from './Components/ResWarningBox.jsx';
 import './Panel.css';
+import './Response.css';
 import Drawer from './Components/Drawer.jsx';
 export default function App() {
     let [btn, setbtn] = useState(false);
