@@ -1,24 +1,23 @@
-import Home from './Home2.js';
-import Month from './Month2.js';
-import Tips from './Tips.js';
-import Daily from './DailyGoals2.js';
-import Login from './Login2.js';
-import CreateAccount  from './CreateAccount2.js';
+import Home from './pages/Dashboard/Home2.js';
+import Month from './pages/Dashboard/Month2.js';
+import Tips from './pages/Tips/Tips.js';
+import Daily from './pages/Goals/Daily/DailyGoals2.js';
+import Login from './pages/Auth/Login2.js';
+import CreateAccount  from './pages/Auth/CreateAccount2.js';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Response from './Response2.js';
-import Progress from './Progress.js';
-import DailyView from './DailyView.js';
-import ChartEx from './ChartEx.js';
-import MonthlyView from './MonthlyView.js';
-import YearlyView from './YearlyView.js';
-import MonthlySetGoals from './MonthlySetGoals2.js';
-import MonthResponse from './MonthResponse2.js';
-import Year from './Year2.js';
-import YearGoals from './YearGoals2.js';
-import YearlyRes from './YearlyRes2.js';
-import About from './About.js';
-import Chatbot from './Chatbot.js';
-import ProtectRouters from './Components/ProtectRouters.js';
+import Response from './pages/Goals/Daily/Response2.js';
+import Progress from './pages/Progress/Progress.js';
+import DailyView from './pages/Goals/Daily/DailyView.js';
+import MonthlyView from './pages/Goals/Monthly/MonthlyView.js';
+import YearlyView from './pages/Goals/Yearly/YearlyView.js';
+import MonthlySetGoals from './pages/Goals/Monthly/MonthlySetGoals2.js';
+import MonthResponse from './pages/Goals/Monthly/MonthResponse2.js';
+import Year from './pages/Dashboard/Year2.js';
+import YearGoals from './pages/Goals/Yearly/YearGoals2.js';
+import YearlyRes from './pages/Goals/Yearly/YearlyRes2.js';
+import About from './pages/About/About.js';
+import Chatbot from './pages/Chatbot/Chatbot.js';
+import ProtectRouters from './components/common/ProtectRouters.js';
 function App() {
   return (
     <Router>
@@ -31,7 +30,6 @@ function App() {
         <Route path="/Monthly/Goals" element={<ProtectRouters element={<MonthlySetGoals />}/>}></Route>
         <Route path="/YearlyView" element={<ProtectRouters element={<YearlyView />}/>}></Route>
         <Route path="/MonthlyView" element={<ProtectRouters element={<MonthlyView />}/>}></Route>
-        <Route path='/ChartEx' element={<ProtectRouters element={<ChartEx />}/>}></Route>
         <Route path='/response' element={<ProtectRouters element={<Response />}/>}></Route>
         <Route path='/chatbot' element={<ProtectRouters element={<Chatbot />}/>}></Route>
         <Route path='/check-progress' element={<ProtectRouters element={<Progress />}/>}></Route>
