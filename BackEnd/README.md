@@ -43,8 +43,6 @@ backend/
 ├── package.json      // Dependencies and scripts
 ├── .env              // Environment variables (ignored by git)
 ├── routes/           // API endpoint definitions
-├── controllers/      // Business logic & request handling
-├── middleware/       // Auth guards and validation
 └── database/         // MySQL connection & configuration
 
 ```
@@ -71,7 +69,7 @@ npm install
 Create a file named `.env` in the root directory and add your credentials:
 
 ```env
-PORT=5000
+PORT=7000
 DB_HOST=localhost
 DB_USER=root
 DB_PASSWORD=your_mysql_password
@@ -90,7 +88,7 @@ npx nodemon index.js
 
 ```
 
-The server will start at: `http://localhost:5000`
+The server will start at: `http://localhost:7000`
 
 ---
 
@@ -118,15 +116,6 @@ The server will start at: `http://localhost:5000`
 
 **Madhav Bondhare**
 
-```
 
----
 
-### Tips for your GitHub Repository:
-1.  **Badges:** I added "Badges" in the Tech Stack section. These look very professional on GitHub.
-2.  **File Tree:** The `📂 Project Structure` section uses a text-based tree, which is the standard way to show folder hierarchies in README files.
-3.  **.gitignore:** Make sure you have a `.gitignore` file in your folder containing `.env` and `node_modules` so you don't accidentally upload your passwords to GitHub!
 
-**Would you like me to help you write a "Features" section for the Frontend README as well?**
-
-```

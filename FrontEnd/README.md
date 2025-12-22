@@ -1,70 +1,86 @@
-# Getting Started with Create React App
+# 🚀 Growth Tracker FrontEnd
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A comprehensive React-based web application designed to help users set, track, and analyze their personal goals. The application features daily, monthly, and yearly goal management, visualized progress tracking, and an integrated chatbot assistant.
 
-## Available Scripts
+## 🧩 Features
 
-In the project directory, you can run:
+* **User Authentication:** Secure Login and Account Creation.
+* **Goal Management:**
+    * **Daily:** Set daily tasks, submit responses, and view weekly summaries.
+    * **Monthly:** Plan objectives for the month and review performance.
+    * **Yearly:** Long-term goal setting and yearly reviews.
+* **Dashboard:** specialized views for Home, Monthly, and Yearly overviews.
+* **Visual Analytics:** Interactive charts and circular progress bars to visualize success rates using `recharts`.
+* **AI Chatbot:** Integrated assistant for user support.
+* **Responsive Design:** Built with Bootstrap for mobile and desktop compatibility.
 
-### `npm start`
+## 🛠️ Tech Stack
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+**Frontend:**
+* **Library:** React.js (v19)
+* **Routing:** React Router DOM
+* **Styling:** Bootstrap 5, CSS3
+* **HTTP Client:** Axios
+* **Charts/Visuals:** Recharts, React Circular Progressbar
+* **Notifications:** React Toastify
+* **Utils:** JWT Decode (Auth), React Device Detect
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+**Backend Connection:**
+* Configured to proxy requests to `http://localhost:7000`
 
-### `npm test`
+## 📂 Project Structure
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```text
+src/
+├── components/          # Reusable UI components
+│   ├── common/          # Alerts, Drawer, Notifications
+│   ├── layout/          # Header, Footer
+│   └── ui/              # Progress bars and visual elements
+├── pages/               # Main application pages
+│   ├── Auth/            # Login and Signup
+│   ├── Dashboard/       # Main overview screens
+│   ├── Goals/           # Daily, Monthly, Yearly logic
+│   ├── Progress/        # Analytics page
+│   └── Chatbot/         # AI Chat interface
+├── styles/              # Global and component-specific CSS
+└── assets/              # Icons and Images
 
-### `npm run build`
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## ⚙️ Installation & Setup
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+1. **Clone the repository:**
+```bash
+git clone <your-repo-url>
+cd FrontEnd
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```
 
-### `npm run eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+2. **Install dependencies:**
+```bash
+npm install
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+3. **Environment Setup:**
+Ensure you have the `.env` file configured (if applicable) or ensure your backend server is running on port **7000** as defined in `package.json`.
+4. **Run the application:**
+```bash
+npm start
 
-## Learn More
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+The app will open in development mode at `http://localhost:3000`.
 
-### Code Splitting
+## 🔗 Backend Integration
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+This frontend is configured to communicate with a backend server.
 
-### Analyzing the Bundle Size
+* **Proxy:** The `package.json` includes `"proxy": "http://localhost:7000"`.
+* Ensure your Node.js/Express backend is running on port 7000 to avoid CORS issues during development.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+**Author:** Madhav Bondhare
 
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
