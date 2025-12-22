@@ -8,7 +8,7 @@ import Header from '../../components/layout/Header.jsx';
 export default function About() {
     const navigate=useNavigate();
     return (
-        <div>
+        <div className='about-section-body'>
             <Header title={'About'} />
             <div className='about-headline-section'>
                 <div className='about-story'>

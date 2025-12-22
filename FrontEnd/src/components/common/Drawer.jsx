@@ -17,31 +17,31 @@ export default function Drawer() {
             <div className='h-100'>
               <div className='mt-4 pt-2 mb-2 button-panel'>
                 {/* {body} */}
-                <div className='drawer-panel' onClick={() => { navigate('/Home') }}>
+                <div className='drawer-panel' onClick={() => { navigate('/WeeklyView') }}>
                   <div className='drawer-icon'><span className="material-symbols-outlined">
-                    home_app_logo
+                    view_week
                   </span>
                   </div>
                   <div>
-                    Day
+                    Weekly View
                   </div>
                 </div>
-                <div className='drawer-panel' onClick={() => { navigate('/Month') }}>
+                <div className='drawer-panel' onClick={() => { navigate('/MonthlyView') }}>
                   <div className='drawer-icon'><span className="material-symbols-outlined">
-                    bookmark
+                    calendar_month
                   </span>
                   </div>
                   <div>
-                    Month
+                    Monthly View
                   </div>
                 </div>
-                <div className='drawer-panel' onClick={() => { navigate('/Year') }}>
+                <div className='drawer-panel' onClick={() => { navigate('/YearlyView') }}>
                   <div className='drawer-icon'><span className="material-symbols-outlined">
-                    workspace_premium
+                    timeline
                   </span>
                   </div>
                   <div>
-                    Year
+                    Yearly View
                   </div>
                 </div>
                 <div className='drawer-panel' onClick={() => { navigate('/tips') }}>
@@ -51,78 +51,6 @@ export default function Drawer() {
                   </div>
                   <div>
                     Tips
-                  </div>
-                </div>
-                <div className='drawer-panel' onClick={() => { navigate('/chatbot') }}>
-                  <div className='drawer-icon'><span className="material-symbols-outlined">
-                    smart_toy
-                  </span>
-                  </div>
-                  <div>
-                    AI Growth Coach
-                  </div>
-                </div>
-                <div className='drawer-panel' onClick={() => { navigate('/chatbot') }}>
-                  <div className='drawer-icon'><span className="material-symbols-outlined">
-                    smart_toy
-                  </span>
-                  </div>
-                  <div>
-                    AI Growth Coach
-                  </div>
-                </div>
-                <div className='drawer-panel' onClick={() => { navigate('/chatbot') }}>
-                  <div className='drawer-icon'><span className="material-symbols-outlined">
-                    smart_toy
-                  </span>
-                  </div>
-                  <div>
-                    AI Growth Coach
-                  </div>
-                </div>
-                <div className='drawer-panel' onClick={() => { navigate('/chatbot') }}>
-                  <div className='drawer-icon'><span className="material-symbols-outlined">
-                    smart_toy
-                  </span>
-                  </div>
-                  <div>
-                    AI Growth Coach
-                  </div>
-                </div>
-                <div className='drawer-panel' onClick={() => { navigate('/chatbot') }}>
-                  <div className='drawer-icon'><span className="material-symbols-outlined">
-                    smart_toy
-                  </span>
-                  </div>
-                  <div>
-                    AI Growth Coach
-                  </div>
-                </div>
-                <div className='drawer-panel' onClick={() => { navigate('/chatbot') }}>
-                  <div className='drawer-icon'><span className="material-symbols-outlined">
-                    smart_toy
-                  </span>
-                  </div>
-                  <div>
-                    AI Growth Coach
-                  </div>
-                </div>
-                <div className='drawer-panel' onClick={() => { navigate('/chatbot') }}>
-                  <div className='drawer-icon'><span className="material-symbols-outlined">
-                    smart_toy
-                  </span>
-                  </div>
-                  <div>
-                    AI Growth Coach
-                  </div>
-                </div>
-                <div className='drawer-panel' onClick={() => { navigate('/chatbot') }}>
-                  <div className='drawer-icon'><span className="material-symbols-outlined">
-                    smart_toy
-                  </span>
-                  </div>
-                  <div>
-                    AI Growth Coach
                   </div>
                 </div>
                 <div className='drawer-panel' onClick={() => { navigate('/chatbot') }}>

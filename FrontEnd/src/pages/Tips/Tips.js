@@ -8,7 +8,7 @@ function Tips() {
         <div>
             <Drawer/>
             <Header title={'Tips'}/>
-            <main>
+            <main className='main-tips'>
                 <div className='img-panel'>
                     <img src={dog} className="img-fluid img" alt="dog img"></img>
                 </div>

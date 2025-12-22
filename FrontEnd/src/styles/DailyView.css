@@ -376,6 +376,8 @@
         width: 95%;
         max-height: 8% !important;
         margin-left: 10px;
+        margin-bottom: 10px;
+        height: 600px;
     }
 
     .insight-heading {
@@ -383,6 +385,7 @@
     }
 
     footer {
+        padding-top: 10px;
         text-align: center;
     }
 }
