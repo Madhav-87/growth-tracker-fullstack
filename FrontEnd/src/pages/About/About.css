@@ -1,84 +1,238 @@
-body{
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: linear-gradient(
+    120deg,
+    #eef5ff 0%,
+    #f9fbff 45%,
+    #f4efff 100%
+  );
+}
+.about-story{
+    background-color: rgba(240, 248, 255,3);
+    height: 40px;
+    width:10%;
+    border: 1px solid lightblue;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #3b82f6;
+    border-radius: 20px;
+    margin-bottom: 10px;
+    animation: textAnimation 0.6s ease-in-out forwards;
+}
+.about-headline-section{
+    height:500px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.about-headline{
+    font-size: 45px;
+    font-weight: 700;
+    line-height: 50px;
+    animation: textAnimation 0.6s ease-in-out forwards;
+}
+.gradient-text {
+  background: linear-gradient(
+    90deg,
+    #3b82f6 0%,   /* blue */
+    #6366f1 40%,  /* indigo */
+    #8b5cf6 70%,  /* purple */
+    #ec4899 100%  /* pink */
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.headline-subtitle{
+    color:grey;
+    text-align: center;
+    width: 35%;
+    margin-top: 20px;
+    animation: textAnimation 0.6s ease-in-out forwards;
+}
+.story-section{
+    height: 450px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+}
+.story-box{
+    height: 70%;
+    width: 100%;
     background-color: white;
+    border-radius: 20px;
+     box-shadow:
+    0 12px 30px rgba(15, 23, 42, 0.08),
+    0 4px 10px rgba(15, 23, 42, 0.04);
+    border: 1px solid #e6edf5;
+    padding: 25px;
+    padding-left: 30px;
 }
-.mc-web-title{
-    color: blue !important;
-    font-size: 40px;
+.story-headline{
+    margin-bottom: 30px;
 }
-.mc-img-poster{
-    display: inline;
-    height:40vh !important;
+.story-subtitle{
+    width: 100%;
+    text-align: left;
+    font-size: 20px;
+    color: grey;;
 }
-.credit-title{
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        background-color: blue;
-        color:white !important;
-        font-weight: 600 !important;
+.belive-section{
+    height: 850px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+    padding-bottom: 10px;
 }
-.mc-credit-img{
+.belive-section-heading{
+    font-size: 27px;
+    font-weight: 600;
+    height: 10%;
+}
+.belive-panel{
+    height: 25%;
+    background-color: white;
+    width: 100%;
+    border-radius: 10px;
+     box-shadow: 
+    0 10px 25px rgba(0, 0, 0, 0.08),
+    0 4px 10px rgba(0, 0, 0, 0.04);
+    margin-bottom: 20px;
+    padding: 20px;
+    padding-left: 20px;
+}
+.logo{
+    height: 55px;
+    width: 55px;
+    border-radius: 10px;
+    color: white;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.background-primary{
+    background-color:#548adf;
+}
+.background-purple{
+    background-color: rgb(224, 8, 224);
+}
+.background-green{
+    background-color: rgb(112, 192, 112);
+}
+.belive-panel-headings{
+    font-size: 19px;
+    font-weight: 600;
+    margin-top: 15px;
+}
+.belive-subtitle{
+    color:grey;
+    font-size: 16px;
+    margin-top: 15px;
+}
+.credit-section{
+    height: 400px;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 10vh;
+    flex-direction: column;
+    padding: 40px;
+}
+.credit-panel{
+    height: 45%;
+    background-color: white;
+    width: 100%;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    border-radius: 10px;
+    margin-top: 20px;
+         box-shadow: 
+    0 10px 25px rgba(0, 0, 0, 0.08),
+    0 4px 10px rgba(0, 0, 0, 0.04);
 }
 .icon{
-    height:100%;
-    padding: 10px !important;
+    height: 50px;
+    margin-right: 20px;
 }
-.mc-set-cards{
-    width:20vw;
-}
-.mc-credit-cards{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    flex-wrap: wrap;
-    height:auto;
-    gap:10px;
-}
-.para-container{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width:60vw;
-    border:1px solid black;
-    padding:20px;
-    border-radius: 20px;
-}
-.footer-container{
-    display: flex;
-    justify-content: center !important;
-    align-items: center !important;
-    color: blue;
-    background-color: aliceblue;
+.credit-txt{
     font-size: 18px;
+    color: grey;
+    margin: 0px;
+    
 }
-.para{
-    font-size: 20px;
+.sign-up-section{
+    height: 600px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.login-btn-section{
+    height: 40px;
+    width: 10%;
+    background-color: #3b82f6;
+    color: white;
+    border-radius: 20px;
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    animation: textAnimation 0.6s ease-in-out forwards;
+}
+@keyframes textAnimation {
+    from{
+        opacity: 0;
+        transform: translateY(40px);
+    }
+    to{
+        opacity: 1;
+        transform: translateY(0px);
+    }
 }
 @media (max-width:480px) {
-    .mc-mobile-section1{
-        display: flex;
-        flex-direction: column-reverse !important;
+    .about-headline-section{
+        height: 360px;
     }
-    p{
-        font-size: 16px;
+    .about-story{
+        width: 40%;
     }
-    .mc-set-cards{
-    width:100%;
+    .about-headline{
+        font-size: 33px;
     }
-    .para-container{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width:80vw;
-    border:1px solid black;
-    padding:20px;
+    .headline-subtitle{
+        width: 90%;
     }
-    .mc-web-title{
-    color: blue !important;
-    font-size: 20px;
-}
+    .story-section{
+        padding: 20px;
+        height: 800px;
+    } 
+    .story-box{
+        height: 100%;
+        padding-top: 30px;
+    }
+    .belive-section {
+    height: 900px;
+    padding: 20px;
+    }
+
+    .belive-panel{
+        height:27% ;
+    }
+    .credit-section {
+    height: 1034px;
+    padding: 20px;
+    text-align: justify;
+    }
+    .login-btn-section {
+    width: 53%;
+    }
 }
