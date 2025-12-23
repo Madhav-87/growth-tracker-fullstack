@@ -388,7 +388,7 @@ export async function taskInfo(user){
         FROM 
         daily_goals
         WHERE
-        User_ID=1 
+        User_ID=?
         AND
         DateOfDay=CURDATE()-INTERVAL 1 DAY;      
         `,[user.id]
