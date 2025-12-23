@@ -19,7 +19,7 @@ export default function Progress() {
                         <div className="card-body">
                             <h5 className="card-title">Weekly Progress</h5>
                             <p className="card-text">Check out you daily progress to analyse your growth.</p>
-                            <Link to="/DailyView" className="btn btn-primary">View</Link>
+                            <Link to="/WeeklyView" className="btn btn-primary">View</Link>
                         </div>
                     </div>
                     <div className="card mc-progress-card" style={{ width: "18rem" }}>
