@@ -13,8 +13,10 @@ import { isMobile } from 'react-device-detect';
 import Drawer from '../../../components/common/Drawer.jsx';
 import Footer from '../../../components/layout/Footer.jsx';
 import Header from '../../../components/layout/Header.jsx';
+import { useNavigate } from 'react-router-dom';
 export default function DailyGoals() {
   let token = localStorage.getItem('token');
+  const navigate=useNavigate();
   let [Goalslist, setGoals] = useState([]);
   let [visible, setVisible] = useState(true);
   let sendlist = (event) => {
@@ -65,7 +67,7 @@ export default function DailyGoals() {
         if (res.data.message === "Done!") {
           toast.success("Goals Added!");
           setTimeout(()=>{
-            naviagte('/home')
+            navigate('/home')
           },3000);
         }
         else {

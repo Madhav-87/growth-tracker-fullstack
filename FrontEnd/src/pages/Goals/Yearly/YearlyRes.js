@@ -11,7 +11,7 @@ import Header from '../../../components/layout/Header.jsx';
 import { useNavigate } from 'react-router-dom';
 export default function YearlyRes() {
   const token = localStorage.getItem('token');
-  const naviagte=useNavigate();
+  const navigate=useNavigate();
   let [database, setDatabase] = useState([]);
   let [submit, setsubmitBTN] = useState(0);
   let [button, setButton] = useState([]);
@@ -66,7 +66,7 @@ export default function YearlyRes() {
             setsubmitBTN(1);
             toast.success("Response Submited !");
             setTimeout(()=>{
-            naviagte('/home')
+            navigate('/home')
           },3000);
           }
           if (res.data.message === "Fail") {

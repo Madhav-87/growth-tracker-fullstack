@@ -15,7 +15,7 @@ import Header from '../../../components/layout/Header.jsx';
 import { useNavigate } from 'react-router-dom';
 export default function YearGoals() {
   const token = localStorage.getItem("token");
-  const naviagte=useNavigate();
+  const navigate=useNavigate();
   let [submitBTN, setsubmitBTN] = useState(1);
   let [list, setList] = useState([]);
   let submitForm = (event) => {
@@ -63,7 +63,7 @@ export default function YearGoals() {
         setsubmitBTN(++submitBTN);
         toast.success("Goals Submited");
         setTimeout(()=>{
-            naviagte('/home')
+            navigate('/home')
         },3000);
       }
       else {

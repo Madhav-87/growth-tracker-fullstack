@@ -13,7 +13,7 @@ import Header from '../../../components/layout/Header.jsx';
 import { useNavigate } from 'react-router-dom';
 export default function DailyResponse() {
   let token = localStorage.getItem('token');
-  const naviagte=useNavigate();
+  const navigate=useNavigate();
   let [database, setDatabase] = useState([]);
   let [button, setButton] = useState([]);
   let [count, setCount] = useState({
@@ -77,7 +77,7 @@ export default function DailyResponse() {
             setSubmit(++submit);
             toast.success("Response Submited!");
             setTimeout(()=>{
-            naviagte('/home')
+            navigate('/home')
           },3000);
           }).catch((err) => {
             console.log(err);
