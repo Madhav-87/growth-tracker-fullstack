@@ -91,13 +91,6 @@ export default function DailyResponse() {
     e.target.style.backgroundColor = "red";
     e.target.style.color = "white";
   }
-  const toggleNavbar = () => {
-    const nav = document.getElementById("navbarSupportedContent");
-    if (!nav) return;
-    const bootstrap = require("bootstrap");
-    const collapse = bootstrap.Collapse.getOrCreateInstance(nav);
-    collapse.toggle();
-  };
   return (
     <div>
           <Drawer/>
@@ -144,7 +137,7 @@ export default function DailyResponse() {
                 Total Score
               </div>
               <div className='status-value ' style={{ color: "purple" }}>
-                {database.length ? (count["Marks"] / database.length) * 100 : 0}
+                {database.length ? ((count["Marks"] / database.length) * 100 ).toFixed(1): 0}
               </div>
             </div>
           </div>

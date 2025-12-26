@@ -29,11 +29,6 @@ export default function Chatbot() {
         })
         setInput("");
         return;
-        // const aiText = "This is a demo reply 🙂. Connect Gemini API here.";
-
-        // setTimeout(() => {
-        //     setMessages(prev => [...prev, { role: "ai", text: aiText }]);
-        // }, 500);
     };
     const chatMessagesRef = useRef(null);
 

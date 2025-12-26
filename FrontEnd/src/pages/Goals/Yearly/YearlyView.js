@@ -91,7 +91,7 @@ function YearlyView() {
             day: "numeric"
         });
         setDate(yesDate);
-        let score = data.slice(-2)[0].Avg ?? 0;
+        let score = data.slice(-2)[0].Avg ?? 0; // selecting last two records from which select first one
         setYesScore(score);
     }, [data]);
     let status = () => {

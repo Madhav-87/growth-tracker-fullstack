@@ -126,7 +126,7 @@ export default function YearlyRes() {
               Total Score
             </div>
             <div className='status-value ' style={{ color: "purple" }}>
-              {database.length ? (count["Marks"] / database.length) * 100 : 0}
+              {database.length ? ((count["Marks"] / database.length) * 100).toFixed(1) : 0}
             </div>
           </div>
         </div>

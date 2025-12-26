@@ -1,14 +1,11 @@
 
 import React, { useState } from 'react'
 import '../../../styles/DailyGoals2.css';
-import person from '../../../assets/images/person.png';
 import axios from 'axios';
 import Alert from '../../../components/common/Alert.jsx';
 import addTask from '../../../assets/images/addTask.svg';
 import { toast, ToastContainer } from 'react-toastify';
 import YlineCirProgress from '../../../components/ui/YlineCirProgress.jsx';
-import { Link } from 'react-router-dom';
-import { jwtDecode } from 'jwt-decode';
 import GoalWarningBox from '../../../components/common/GoalWarningBox.jsx';
 import GoalPlus from '../../../assets/images/addGoal.svg';
 import animeMan from '../../../assets/images/animeMan.png';
