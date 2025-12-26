@@ -13,8 +13,10 @@ import animeMan from '../../../assets/images/animeMan.png';
 import Drawer from '../../../components/common/Drawer.jsx';
 import Footer from '../../../components/layout/Footer.jsx';
 import Header from '../../../components/layout/Header.jsx';
+import { useNavigate } from 'react-router-dom';
 export default function MonthlySetGoals() {
     let [Items, setItem] = useState([]);
+    const naviagte=useNavigate();
     let token = localStorage.getItem("token" )|| null;
     let [submitBTN, setsubmitBTN] = useState(false);
     let FormSubmit = (event) => {
@@ -61,7 +63,7 @@ export default function MonthlySetGoals() {
             toast.success("Goal Submitted!");
             setsubmitBTN(true);
             setTimeout(()=>{
-            Navigate('/home')
+            naviagte('/home')
           },3000);
         });
     }

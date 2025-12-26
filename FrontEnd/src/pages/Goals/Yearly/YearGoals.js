@@ -12,8 +12,10 @@ import { isMobile } from 'react-device-detect';
 import Drawer from '../../../components/common/Drawer.jsx';
 import Footer from '../../../components/layout/Footer.jsx';
 import Header from '../../../components/layout/Header.jsx';
+import { useNavigate } from 'react-router-dom';
 export default function YearGoals() {
   const token = localStorage.getItem("token");
+  const naviagte=useNavigate();
   let [submitBTN, setsubmitBTN] = useState(1);
   let [list, setList] = useState([]);
   let submitForm = (event) => {
@@ -61,7 +63,7 @@ export default function YearGoals() {
         setsubmitBTN(++submitBTN);
         toast.success("Goals Submited");
         setTimeout(()=>{
-            Navigate('/home')
+            naviagte('/home')
         },3000);
       }
       else {

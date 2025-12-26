@@ -10,8 +10,10 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Drawer from '../../../components/common/Drawer.jsx';
 import Footer from '../../../components/layout/Footer.jsx';
 import Header from '../../../components/layout/Header.jsx';
+import { useNavigate } from 'react-router-dom';
 export default function DailyResponse() {
   let token = localStorage.getItem('token');
+  const naviagte=useNavigate();
   let [database, setDatabase] = useState([]);
   let [button, setButton] = useState([]);
   let [count, setCount] = useState({
@@ -75,7 +77,7 @@ export default function DailyResponse() {
             setSubmit(++submit);
             toast.success("Response Submited!");
             setTimeout(()=>{
-            Navigate('/home')
+            naviagte('/home')
           },3000);
           }).catch((err) => {
             console.log(err);

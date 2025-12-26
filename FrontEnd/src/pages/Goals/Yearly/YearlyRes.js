@@ -8,8 +8,10 @@ import '../../../styles/Response.css';
 import Drawer from '../../../components/common/Drawer.jsx';
 import Footer from '../../../components/layout/Footer.jsx';
 import Header from '../../../components/layout/Header.jsx';
+import { useNavigate } from 'react-router-dom';
 export default function YearlyRes() {
   const token = localStorage.getItem('token');
+  const naviagte=useNavigate();
   let [database, setDatabase] = useState([]);
   let [submit, setsubmitBTN] = useState(0);
   let [button, setButton] = useState([]);
@@ -64,7 +66,7 @@ export default function YearlyRes() {
             setsubmitBTN(1);
             toast.success("Response Submited !");
             setTimeout(()=>{
-            Navigate('/home')
+            naviagte('/home')
           },3000);
           }
           if (res.data.message === "Fail") {

@@ -65,7 +65,7 @@ export default function DailyGoals() {
         if (res.data.message === "Done!") {
           toast.success("Goals Added!");
           setTimeout(()=>{
-            Navigate('/home')
+            naviagte('/home')
           },3000);
         }
         else {
