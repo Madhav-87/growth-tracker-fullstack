@@ -74,6 +74,9 @@ export default function DailyResponse() {
           }).then((res) => {
             setSubmit(++submit);
             toast.success("Response Submited!");
+            setTimeout(()=>{
+            Navigate('/home')
+          },3000);
           }).catch((err) => {
             console.log(err);
           })

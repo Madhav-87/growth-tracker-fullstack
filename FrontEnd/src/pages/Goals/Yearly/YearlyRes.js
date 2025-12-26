@@ -62,7 +62,10 @@ export default function YearlyRes() {
         }).then((res) => {
           if (res.data.message === "Done") {
             setsubmitBTN(1);
-            toast.success("Record Submited !");
+            toast.success("Response Submited !");
+            setTimeout(()=>{
+            Navigate('/home')
+          },3000);
           }
           if (res.data.message === "Fail") {
             toast.error("Try after some time");

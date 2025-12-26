@@ -36,7 +36,7 @@ export default function MonthResponse() {
     }
     let setCountPath = (value) => {
         if (value === 1) {
-            count["Marks"] = ++count["Marks"] ;
+            count["Marks"] = ++count["Marks"];
         }
         count["Total"] = ++count["Total"];
     }
@@ -63,6 +63,9 @@ export default function MonthResponse() {
                     if (res.data.message === "Done") {
                         setSubmit(++submit);
                         toast.success("Record Submited");
+                        setTimeout(() => {
+                            Navigate('/home')
+                        }, 3000);
                     }
                     if (res.data.message === "Fail") {
                         toast.error("Try after some time");
@@ -88,10 +91,10 @@ export default function MonthResponse() {
     }
     return (
         <div className='response-page-body'>
-                <Drawer/>
+            <Drawer />
             <ResWarningBox identity={"Month"} />
             <ToastContainer />
-            <Header title={'Monthly Response'}/>
+            <Header title={'Monthly Response'} />
             <main>
                 <div className="section-header mt-0">
                     <div className='fs-2 h1'>
@@ -131,7 +134,7 @@ export default function MonthResponse() {
                             Total Score
                         </div>
                         <div className='status-value ' style={{ color: "purple" }}>
-                            {database.length ? ((count["Marks"] / database.length) * 100 ).toFixed(1): 0}
+                            {database.length ? ((count["Marks"] / database.length) * 100).toFixed(1) : 0}
                         </div>
                     </div>
                 </div>
@@ -217,7 +220,7 @@ export default function MonthResponse() {
                     </div>
                 </div>
             </main>
-           <Footer/>
+            <Footer />
         </div>
     )
 }

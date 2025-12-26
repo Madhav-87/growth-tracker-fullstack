@@ -59,7 +59,10 @@ export default function YearGoals() {
     }).then((res) => {
       if (res.data.message === "Done") {
         setsubmitBTN(++submitBTN);
-        toast.success("Record Submited");
+        toast.success("Goals Submited");
+        setTimeout(()=>{
+            Navigate('/home')
+        },3000);
       }
       else {
         toast.error("Sending Fail!");

@@ -60,6 +60,9 @@ export default function MonthlySetGoals() {
         }).then((res) => {
             toast.success("Goal Submitted!");
             setsubmitBTN(true);
+            setTimeout(()=>{
+            Navigate('/home')
+          },3000);
         });
     }
     

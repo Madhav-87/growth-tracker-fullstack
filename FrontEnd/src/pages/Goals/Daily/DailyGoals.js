@@ -63,7 +63,10 @@ export default function DailyGoals() {
     })
       .then((res) => {
         if (res.data.message === "Done!") {
-          toast.success("Record Submited!");
+          toast.success("Goals Added!");
+          setTimeout(()=>{
+            Navigate('/home')
+          },3000);
         }
         else {
           toast.error("Fail");
