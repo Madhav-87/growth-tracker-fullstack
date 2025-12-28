@@ -3,7 +3,8 @@ const router = express.Router();
 const path = require('path');
 const Database = require('../Database/Database.js');
 const jwt = require('jsonwebtoken');
-const chatbot=require('../chatbotServer.js');
+const chatbot=require('../services/chatbotServer.js');
+const ai=require('../services/goalVerification.js');
 const verify = (req, res,next) => {
     const data = req.headers['authorization'];
     const token=data.split(' ')[1];
@@ -81,9 +82,13 @@ router.post('/daily-goals-submit',verify,async (req,res)=>{
 })
 router.get('/send-goals',verify,async(req,res)=>{
     let result=await Database.dailyRetrive(req.user);
-    res.status(200).json({
-        message:result
-    });
+    const aiGenobject=await ai.aigetQuestionaries(result);
+    if(result){
+        res.status(200).json({data:"Duplicate",message:result,aiGenQues:aiGenobject});
+    }
+    else{
+        res.status(200).json({data:"allowed"});
+    }
 })
 router.get('/',(req,res)=>{
     res.status(200).json({
@@ -96,10 +101,9 @@ router.get('/Is-Submit',verify,async (req,res)=>{
 })
 router.post('/Submit-Response',verify,async (req,res)=>{
     let count=req.body;
-    let Marks=count["Marks"]*10;
-    let Total=count["Total"];
-    let Average=Marks/Total;
-    await Database.SubmitResponse(req.user,Average);
+    const per=await ai.aiVerify(count);
+    const score=per/10;
+    await Database.SubmitResponse(req.user,score);
     res.status(200).json({message:"Done"});
 })
 router.post('/Score',verify,async(req,res)=>{
@@ -140,11 +144,15 @@ router.post('/Monthly/Goals',verify,async(req,res)=>{
         console.log(err);
     }
 });
-router.post('/Monthly/Response',verify,async(req,res)=>{
+router.get('/Monthly/Response',verify,async(req,res)=>{
     let result=await Database.MonthlyResponse(req.user);
-    res.status(200).json({
-        data:result
-    });
+    const aiGenobject=await ai.aigetQuestionaries(result);
+    if(result){
+        res.status(200).json({data:"Duplicate",aiGenQues:aiGenobject});
+    }
+    else{
+        res.status(200).json({data:"allowed"});
+    }
 })
 router.post('/Monthly/Response/Score/Check',verify,async(req,res)=>{
     let result=await Database.MonthlyReport(req.user);
@@ -156,7 +164,10 @@ router.post('/Monthly/Response/Score/Check',verify,async(req,res)=>{
     }
 })
 router.post('/Monthly/Response/Score',verify,async(req,res)=>{
-    let result=await Database.SubmitMonthReport(req.user,req.body);
+    let count=req.body;
+    const per=await ai.aiVerify(count);
+    const score=per/10;
+    let result=await Database.SubmitMonthReport(req.user,score);
     if(result==="Done"){
         res.status(200).json({message:"Done"});
     }
@@ -177,9 +188,15 @@ router.post('/YearGoals/Submit',verify,async(req,res)=>{
         console.log(err);
     }
 })
-router.post('/Yearly/Response',verify,async(req,res)=>{
-    let List=await Database.YearlyRes(req.user);
-    res.status(200).json({message:"Done",data:List});
+router.get('/Yearly/Response',verify,async(req,res)=>{
+    let result=await Database.YearlyRes(req.user);
+    const aiGenobject=await ai.aigetQuestionaries(result);
+    if(result){
+        res.status(200).json({data:"Duplicate",aiGenQues:aiGenobject});
+    }
+    else{
+        res.status(200).json({data:"allowed"});
+    }
 })
 router.post('/Year/Response/Check',verify,async(req,res)=>{
     let result=await Database.YearlyResCheck(req.user);
@@ -191,8 +208,10 @@ router.post('/Year/Response/Check',verify,async(req,res)=>{
     }
 })
 router.post('/Year/Response/Score',verify,async(req,res)=>{
-    let Object=req.body;
-    let result=await Database.YearlyResSubmit(req.user,(Object["Marks"]/Object["Total"]));
+    let count=req.body;
+    const per=await ai.aiVerify(count);
+    const score=per/10;
+    let result=await Database.YearlyResSubmit(req.user,score);
     if(result==="Done"){
         res.status(200).json({message:"Done"});
     }

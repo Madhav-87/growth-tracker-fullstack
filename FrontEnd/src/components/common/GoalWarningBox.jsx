@@ -3,7 +3,8 @@ import '../../styles/Panel.css';
 export default function AlertBox() {
     let [btn,setBtn]=useState(false);
     return (
-        <div>
+       <div className="warning">
+         <div className={`${btn?'':'blur-background'}`}></div>
             <div className={`alertBox ${btn?"setaalertbox":""}`}>
                 <div className="Alertbox-heading"><span className="h3 "><span style={{fontSize:"30px"}}>&#9888;</span> Warning</span><hr></hr></div>
                 <div>Please don't submit the tasks that you already submited in

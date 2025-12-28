@@ -3,24 +3,24 @@ import dotenv from 'dotenv';
 import fs from 'fs';
 import path from 'path';
 dotenv.config();
-const ca = Buffer.from(
-  process.env.CA,
-  "base64"
-);
+// const ca = Buffer.from(
+//   process.env.CA,
+//   "base64"
+// );
 const pool = mysql.createPool({
     host: process.env.MYSQL_HOST,
     user: process.env.MYSQL_USER,
     password: process.env.MYSQL_PASSWORD,
     port:process.env.MYSQL_PORT,
     database:process.env.MYSQL_DATABASE,
-    ssl: {
-        ca,
-        minVersion: 'TLSv1.2',
-        rejectUnauthorized: true
-    },
-    waitForConnections: true,
-    connectionLimit: 10,
-    queueLimit: 0
+    // ssl: {
+    //     ca,
+    //     minVersion: 'TLSv1.2',
+    //     rejectUnauthorized: true
+    // },
+    // waitForConnections: true,
+    // connectionLimit: 10,
+    // queueLimit: 0
 }).promise();
 export async function InsertData(Name, Email, Password) {
     let [result] = await pool.query(`
@@ -211,7 +211,7 @@ export async function MonthlyReport(user) {
         return "Duplicate";
     }
 }
-export async function SubmitMonthReport(user, data) {
+export async function SubmitMonthReport(user, marks) {
     try {
         await pool.query(`
         UPDATE Monthly_Goals 
@@ -223,7 +223,7 @@ export async function SubmitMonthReport(user, data) {
         await pool.query(`
         INSERT INTO Monthly_Score (User_ID,Avg)
         VALUES(?,?);
-        `, [user.id, data.marks]);
+        `, [user.id, marks]);
         return "Done";
     }
     catch (err) {

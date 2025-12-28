@@ -37,7 +37,9 @@ export default function Chatbot() {
             chatMessagesRef.current.scrollTop = chatMessagesRef.current.scrollHeight;
         }
     }, [messages.length]); // Only trigger when message count changes
-
+    useEffect(()=>{
+        window.scrollTo(0,0);
+    },[messages])
     return (
         <div className="chatbot-body">
             <Drawer/>

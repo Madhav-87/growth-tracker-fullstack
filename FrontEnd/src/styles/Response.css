@@ -155,6 +155,281 @@
     justify-content: center;
     align-items: center;
 }
+
+.main-Goal-section {
+    margin-bottom: 20px;
+    height: 180px;
+    justify-self: center;
+    width: 80%;
+    border: 1px solid black;
+    background: linear-gradient(90deg,
+            #4f7df3 0%,
+            #6b5cf6 40%,
+            #9b4aff 80%);
+    border-radius: 12px;
+    display: flex;
+    justify-content: center;
+    color: white;
+    padding: 20px;
+    flex-direction: column;
+    margin-top: 20px;
+}
+.main-Goal-info-part{
+    height: 60%;
+    display: flex;
+    gap: 10px;
+}
+.main-Goal-number{
+    height: 50px;
+    width: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    color:#4b3cff;
+    border-radius: 50%;
+    font-size: 25px;
+    font-weight: 600;
+}
+.progressBar-section{
+    display: flex;
+    flex-direction: column !important;
+}
+.question-section {
+    height: 380px;
+    width: 80vw;
+    background: white;
+    border: 1px solid black;
+    display: flex;
+    flex-direction: column;
+    justify-self: center !important;
+    border-radius: 20px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    padding: 20px 20px 0px 20px;
+}
+.progress{
+    height: 10px !important;
+}
+.progress-bar{
+    border-radius: 0px 10px 10px 10px ;
+    height: 10px !important;
+}
+
+.questions-box {
+    height: 55px;
+    border-radius: 20px;
+    padding: 0px 0px 0px 15px;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    gap: 10px
+}
+
+.question-circle {
+    height: 30px;
+    width: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #6a7cff, #4b3cff);
+    color: white;
+    border-radius: 50%;
+}
+
+.question {
+    font-weight: 600;
+}
+
+.question-option-panel {
+    padding: 20px 10px 10px 10px;
+}
+
+.radio-questions {
+    height: 50px;
+    background-color: white !important;
+    width: 100%;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    border: 1px solid black;
+    padding: 10px 0px 10px 15px;
+    display: flex;
+    align-items: center;
+    transition: background-color 0.3s ease;
+    cursor: pointer;
+}
+
+.option-ans {
+    margin-left: 10px;
+}
+
+.greenCheck {
+    border: 2px solid blue;
+    background-color: aliceblue !important;
+}
+
+.redCheck {
+    border: 2px solid red;
+    background-color: #FFCDD2 !important;
+}
+
+.question-option-panel textarea {
+    width: 90%;
+    height: 150px;
+    border-radius: 0px 0px 0px 10px;
+    margin-left: 10px;
+    padding: 10px 10px 5px 10px;
+    text-align: justify;
+    overflow: auto;
+    scrollbar-width: none;
+    line-height: 2;
+}
+
+input[type="radio"]:checked {
+    background-color: aliceblue !important;
+    border-color: blue !important;
+}
+
+.navigation-button-section {
+    width: 100%;
+    height: 35%;
+    display: flex;
+    align-items: center;
+}
+
+.prev-btn {
+    width: 33%;
+    display: flex;
+    justify-content: flex-start;
+    align-self: center;
+}
+
+.nxt-btn {
+    width: 33%;
+    display: flex;
+    justify-content: flex-end !important;
+    align-self: center;
+}
+
+.prev-btn button {
+    height: 40px;
+    min-width: 110px !important;
+    width: auto;
+    border-radius: 40px;
+    background: #E9ECEF;
+    border: none;
+    alignment-baseline: baseline;
+    display: flex !important;
+    align-items: center;
+    gap: 5px;
+}
+
+.nxt-btn button {
+    height: 40px;
+    min-width: 95px;
+    width: auto;
+    border-radius: 40px;
+    background: linear-gradient(135deg, #6a7cff, #4b3cff);
+    border: none;
+    color: white;
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+}
+
+.prev-btn .material-symbols-outlined {
+    vertical-align: middle !important;
+}
+
+.nxt-btn .material-symbols-outlined {
+    vertical-align: middle !important;
+}
+
+.txt-nav {
+    vertical-align: text-top;
+}
+/* Skip Goal Button */
+.skip-goal-section {
+  width: 33%;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.skip-goal-button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 24px;
+  background-color: #fee;
+  color: #c33;
+  border: 2px solid #fcc;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.skip-goal-button:hover {
+  background-color: #fcc;
+  border-color: #c33;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(204, 51, 51, 0.2);
+}
+
+.skip-goal-button .material-symbols-outlined {
+  font-size: 20px;
+}
+
+/* Feedback Textarea */
+.feedback-textarea {
+  width: 100%;
+  padding: 10px;
+  border-radius: 5px;
+  border: 2px solid #ddd;
+  font-family: inherit;
+  font-size: 14px;
+  resize: vertical;
+  min-height: 100px;
+}
+
+.feedback-textarea:focus {
+  outline: none;
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+/* Finish Goal Button */
+.finish-goal-btn {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.finish-button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 24px;
+  background: linear-gradient(135deg, #10b981, #059669);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.finish-button:hover {
+  background: linear-gradient(135deg, #059669, #047857);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+}
+
+.finish-button .material-symbols-outlined {
+  font-size: 20px;
+}
 @media (max-width:480px){
     .section-header{
         height: 15vh !important;
@@ -188,17 +463,63 @@
     }
     .mobile-width{
         width: 90vw !important;
-       
+       height: 120px;
     }
     .Goal-panel{
         width: 90vw;  
     }
     .section-header{
         margin-bottom: 20px;
+    }.main-Goal-txt-section{
+        width: 90%;
     }
+    .main-Goal-section{
+        width:90%;
+    } 
+    .main-Goal-number {
+        height: 30px;
+        width: 30px;
+    }
+.question-section {
+        width: 90%;
+        min-height: 450px;
+        height: auto;
+        padding: 10px;
+}
+
+.questions-box {
+    min-height: 71px;
+    height: auto;
+    padding-left: 5px;
+}
+.question {
+    width: 90%;
+}
+.text-danger {
+    padding-left: 20px;
+}
+.feedback-textarea{
+    margin-bottom: 40px;
+}
+.navigation-button-section {
+    height: 65%;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+.main-Goal-info-part {
+    display: flex;
+    align-items: center;
+}
+.skip-goal-section {
+    width: 100%;
+    font-size: 20px;
+}
     @media (max-width:360px) {
         .status-bar{
-           padding-top:15px !important; 
+           padding-top:12px !important; 
+
         }
     .DailyGoalMess{
         margin-top: 20px;

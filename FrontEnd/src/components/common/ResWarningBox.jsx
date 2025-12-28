@@ -3,6 +3,7 @@ export default function ResWarningBox(probs) {
     let [btn,setBtn]=useState(false);
     return (
         <div>
+                     <div className={`${btn?'':'blur-background'}`}></div>
             <div className={`alertBox ${btn?"setaalertbox":""}`}>
                 <div className="Alertbox-heading"><span className="h3 "><spna style={{fontSize:"30px"}}>&#9888;</spna> Warning</span><hr></hr></div>
                 <div>Please submit your response after completing all the goals at the end of

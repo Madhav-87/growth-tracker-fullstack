@@ -80,7 +80,7 @@ export default function DailyGoals() {
   }
  
   return (
-    <div>
+    <div >
           <Drawer/>
       <Alert />
       <GoalWarningBox />
