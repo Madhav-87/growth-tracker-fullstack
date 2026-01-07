@@ -62,6 +62,15 @@ export default function Drawer() {
                     AI Growth Coach
                   </div>
                 </div>
+                <div className='drawer-panel' onClick={() => { navigate('/studyPlanner/dashboard') }}>
+                  <div className='drawer-icon'><span className="material-symbols-outlined">
+                    school
+                  </span>
+                  </div>
+                  <div>
+                    Study Planner
+                  </div>
+                </div>
               </div>
               <div className='drawer-header'>
                 {/* {Header} */}

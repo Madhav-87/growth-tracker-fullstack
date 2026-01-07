@@ -18,10 +18,12 @@ import YearlyRes from './pages/Goals/Yearly/YearlyRes.js';
 import About from './pages/About/About.js';
 import Chatbot from './pages/Chatbot/Chatbot.js';
 import ProtectRouters from './components/common/ProtectRouters.js';
+import RenderComp from './components/ui/RenderComp.jsx';
 function App() {
   return (
     <Router>
       <Routes>
+        <Route path="/studyPlanner/dashboard" element={<RenderComp/>}></Route>
         <Route path="/About" element={<ProtectRouters element={<About/>}/>}></Route>
         <Route path="/Year/Response" element={<ProtectRouters element={<YearlyRes />}/>}></Route>
         <Route path="/Year/goals" element={<ProtectRouters element={<YearGoals />}/>}></Route>

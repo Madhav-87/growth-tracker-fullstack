@@ -368,7 +368,7 @@ const prepareSubmissionData = () => {
   return (
     <div>
       <Drawer />
-      <ResWarningBox identity={"Monthly Response"} />
+      <ResWarningBox identity={"Year"} />
       <ToastContainer />
       <div className='response-page-body'>
         <Header title={'Yearly Response'} />
