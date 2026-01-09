@@ -10,11 +10,11 @@ import Drawer from '../../../components/common/Drawer.jsx';
 import Footer from '../../../components/layout/Footer.jsx';
 import Header from '../../../components/layout/Header.jsx';
 import { useNavigate } from 'react-router-dom';
-
+import Loader from '../../../components/common/Loader.jsx';
 export default function DailyResponse() {
   const token = localStorage.getItem('token');
   const navigate = useNavigate();
-
+  let [loader,setLoader]=useState(true);
   // State for storing questions from backend
   const [aiGenQues, setAIGenQues] = useState([]);
 
@@ -42,7 +42,7 @@ export default function DailyResponse() {
       .then((res) => {
         const questions = res.data.aiGenQues;
         setAIGenQues(questions|| []);
-
+        setLoader(false);
         // Initialize arrays based on number of goals
         setCurrentQuestionIndex(new Array(questions.length).fill(0));
         setUserAnswers(new Array(questions.length).fill(null).map(() => []));
@@ -368,6 +368,13 @@ const prepareSubmissionData = () => {
   return (
     <div>
       <Drawer />
+      {
+        loader
+        ?
+        <Loader/>
+        :
+        null
+      }
       <ResWarningBox identity={"Month"} />
       <ToastContainer />
       <div className='response-page-body'>
@@ -550,21 +557,6 @@ const prepareSubmissionData = () => {
                                 <button onClick={() => goToPreviousQuestion(goalIndex)}>
                                   <div className="material-symbols-outlined">arrow_back</div>
                                   <div className='txt-nav'>Previous</div>
-                                </button>
-                              </div>
-                              <div className='finish-goal-btn'>
-                                <button
-                                  onClick={() => {
-                                    if (!currentAnswer || currentAnswer.trim().length === 0) {
-                                      toast.warning("Please provide feedback before finishing");
-                                    } else {
-                                      toast.success(`Goal ${goalIndex + 1} completed!`);
-                                    }
-                                  }}
-                                  className='finish-button'
-                                >
-                                  <div className='txt-nav'>Finish Goal</div>
-                                  <div className="material-symbols-outlined">check_circle</div>
                                 </button>
                               </div>
                             </div>

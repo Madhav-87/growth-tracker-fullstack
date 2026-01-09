@@ -1,10 +1,11 @@
 import arrow from '../../assets/images/arrow.png'
 import axios from 'axios';
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { toast, ToastContainer } from 'react-toastify';
 import '../../styles/form.css';
 export default function App() {
+    const navigate=useNavigate();
     let [userData, setUserData] = useState({
         userName: "",
         userEmail: "",
@@ -22,6 +23,9 @@ export default function App() {
         axios.post(`${process.env.REACT_APP_API_URL}/addRecord`, userData)
             .then((res) => {
                 if (res.data.message === 'Done') {
+                    setTimeout(()=>{
+                        navigate('/');
+                    },2000);
                     toast.success("Account created!");
                 }
                 else {
