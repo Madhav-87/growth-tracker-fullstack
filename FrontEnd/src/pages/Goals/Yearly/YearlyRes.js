@@ -3,7 +3,7 @@ import axios from 'axios';
 import addTask from '../../../assets/images/addTask.svg';
 import { toast, ToastContainer } from 'react-toastify';
 import dayjs from 'dayjs';
-import exifr from "exifr";
+import * as exifr from "exifr";
 import ResWarningBox from '../../../components/common/ResWarningBox.jsx';
 import '../../../styles/Panel.css';
 import '../../../styles/Response.css';
