@@ -22,20 +22,27 @@ function WeeklyView() {
         }).then((res) => {
             const apiData = res.data.message || [];
             const result = [];
+            console.log(apiData);
             for (let i = 6; i >= 0; i--) {
                 const d = new Date();
                 d.setDate(d.getDate() - i);
                 const day = String(d.getDate()).padStart(2, "0");
-                const month = String(d.getMonth() + 1).padStart(2, "0");
+                const month = String(d.getMonth() + 1);
                 const year = d.getFullYear();
                 const dateStr = `${day}/${month}/${year}`;
-                const found = apiData.find(x => x.DateOfDay === dateStr);
+                const found = apiData.find((value)=>{
+                    console.log(value.DateOfDay+" "+dateStr)
+                    return value.DateOfDay===dateStr
+                });
+                console.log("Data:"+found);
                 result.push({
                     DateOfDay: dateStr,
                     Avg: found ? found.Avg : 0
                 });
+                console.log("Result:");
+                console.log(result)
             }
-
+            
             setData(result);
         }).catch((err) => {
             console.log(err);

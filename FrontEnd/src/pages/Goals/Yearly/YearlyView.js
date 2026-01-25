@@ -31,7 +31,7 @@ function YearlyView() {
                 for (let dayNum = 1; dayNum <= daysInMonth; dayNum++) {
                     const d = new Date(year1, m, dayNum);
                     const day = String(d.getDate()).padStart(2, "0");
-                    const month = String(d.getMonth() + 1).padStart(2, "0");
+                    const month = String(d.getMonth() + 1);
                     const year = d.getFullYear();
                     const dateStr = `${day}/${month}/${year}`;
                     const found = apiData.find(x => x.DateOfDay === dateStr);
@@ -58,7 +58,6 @@ function YearlyView() {
                 if (res.data.message === "no task submitted")
                     setTask([]);
                 else {
-                    console.log(res.data.message)
                     setTask(res.data.message);
                 }
             }

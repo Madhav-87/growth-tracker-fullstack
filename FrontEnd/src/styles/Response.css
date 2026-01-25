@@ -30,7 +30,7 @@
 
 .status-bar {
     width: calc(50vw - 80px);
-    height: 15vh;
+    min-height: 15vh;
     background-color: white;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
     padding-left: 20px;
@@ -74,20 +74,20 @@
     align-items: center;
 }
 
-.Goal-Buttons {
-    width: 50%;
-}
-
-.Goal-Buttons button {
-    width: 100% !important;
-    height: 50px;
-}
 
 .Goal-header-conatiner {
     display: flex;
 
 }
-
+.Goal-header{
+    display: flex;
+    flex-direction: column;
+    gap:5px;
+    margin-left: 10px;
+}
+.Goal-header input{
+    border-radius: 1px !important;
+}
 .Goal-header-conatiner {
     font-size: 18px;
     font-weight: 600;
@@ -288,7 +288,16 @@ input[type="radio"]:checked {
     background-color: aliceblue !important;
     border-color: blue !important;
 }
-
+input[type="file"]{
+    color: grey;
+}
+input[type="file"]::file-selector-button{
+    background:#7CFFB2;
+    border-radius: 10px;
+    padding: 5px 10px 5px 10px;
+    border:1px solid green;
+    cursor: pointer;
+}
 .navigation-button-section {
     width: 100%;
     height: 35%;
@@ -516,7 +525,9 @@ input[type="radio"]:checked {
     width: 100%;
     font-size: 20px;
 }
-    @media (max-width:360px) {
+.image-capture{
+}  
+@media (max-width:360px) {
         .status-bar{
            padding-top:12px !important; 
 

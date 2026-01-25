@@ -1,0 +1,163 @@
+.setting-page {
+    background: linear-gradient(120deg,
+            #eef5ff 0%,
+            #f9fbff 45%,
+            #f4efff 100%);
+}
+
+.title-section {
+    height: 250px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.setting-label {
+    display: flex;
+    gap: 10px;
+    background-color: rgba(240, 248, 255, 3);
+    height: 40px;
+    width: 10%;
+    border: 1px solid lightblue;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #3b82f6;
+    border-radius: 20px;
+    margin-bottom: 10px;
+}
+
+.setting-heading {
+    font-size: 45px;
+    font-weight: 700;
+    line-height: 50px;
+}
+
+.setting-subtxt {
+    color: grey;
+    text-align: center;
+    width: 35%;
+    margin-top: 10px;
+}
+
+.box-section {
+    min-height: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 50px;
+    margin-bottom: 60px;
+}
+
+.box-div {
+    min-height: 240px;
+    background-color: white;
+    width: 80%;
+    border-radius: 15px;
+    padding-left: 40px;
+    padding-right: 40px;
+    padding-top: 25px;
+    padding-right: 20px;
+    padding-bottom: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+.settings-title {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 0px;
+}
+
+.setting-box {
+    background-color: #F4F5FB;
+    min-height: 50px;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    border-radius: 4px;
+}
+
+.setting-box-text-section {
+    display: flex;
+    flex-direction: column;
+    width: 95%;
+}
+
+.setting-box-text-title {
+    display: flex;
+    gap: 5px;
+    align-items: baseline;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.lock {
+    font-size: 25px;
+}
+
+.vAlign-center {
+    display: flex;
+
+}
+.button-div{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+}
+
+.form-check-input {
+    height: 20px;
+    width: 50px !important;
+    cursor: pointer;
+}
+
+@media (max-width:380px) {
+    .title-section {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .setting-heading {
+        font-size: 25px;
+    }
+
+    .setting-label {
+        width: 40%;
+    }
+
+    .setting-subtxt {
+        margin-top: 0px;
+    }
+
+    .setting-subtxt {
+        width: 88%;
+    }
+
+    .box-div {
+        width: 90%;
+        min-height: 315px;
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+
+    .setting-box {
+        display: flex;
+        flex-wrap: wrap;
+        height: 204px;
+        border-radius: 10px;
+        
+    }
+
+    .setting-box-text-section {
+        gap: 15px;
+    }
+
+    .setting-box-text-title {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+    }
+}

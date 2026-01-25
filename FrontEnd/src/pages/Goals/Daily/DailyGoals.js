@@ -22,9 +22,14 @@ export default function DailyGoals() {
   let sendlist = (event) => {
     event.preventDefault();
     let data = event.target.items.value;
-    if (!Goalslist.includes(data)) {
+    data=data.trim();
+    if(data==""){
+      toast.error("Add Goal First..!");
+    }
+    else if (!Goalslist.includes(data) && data!=="") {
       let finalData = [...Goalslist, data];
       setGoals(finalData);
+      event.target.items.value="";
     }
     else {
       toast.error('Task already added');

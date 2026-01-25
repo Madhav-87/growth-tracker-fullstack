@@ -30,7 +30,7 @@ function MonthlyView() {
             for (let dayNum = 1; dayNum <= todayDate; dayNum++) {
                 const d = new Date(year1,month1,dayNum);
                 const day = String(d.getDate()).padStart(2, "0");
-                const month = String(d.getMonth() + 1).padStart(2, "0");
+                const month = String(d.getMonth() + 1);
                 const year = d.getFullYear();
                 const dateStr = `${day}/${month}/${year}`;
                 const found = apiData.find(x => x.DateOfDay === dateStr);

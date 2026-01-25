@@ -19,10 +19,12 @@ import About from './pages/About/About.js';
 import Chatbot from './pages/Chatbot/Chatbot.js';
 import ProtectRouters from './components/common/ProtectRouters.js';
 import RenderComp from './components/ui/RenderComp.jsx';
+import Settings from './pages/Settings/Settings.jsx';
 function App() {
   return (
     <Router>
       <Routes>
+        <Route path="/settings" element={<ProtectRouters element={<Settings/>}/>}></Route>
         <Route path="/studyPlanner/dashboard" element={<RenderComp/>}></Route>
         <Route path="/About" element={<ProtectRouters element={<About/>}/>}></Route>
         <Route path="/Year/Response" element={<ProtectRouters element={<YearlyRes />}/>}></Route>

@@ -22,10 +22,15 @@ export default function MonthlySetGoals() {
     let FormSubmit = (event) => {
         event.preventDefault();
         let data = event.target.items.value;
-        if (!Items.includes(data)) {
+        data=data.trim();
+        if(data===""){
+            toast.error("Add Goal First..!");
+        }
+        else if (!Items.includes(data)) {
             let OldData = [...Items];
             OldData.push(data);
             setItem(OldData);
+            event.target.items.value="";
         }
         else {
             toast.error("Task already added");
@@ -63,7 +68,7 @@ export default function MonthlySetGoals() {
             toast.success("Goal Submitted!");
             setsubmitBTN(true);
             setTimeout(()=>{
-            navigate('/home')
+            navigate('/Month')
           },3000);
         });
     }

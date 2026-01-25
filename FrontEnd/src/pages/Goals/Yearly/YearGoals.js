@@ -21,10 +21,14 @@ export default function YearGoals() {
   let submitForm = (event) => {
     event.preventDefault();
     let item = event.target.items.value;
-    if (!list.includes(item)) {
+    if(item===""){
+      toast.error("Add Goal First..!");
+    }
+    else if (!list.includes(item)) {
       let oldData = [...list];
       oldData.push(item);
       setList(oldData);
+      event.target.items.value="";
     }
     else {
       toast.error("Task already added");
@@ -63,7 +67,7 @@ export default function YearGoals() {
         setsubmitBTN(++submitBTN);
         toast.success("Goals Submited");
         setTimeout(()=>{
-            navigate('/home')
+            navigate('/Year')
         },3000);
       }
       else {
