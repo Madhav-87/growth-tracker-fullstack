@@ -248,7 +248,6 @@ export default function DailyResponse() {
                           <input
                             type="file"
                             accept='image/*'
-                            capture="environment"
                             onChange={(e) => { handleValues(e, value.Goal_text) }}
                           />
                         </div>
