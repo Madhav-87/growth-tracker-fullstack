@@ -1,34 +1,22 @@
-import mysql from 'mysql2';
-import dotenv from 'dotenv';
-import fs from 'fs';
-import path from 'path';
+const mysql = require('mysql2');
+const dotenv = require('dotenv');
+
 dotenv.config();
-const ca = Buffer.from(
-  process.env.CA,
-  "base64"
-);
+
 const pool = mysql.createPool({
     host: process.env.MYSQL_HOST,
     user: process.env.MYSQL_USER,
     password: process.env.MYSQL_PASSWORD,
     port:process.env.MYSQL_PORT,
     database:process.env.MYSQL_DATABASE,
-    ssl: {
-        ca,
-        minVersion: 'TLSv1.2',
-        rejectUnauthorized: true
-    },
-    waitForConnections: true,
-    connectionLimit: 10,
-    queueLimit: 0
 }).promise();
-export async function InsertData(Name, Email, Password) {
+ async function InsertData(Name, Email, Password) {
     let [result] = await pool.query(`
         INSERT INTO userAccount (Name,Email,Password)
         VALUES (?,?,?)
         `, [Name, Email, Password]);
 }
-export async function checkData(userData) {
+ async function checkData(userData) {
     let [mysqlData] = await pool.query(`
         SELECT Email FROM userAccount
         WHERE Email=? AND Password=?;
@@ -40,7 +28,7 @@ export async function checkData(userData) {
         return false;
     }
 }
-export async function report(user) {
+ async function report(user) {
     let [result] = await pool.query(`
         SELECT Avg FROM Score WHERE DateOfDay>= CURDATE() - INTERVAL 3 DAY AND User_ID=?;
         `, [user.id]);
@@ -61,7 +49,7 @@ export async function report(user) {
         return "safe";
     }
 }
-export async function userLogin(Email, Password) {
+ async function userLogin(Email, Password) {
     try {
         const [record] = await pool.query(`
         SELECT ID,Name FROM userAccount
@@ -78,20 +66,20 @@ export async function userLogin(Email, Password) {
         console.log(err);
     }
 }
-export async function dailyGoalsSubmit(Goal, user) {
+ async function dailyGoalsSubmit(Goal, user) {
     await pool.query(`
         INSERT INTO daily_goals (User_ID,Goal_text)
         VALUES(?,?)
         `, [user.id, Goal]);
 }
-export async function dailyRetrive(user) {
+ async function dailyRetrive(user) {
     let [result] = await pool.query(`
         SELECT Goal_text FROM daily_goals
         WHERE User_ID=? AND DateOfDay=(CURRENT_DATE);
         `, [user.id]);
     return result;
 }
-export async function IsSubmit(user) {
+ async function IsSubmit(user) {
     let [result] = await pool.query(`
         SELECT Is_Submit FROM daily_goals
         WHERE User_ID=? AND DateOfDay=(CURRENT_DATE);
@@ -103,24 +91,35 @@ export async function IsSubmit(user) {
         return 'False';
     }
 }
-export async function SubmitResponse(user, AVG) {
-    await pool.query(`UPDATE Daily_goals SET Is_Submit=1
+ async function SubmitResponse(user, AVG) {
+    try{
+        await pool.query(`UPDATE Daily_goals SET Is_Submit=1
         WHERE User_ID=? AND DateOfDay=CURRENT_DATE;
-        `, [1, user.id]);
-    await pool.query(`INSERT INTO Score (User_ID,Avg,DateOfDay)
+        `, [user.id]);
+        await pool.query(`INSERT INTO Score (User_ID,Avg,DateOfDay)
         VALUES(?,?,CURRENT_DATE);
         `, [user.id, AVG]);
+        return true;
+    }
+    catch(err){
+        console.log(err);
+        return false;
+    }
 }
-export async function retriveData(user) {
+ async function retriveData(user) {
     let [Score] = await pool.query(`SELECT Avg FROM Score WHERE DateOfDay=CURDATE()-INTERVAL 1 DAY AND User_ID=?`, [user.id]);
     if (Score.length === 0)
         return [{ Avg: "0" }];
     else
         return Score;
 }
-export async function WeeklyScore(user) {
-    let [answer] = await pool.query(`SELECT DateOfDay,Avg FROM Score
-        WHERE User_ID=? AND (DateOfDay<=CURDATE() AND DateOfDay>CURDATE()- INTERVAL 7 DAY);`, [user.id]);
+ async function WeeklyScore(user) {
+    let [answer] = await pool.query(`
+        SELECT DateOfDay,Avg 
+        FROM Score
+        WHERE User_ID=? AND 
+        (DateOfDay<=CURDATE() AND DateOfDay>CURDATE()- INTERVAL 7 DAY);`, [user.id]);
+
     let result = answer.map((value, index) => {
         let date = new Date(value.DateOfDay);
         return {
@@ -130,7 +129,7 @@ export async function WeeklyScore(user) {
     });
     return result;
 }
-export async function MonthlyScore(user) {
+ async function MonthlyScore(user) {
     let [answer] = await pool.query(`SELECT DateOfDay,Avg FROM Score
          WHERE User_ID=? AND (DateOfDay<=CURDATE() AND DateOfDay>=DATE_FORMAT(CURDATE(),'%Y-%m-01'));`, [user.id]);
     let result = answer.map((value, index) => {
@@ -142,7 +141,7 @@ export async function MonthlyScore(user) {
     });
     return result;
 }
-export async function YearlyScore(user) {
+ async function YearlyScore(user) {
     let [answer] = await pool.query(`SELECT DateOfDay,Avg FROM Score
          WHERE User_ID=? AND (DateOfDay<=CURDATE() AND DateOfDay>=DATE_FORMAT(CURDATE(),'%Y-01-01'));`, [user.id]);
     let result = answer.map((value, index) => {
@@ -154,7 +153,7 @@ export async function YearlyScore(user) {
     });
     return result;
 }
-export async function MonthlyProgress(user) {
+ async function MonthlyProgress(user) {
     let [answer] = await pool.query(`
     SELECT Avg FROM Monthly_progress
     WHERE DateOfDay>=CURDATE()-INTERVAL 1 MONTH
@@ -183,13 +182,13 @@ export async function MonthlyProgress(user) {
         return "fewDays";
     }
 }
-export async function MonthlyGoals(value, user) {
+ async function MonthlyGoals(value, user) {
     let [answer] = await pool.query(`
         INSERT INTO Monthly_Goals (User_ID,Goal_text) 
         VALUES (?,?);
         `, [user.id, value]);
 }
-export async function MonthlyResponse(user) {
+ async function MonthlyResponse(user) {
     let [answer] = await pool.query(`
         SELECT Goal_text from Monthly_Goals 
         WHERE User_ID=? 
@@ -198,7 +197,7 @@ export async function MonthlyResponse(user) {
         `, [user.id]);
     return answer;
 }
-export async function MonthlyReport(user) {
+ async function MonthlyReport(user) {
     let [answer] = await pool.query(`
         SELECT Is_Submit FROM Monthly_Goals
         WHERE User_ID=? AND DateOfDay>=DATE_FORMAT(CURDATE(),'%Y-%m-01')
@@ -211,7 +210,7 @@ export async function MonthlyReport(user) {
         return "Duplicate";
     }
 }
-export async function SubmitMonthReport(user, marks) {
+ async function SubmitMonthReport(user, marks) {
     try {
         await pool.query(`
         UPDATE Monthly_Goals 
@@ -231,7 +230,7 @@ export async function SubmitMonthReport(user, marks) {
         return "Fail"
     }
 }
-export async function YearlyGoals(value, user) {
+ async function YearlyGoals(value, user) {
     try {
         await pool.query(`
         INSERT INTO Yearly_Goals(User_ID,Goal_text)
@@ -242,7 +241,7 @@ export async function YearlyGoals(value, user) {
         console.log(err);
     }
 }
-export async function YearlyRes(user) {
+ async function YearlyRes(user) {
     let [result] = await pool.query(`
         SELECT Goal_text from Yearly_Goals 
         WHERE User_ID=?
@@ -251,7 +250,7 @@ export async function YearlyRes(user) {
         `, [user.id]);
     return result;
 }
-export async function YearlyResCheck(user) {
+ async function YearlyResCheck(user) {
     let [result] = await pool.query(`
         SELECT Is_Submit FROM Yearly_Goals
         WHERE User_ID=?
@@ -264,7 +263,7 @@ export async function YearlyResCheck(user) {
         return true;
     }
 }
-export async function YearlyResSubmit(user, Score) {
+ async function YearlyResSubmit(user, Score) {
     try {
         await pool.query(`
         UPDATE Yearly_Goals 
@@ -286,7 +285,7 @@ export async function YearlyResSubmit(user, Score) {
         return "Fail";
     }
 }
-export async function YearlyProgress(user) {
+ async function YearlyProgress(user) {
     let [answer] = await pool.query(`
     SELECT Avg FROM Monthly_progress
     WHERE DateOfDay>=DATE_FORMAT(CURDATE(),'%Y-01-01') - INTERVAL 1 YEAR
@@ -380,7 +379,7 @@ export async function YearlyProgress(user) {
         return Total;
     }
 }
-export async function taskInfo(user){
+ async function taskInfo(user){
     try{
         let [data]=await pool.query(
         `
@@ -390,7 +389,7 @@ export async function taskInfo(user){
         WHERE
         User_ID=?
         AND
-        DateOfDay=CURDATE()-INTERVAL 1 DAY;      
+        DateOfDay>=CURDATE()-INTERVAL 7 DAY;      
         `,[user.id]
     );
     if(data.length===0){
@@ -405,3 +404,28 @@ export async function taskInfo(user){
         return false;
     }
 }
+module.exports = {
+  InsertData,
+  checkData,
+  report,
+  userLogin,
+  dailyGoalsSubmit,
+  dailyRetrive,
+  IsSubmit,
+  SubmitResponse,
+  retriveData,
+  WeeklyScore,
+  MonthlyScore,
+  YearlyScore,
+  MonthlyProgress,
+  MonthlyGoals,
+  MonthlyResponse,
+  MonthlyReport,
+  SubmitMonthReport,
+  YearlyGoals,
+  YearlyRes,
+  YearlyResCheck,
+  YearlyResSubmit,
+  YearlyProgress,
+  taskInfo
+};

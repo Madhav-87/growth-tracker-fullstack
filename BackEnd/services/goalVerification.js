@@ -1,5 +1,5 @@
 const dotenv = require("dotenv");
-
+const visionClient = require("./visionClient");
 const { GoogleGenerativeAI } = require("@google/generative-ai");
 
 dotenv.config();
@@ -19,7 +19,7 @@ Format: Output strictly as a JSON array in this format: [
                 { question: "Submit your feedback about the goal" }
             ]
         }
-]`;
+];`
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY_GET_QUE);
 const genAI2 = new GoogleGenerativeAI(process.env.GEMINI_API_KEY_VERIFY_SCORE);
 async function aigetQuestionaries(data) {
@@ -32,74 +32,164 @@ async function aigetQuestionaries(data) {
         const chat = model.startChat();
         const result = await chat.sendMessage(prompt);
         let reply = result.response.text();
-        reply = reply.replace(/```json|```/g, '').trim();
+        reply = reply.replace(/json|/g, '').trim();
         return JSON.parse(reply);
     }
     catch (err) {
         console.log("Gemini Error:" + err);
         return false;
     }
-}
+} 
 async function aiVerify(data) {
     try {
-        const verifyRules = `Role: Lenient Progress Auditor
+        // ---------- BASIC CHECKS ----------
+        if (!Array.isArray(data)) {
+            throw new Error("Input must be an array.");
+        }
 
-Goal:
-Return the exact percentage value based on valid learning progress, as a numeric decimal value only.
+        if (data.length === 0) {
+            throw new Error("No images provided.");
+        }
 
-Rules (deterministic evaluator):
+        if (data.length > 15) {
+            throw new Error("Maximum 15 images are allowed.");
+        }
+        for (let i = 0; i < data.length; i++) {
+            if (data[i].image.length > 4_000_000) {
+                 throw new Error("Image too large");
+            }
+        }
+        const finalResult = []; // ✅ array result
 
-Base fields
-Use the totalMarks field of each MainQuestion as the baseline earned marks for that goal.
-Ignore isCorrect and answer fields entirely for scoring.
+        // ---------- PROCESS EACH IMAGE ----------
+        for (let i = 0; i < data.length; i++) {
+            const { GoalText, image } = data[i];
 
-Feedback detection (rare condition — only when explicit):
-Fetch the feedback text for the MainQuestion if present. Normalize it by trimming and converting to lowercase.
-Treat feedback as explicit confirmation of completion if it contains any of these substrings:
-compl, done, finished, complete, completed
-(This intentionally matches common misspellings like complted.)
+            // Vision disabled / missing
+            if (!visionClient) {
+                finalResult.push({
+                    GoalText,
+                    imageDesc: "Vision service disabled.",
+                    object: []
+                });
+                continue;
+            }
 
-Treat feedback as explicit indication that the goal is NOT complete if it contains any of these substrings/words/phrases (case-insensitive):
-will, i will, i'll, will complete, not yet, not complete, incomplete, pending, later, in future, future, tomorrow, plan to, to do, unfinished, will do
-Conservative rule: Only consider feedback as indicating "not complete" if one or more of the explicit incomplete tokens above are present. If feedback is empty, missing, or ambiguous (no matching tokens), do not treat it as proof of lying or incompletion.
-How to apply detection
+            const [result] = await visionClient.annotateImage({
+                image: { content: image },
+                features: [
+                    { type: "LABEL_DETECTION" },
+                    { type: "TEXT_DETECTION" }
+                ]
+            });
 
-For each MainQuestion:
-If feedback indicates NOT COMPLETE (per rule 2), then set that goal's earned marks = 0 (do not use its totalMarks).
-Otherwise (feedback confirms completion OR feedback absent/ambiguous), use the totalMarks value as the earned marks for that goal.
+            // ---------- OBJECT LABELS ----------
+            let objects = [];
+            if (result.labelAnnotations?.length) {
+                objects = result.labelAnnotations.map(l => l.description);
+            }
 
-Important: When you exclude a goal's marks because feedback indicates incompletion, you do not change the Potential count. Potential remains the count of MainQuestion objects.
+            // ---------- TEXT OCR ----------
+            let textDesc = "No readable text is visible in the image.";
+            if (result.textAnnotations?.[0]?.description) {
+                textDesc = result.textAnnotations[0].description.trim();
+            }
 
-Scoring
-Earned = sum(earned marks for all MainQuestion items after applying feedback rule)
-Potential = number of MainQuestion items (integer)
-Percentage = (Earned / Potential) × 100
+            // ---------- IMAGE DESCRIPTION ----------
+            const imageDesc =
+                objects.length > 0
+                    ? `Visible objects: ${objects.join(", ")}. Text: ${textDesc}`
+                    : `No clear objects detected. Text: ${textDesc}`;
 
-Precision & Output
-Do NOT round or truncate. Return the exact decimal value (as computed), preserving precision (e.g., 91.6666666667).
-Output ONLY the numeric value (decimal allowed). No text, no JSON, no explanation, nothing else.
+            // ---------- PUSH SYNCED RESULT ----------
+            finalResult.push({
+                GoalText,
+                imageDesc,
+                object: objects
+            });
+        }
 
-Behavior guarantees
-Default is lenient: rely on totalMarks unless explicit feedback says otherwise.
-Only exclude marks when there is clear textual evidence in feedback that the goal is not yet complete or is promised for the future.
-Do not attempt to infer subtle dishonesty beyond explicit tokens above.
+        return { success: true, data: finalResult };
 
-Example (from your provided object):
-If one goal's feedback is "I will complete it on future", the rule finds will/future → exclude that goal's totalMarks (set to 0) while Potential remains the total goals count → compute Percentage = (Earned / Potential) × 100.`
-        const prompt = JSON.stringify(data);
-        const model = genAI2.getGenerativeModel({
-            model: "gemini-2.5-flash",
-            systemInstruction: verifyRules
-        });
-        const chat = model.startChat();
-        const result = await chat.sendMessage(prompt);
-        let reply = result.response.text();
-        reply = reply.replace(/```json|```/g, '').trim();
-        return JSON.parse(reply);
-    }
-    catch (err) {
-        console.log("Gemini Error:" + err);
-        return false;
+    } catch (err) {
+        console.error("Vision API Error:", err.message);
+        return { success: false, error: err.message };
     }
 }
-module.exports = { aigetQuestionaries, aiVerify };
+async function getScore(finalArray) {
+    console.log(finalArray)
+  try {
+    const model = genAI.getGenerativeModel({
+      model: "gemini-2.5-flash",
+      systemInstruction: `
+You are a STRICT, RULE-BASED evaluator.
+
+You will receive an ARRAY of OBJECTS.
+Each object contains:
+- GoalText
+- imageDesc
+- object (labels)
+
+TASK (STRICT):
+Evaluate EACH object INDIVIDUALLY.
+
+For EACH object:
+- Assign score 100 if GoalText is CLEARLY related to imageDesc and object labels.
+- Assign score 0 if GoalText is NOT related.
+
+AGGREGATION RULE (MANDATORY):
+- The FINAL result MUST be the ARITHMETIC AVERAGE of all individual scores.
+- Formula:
+  (sum of individual scores) / (number of objects)
+- Round the final result to the nearest integer.
+
+FAILSAFE RULE:
+- If any object cannot be evaluated, treat it as score 0.
+
+IMPORTANT RULES (DO NOT BREAK):
+- Do NOT explain.
+- Do NOT include text.
+- Do NOT include comments.
+- Do NOT include markdown.
+- Do NOT wrap output in backticks.
+- Do NOT return arrays or multiple objects.
+- Return ONLY ONE valid JSON object in EXACT format:
+
+{ "result": NUMBER }
+`
+    });
+
+    // Send ONLY data as prompt
+    const response = await model.generateContent(
+      JSON.stringify(finalArray)
+    );
+
+    const text = response.response.text().trim();
+
+    // Safety parse
+    let finalResult;
+    try {
+      finalResult = JSON.parse(text);
+    } catch {
+      throw new Error("Gemini did not return valid JSON");
+    }
+
+    // Validate response
+    if (
+      typeof finalResult.result !== "number" ||
+      finalResult.result < 0 ||
+      finalResult.result > 100
+    ) {
+      throw new Error("Invalid score from Gemini");
+    }
+    console.log(finalResult)
+
+    return { success: true, data: finalResult };
+
+  } catch (err) {
+    console.error("Gemini Scoring Error:", err.message);
+    return { success: false, error: err.message };
+  }
+}
+
+module.exports = { aigetQuestionaries, aiVerify, getScore };
