@@ -55,7 +55,7 @@ async function aiVerify(data) {
             throw new Error("Maximum 15 images are allowed.");
         }
         for (let i = 0; i < data.length; i++) {
-            if (data[i].image.length > 4_000_000) {
+            if (data[i].image.length > 5_000_000) {
                  throw new Error("Image too large");
             }
         }
