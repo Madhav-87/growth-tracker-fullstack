@@ -82,9 +82,8 @@ router.post('/daily-goals-submit', verify, async (req, res) => {
 })
 router.get('/send-goals', verify, async (req, res) => {
     let result = await Database.dailyRetrive(req.user);
-    const aiGenobject = await ai.aigetQuestionaries(result);
     if (result) {
-        res.status(200).json({ data: "Duplicate", message: result, aiGenQues: aiGenobject });
+        res.status(200).json({ data: "Duplicate", message: result});
     }
     else {
         res.status(200).json({ data: "allowed" });
