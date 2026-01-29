@@ -40,7 +40,12 @@ router.post('/Login', async (req, res) => {
                     expiresIn: '1h'
                 }
             );
-            res.status(200).json({ message: "Done", data: "Login Successfully!", usertoken: token, name: userData.userName });
+            let deviceLock = await Database.checkChildLock(verify[0].ID);
+            let fingerprint=null;
+            if(deviceLock==true){
+                fingerprint=await Database.retriveFingerPrint(verify[0].ID);
+            }
+            res.status(200).json({ message: "Done", data: "Login Successfully!", usertoken: token, name: userData.userName, isChildLockOn: deviceLock,blueprint:fingerprint});
         }
         else {
             res.status(200).json({ message: "Fail", data: "No Account!" });
@@ -83,7 +88,7 @@ router.post('/daily-goals-submit', verify, async (req, res) => {
 router.get('/send-goals', verify, async (req, res) => {
     let result = await Database.dailyRetrive(req.user);
     if (result) {
-        res.status(200).json({ data: "Duplicate", message: result});
+        res.status(200).json({ data: "Duplicate", message: result });
     }
     else {
         res.status(200).json({ data: "allowed" });
@@ -105,27 +110,27 @@ router.post('/Submit-Response', verify, async (req, res) => {
         image: item.Image
     }));
 
-    
+
     //---------Checking Image---------------------//
-    const VisionRes=await ai.aiVerify(resultArray);
-    if(!VisionRes.success){
-        return res.status(500).json({message:"Fail",data:VisionRes.error});
+    const VisionRes = await ai.aiVerify(resultArray);
+    if (!VisionRes.success) {
+        return res.status(500).json({ message: "Fail", data: VisionRes.error });
     }
 
     //--------Calculating Score------------------//
-    const Score=await ai.getScore(VisionRes.data);
-    if(!Score.success){
-       return res.status(500).json({message:"Fail",data:Score.error});
+    const Score = await ai.getScore(VisionRes.data);
+    if (!Score.success) {
+        return res.status(500).json({ message: "Fail", data: Score.error });
     }
 
-    let marks=Score.data.result/10;
+    let marks = Score.data.result / 10;
     //--------Storing Data----------------------//
-    const result=await Database.SubmitResponse(req.user,marks);
-    if(result){
-        res.status(200).send({message:"done",marks:Score.data.result});
+    const result = await Database.SubmitResponse(req.user, marks);
+    if (result) {
+        res.status(200).send({ message: "done", marks: Score.data.result });
     }
-    else{
-        res.status(400).json({message:"Fail"});
+    else {
+        res.status(400).json({ message: "Fail" });
     }
 })
 router.post('/Score', verify, async (req, res) => {
@@ -169,7 +174,7 @@ router.post('/Monthly/Goals', verify, async (req, res) => {
 router.get('/Monthly/Response', verify, async (req, res) => {
     let result = await Database.MonthlyResponse(req.user);
     if (result) {
-        res.status(200).json({ data: "Duplicate", message:result});
+        res.status(200).json({ data: "Duplicate", message: result });
     }
     else {
         res.status(200).json({ data: "allowed" });
@@ -185,33 +190,33 @@ router.get('/Monthly/Response/Score/Check', verify, async (req, res) => {
     }
 })
 router.post('/Monthly/Response/Score', verify, async (req, res) => {
-     let count = req.body;
+    let count = req.body;
     let resultArray = count.GoalsAndImages.map(item => ({
         GoalText: item.Goal,
         image: item.Image
     }));
 
-    
+
     //---------Checking Image---------------------//
-    const VisionRes=await ai.aiVerify(resultArray);
-    if(!VisionRes.success){
-        return res.status(500).json({message:"Fail",data:VisionRes.error});
+    const VisionRes = await ai.aiVerify(resultArray);
+    if (!VisionRes.success) {
+        return res.status(500).json({ message: "Fail", data: VisionRes.error });
     }
 
     //--------Calculating Score------------------//
-    const Score=await ai.getScore(VisionRes.data);
-    if(!Score.success){
-       return res.status(500).json({message:"Fail",data:Score.error});
+    const Score = await ai.getScore(VisionRes.data);
+    if (!Score.success) {
+        return res.status(500).json({ message: "Fail", data: Score.error });
     }
 
-    let marks=Score.data.result/10;
+    let marks = Score.data.result / 10;
     //--------Storing Data----------------------//
-    const result=await Database.SubmitMonthReport(req.user,marks);
-    if(result){
-        res.status(200).send({message:"done",marks:Score.data.result});
+    const result = await Database.SubmitMonthReport(req.user, marks);
+    if (result) {
+        res.status(200).send({ message: "done", marks: Score.data.result });
     }
-    else{
-        res.status(400).json({message:"Fail"});
+    else {
+        res.status(400).json({ message: "Fail" });
     }
 })
 router.post('/YearGoals/Submit', verify, async (req, res) => {
@@ -230,7 +235,7 @@ router.post('/YearGoals/Submit', verify, async (req, res) => {
 router.get('/Yearly/Response', verify, async (req, res) => {
     let result = await Database.YearlyRes(req.user);
     if (result) {
-        res.status(200).json({ data: "Duplicate",message:result});
+        res.status(200).json({ data: "Duplicate", message: result });
     }
     else {
         res.status(200).json({ data: "allowed" });
@@ -252,27 +257,27 @@ router.post('/Year/Response/Score', verify, async (req, res) => {
         image: item.Image
     }));
 
-    
+
     //---------Checking Image---------------------//
-    const VisionRes=await ai.aiVerify(resultArray);
-    if(!VisionRes.success){
-        return res.status(500).json({message:"Fail",data:VisionRes.error});
+    const VisionRes = await ai.aiVerify(resultArray);
+    if (!VisionRes.success) {
+        return res.status(500).json({ message: "Fail", data: VisionRes.error });
     }
 
     //--------Calculating Score------------------//
-    const Score=await ai.getScore(VisionRes.data);
-    if(!Score.success){
-       return res.status(500).json({message:"Fail",data:Score.error});
+    const Score = await ai.getScore(VisionRes.data);
+    if (!Score.success) {
+        return res.status(500).json({ message: "Fail", data: Score.error });
     }
 
-    let marks=Score.data.result/10;
+    let marks = Score.data.result / 10;
     //--------Storing Data----------------------//
-    const result=await Database.YearlyResSubmit(req.user,marks);
-    if(result){
-        res.status(200).send({message:"done",marks:Score.data.result});
+    const result = await Database.YearlyResSubmit(req.user, marks);
+    if (result) {
+        res.status(200).send({ message: "done", marks: Score.data.result });
     }
-    else{
-        res.status(400).json({message:"Fail"});
+    else {
+        res.status(400).json({ message: "Fail" });
     }
 })
 router.post('/chatbot', verify, async (req, res) => {
@@ -289,5 +294,37 @@ router.get('/taskInfo', verify, async (req, res) => {
         res.status(200).json({ data: "Done", message: reply });
     else
         res.status(500).json({ data: false });
+})
+router.post('/deviceLock', verify, async (req, res) => {
+    const Data = req.body;
+    const reply = await Database.setFingerPrint(Data, req.user);
+    if (reply) {
+        res.status(200).json({ message: "done", isChildLockOn: "true" });
+    }
+    else {
+        res.status(500).json({ message: "failed" });
+    }
+})
+router.post('/deviceLockOff', verify, async (req, res) => {
+    const Data = req.body;
+    try {
+        const validPIN = await Database.retriveUserPIN(req.user);
+        if (Data.userPin == validPIN) {
+            const reply = await Database.removeFingerPrint(req.user);
+            if (reply) {
+                res.status(200).json({ message: "done"});
+            }
+            else {
+                res.status(500).json({ message: "failed" });
+            }
+        }
+        else {
+            res.status(200).json({ message: "invalid pin" });
+        }
+    }
+    catch (err) {
+        res.status(500).json({ message: "fail",errorMessage:err });
+    }
+
 })
 module.exports = router;

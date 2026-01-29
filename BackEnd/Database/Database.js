@@ -77,6 +77,27 @@ const pool = mysql.createPool({
         console.log(err);
     }
 }
+async function checkChildLock(user_id){
+    try{
+        const [data]=await pool.query(
+            `
+        SELECT user_id 
+        FROM user_fingerprints
+        WHERE
+        user_id=?   
+            `,[user_id]
+        );
+       if(data.length==0){
+        return false;
+       } 
+       else{
+        return true;
+       }
+    }
+    catch(err){
+        console.log(err);
+    }
+}
  async function dailyGoalsSubmit(Goal, user) {
     await pool.query(`
         INSERT INTO daily_goals (User_ID,Goal_text)
@@ -415,9 +436,65 @@ const pool = mysql.createPool({
         return false;
     }
 }
+async function setFingerPrint(device,user) {
+    try{
+        await pool.query(`
+        INSERT INTO user_fingerprints
+        (user_id,fingerprint,user_agent,screen_height,screen_width,user_pin)
+        VALUES
+        (?,?,?,?,?,?)        
+        `,[user.id,device.bluePrint,device.userAgent,device.height,device.width,device.userPin])
+        return true;
+    }
+    catch(err){
+        console.log(err);
+        return false;
+    }
+}
+async function removeFingerPrint(user) {
+    try{
+        await pool.query(`
+        DELETE FROM user_fingerprints     
+        WHERE user_id=?
+        `,[user.id])
+        return true;
+    }
+    catch(err){
+        console.log(err);
+        return false;
+    }
+}
+async function retriveUserPIN(user) {
+    try{
+        const [PINOBJ]=await pool.query(`
+        SELECT user_pin 
+        FROM user_fingerprints   
+        WHERE user_id=?
+        `,[user.id])
+        return PINOBJ[0].user_pin;
+    }
+    catch(err){
+        console.log(err);
+        return false;
+    }
+}
+async function retriveFingerPrint(user_id) {
+    try{
+        const [fingerPrint]=await pool.query(`
+        SELECT fingerprint  
+        FROM user_fingerprints   
+        WHERE user_id=?
+        `,[user_id])
+        return fingerPrint[0].fingerprint;
+    }
+    catch(err){
+        console.log(err);
+        return false;
+    }
+}
 module.exports = {
   InsertData,
-  checkData,
+  checkData, 
   report,
   userLogin,
   dailyGoalsSubmit,
@@ -438,5 +515,10 @@ module.exports = {
   YearlyResCheck,
   YearlyResSubmit,
   YearlyProgress,
-  taskInfo
+  taskInfo,
+  setFingerPrint,
+  checkChildLock,
+  removeFingerPrint,
+  retriveUserPIN,
+  retriveFingerPrint
 };
