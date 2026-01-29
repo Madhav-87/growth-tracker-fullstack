@@ -26,8 +26,24 @@ function App() {
           toast.error("Invalid credentials");
         }
         else {
+          if (res.data.blueprint) {
+            const userPrint = res.data.blueprint
+            const fingerPrint = btoa(
+              navigator.userAgent +
+              window.screen.width +
+              window.screen.height +
+              Intl.DateTimeFormat().resolvedOptions().timeZone
+            );
+            if (userPrint !== fingerPrint) {
+              toast.error("Unrecognized device");
+              throw new Error("Fingerprint mismatch");
+            }
+          }
           localStorage.setItem("token", res.data.usertoken);
+          localStorage.setItem("isChildLockOn", res.data.isChildLockOn);
+
           toast.success("Login successfully!");
+
         }
       }).then((res) => {
         axios.post(`${process.env.REACT_APP_API_URL}/report`, {}, {

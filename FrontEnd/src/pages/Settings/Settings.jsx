@@ -5,60 +5,62 @@ import DeviceAlertBox from '../../components/common/DeviceAlertBox';
 import Footer from '../../components/layout/Footer';
 import axios from 'axios';
 import ChildLock from '../../components/common/ChildLock';
+import ChildLockOff from '../../components/common/ChildLockOff.jsx';
 export default function Settings() {
-    
-    let [btn, setBtn] = useState(true);
-    let [childConfirm,setChildConfirm]=useState(false);
-    let [showChildWarn,setChildWarn]=useState(false);
-    const childCheck=useRef(null);
-   
-    
-    function showDeviceAlert(e) {
-        let isCheck = e.target.checked
-        if (isCheck) {
-            setBtn(false);
-        }
+    const isChildLockOn=localStorage.getItem("isChildLockOn")==="true";
+    let [childLock,setChildLock]=useState(isChildLockOn);
+    let [checkBtn,setCheckBtn]=useState(childLock?true:false);
+    //---------------- notify ON ---------------------------//
+
+    let [lockOffNotify,setlockOffNotify]=useState(false);
+    let [lockOnNotify,setlockOnNotify]=useState(false);
+    //----------------- notify -----------------------------//
+    function turnON(){
+        setCheckBtn(true);
+        setChildLock(true);
     }
-    useEffect(()=>{
-        if(childCheck.current.checked && childConfirm==true){
-            childCheck.current.checked=true;
-            
+    function turnOff(){
+        setCheckBtn(false);
+        setChildLock(false);
+    }
+    function showChildLockNotification(){
+        setlockOnNotify(true);
+        console.log(childLock);
+    }
+    function showChildLockOffNotification(){
+        setlockOffNotify(true);
+    }
+    function handleCheck(event){
+        console.log("Function is calling");
+        if(checkBtn){
+            showChildLockOffNotification();
         }
         else{
-            childCheck.current.checked=false;
-        }
-    },[childConfirm])
-    function showChildAlert(e) {
-         let isCheck = e.target.checked
-        if (isCheck) {
-        setChildWarn(true)
+           showChildLockNotification(); 
         }
     }
-    let [deviceLock, setDeviceLock] = useState(false);
-    // useEffect(() => {
-    //     return () => {
-    //         const fingerPrint = btoa(
-    //             navigator.userAgent +
-    //             screen.width +
-    //             screen.height +
-    //             Intl.DateTimeFormat().resolvedOptions().timeZone
-    //         );
-    //         axios.post(`${process.env.REACT_APP_API_URL}/deviceLock`,{data:fingerPrint},{
-    //         headers:{
-    //             Authorization:`Bearer ${token}`,
-    //             'Content-Type':'application/json'
-    //         }
-    //         }).then((res)=>{
-
-    //         }).catch((err)=>{
-
-    //         })
-    //     }
-    // }, []);
     return (
         <div className='setting-page'>
-            <DeviceAlertBox btn={btn} setBtn={setBtn} />
-            <ChildLock childConfirm={childConfirm} setChildConfirm={setChildConfirm} showChildWarn={showChildWarn} setChildWarn={setChildWarn}/>
+            {
+            !(childLock===true)
+            ? 
+            (
+            <ChildLock 
+                setlockOnNotify={setlockOnNotify}
+                lockOnNotify={lockOnNotify}
+                turnON={turnON}
+            />
+            )
+            :
+            (
+            <ChildLockOff
+                setlockOffNotify={setlockOffNotify}
+                lockOffNotify={lockOffNotify}
+                turnOff={turnOff}
+            />
+            )
+        }
+        
             <Header title="Settings"></Header>
             <div className='title-section'>
                 <div className='setting-label'>
@@ -96,7 +98,14 @@ export default function Settings() {
                         </div>
                         <div>
                             <div class="form-check form-switch">
-                                <input ref={childCheck} class="form-check-input" type="checkbox" role="switch" id="switchCheckDefault" onClick={(e) => { showChildAlert(e) }} />
+                                <input 
+                                class="form-check-input" 
+                                type="checkbox"
+                                checked={checkBtn} 
+                                role="switch" 
+                                id="switchCheckDefault" 
+                                onClick={(e)=>{handleCheck(e)}}
+                               />
                                 <label class="form-check-label" for="switchCheckDefault"></label>
                             </div>
                         </div>
@@ -116,7 +125,7 @@ export default function Settings() {
                         </div>
                         <div>
                             <div class="form-check form-switch">
-                                <input class="form-check-input" type="checkbox" role="switch" id="switchCheckDefault" onClick={(e) => { showDeviceAlert(e) }} />
+                                <input class="form-check-input" checked={checkBtn} type="checkbox" role="switch" id="switchCheckDefault" />
                                 <label class="form-check-label" for="switchCheckDefault"></label>
                             </div>
                         </div>
