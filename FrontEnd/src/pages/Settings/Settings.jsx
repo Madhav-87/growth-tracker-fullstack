@@ -1,7 +1,7 @@
 import React, { useEffect, useRef,useState } from 'react'
 import Header from '../../components/layout/Header'
 import './Settings.css';
-import Drawer from '../../../components/common/Drawer.jsx';
+import Drawer from '../../components/common/Drawer.jsx';
 import DeviceAlertBox from '../../components/common/DeviceAlertBox';
 import Footer from '../../components/layout/Footer';
 import axios from 'axios';
