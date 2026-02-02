@@ -5,6 +5,7 @@ import '../../../styles/DailyView.css';
 import Ycircularbar from '../../../components/ui/Ycircularbar.jsx';
 import Footer from '../../../components/layout/Footer.jsx';
 import Header from '../../../components/layout/Header.jsx';
+import Drawer from '../../../components/common/Drawer.jsx';
 function WeeklyView() {
     let token = localStorage.getItem('token');
     let [data, setData] = useState([]);
@@ -118,6 +119,7 @@ function WeeklyView() {
   
     return (
         <div className='body'>
+            <Drawer/>
             <Header title={'Weekly Progress'}/>
             <main className='weely-view-main'>
                 <div className='header-title'>

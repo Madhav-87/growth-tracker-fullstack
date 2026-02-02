@@ -5,10 +5,12 @@ import plus from '../../assets/images/addGoal.svg';
 import message from '../../assets/images/addTask.svg';
 import Footer from '../../components/layout/Footer.jsx';
 import Header from '../../components/layout/Header.jsx';
+import Drawer from '../../../components/common/Drawer.jsx';
 export default function About() {
     const navigate=useNavigate();
     return (
         <div className='about-section-body'>
+            <Drawer/>
             <Header title={'About'} />
             <div className='about-headline-section'>
                 <div className='about-story'>

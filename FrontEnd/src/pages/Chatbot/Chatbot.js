@@ -16,15 +16,27 @@ export default function Chatbot() {
     const sendMessage = () => {
         const text = input.trim();
         if (!text) return;
-        setMessages(prev=>[...prev,{role:"user",text:text}]);
+        const updateMessage=[
+            ...messages,
+            {role:"user",text:text},
+            {role:"ai",text:"🤔Thinking..."}
+        ]
+        setMessages(updateMessage);
         axios.post(`${process.env.REACT_APP_API_URL}/chatbot`,{history:messages,data:text},{
             headers:{
                 Authorization:`Bearer ${token}`,
                 'Content-Type':'application/json'
             }
         }).then((res)=>{
-            setMessages(prev=>[...prev,{role:"ai",text:res.data.data}]);
+            setMessages(prev=>[
+                ...prev.slice(0,-1),
+                {role:"ai",text:res.data.data}
+            ]);
         }).catch((err)=>{
+            setMessages(prev=>[
+                ...prev.slice(0,-1),
+                {role:"ai",text:"🤕 Something went wrong! Please try again later."}
+            ]);
             console.log(err);
         })
         setInput("");
