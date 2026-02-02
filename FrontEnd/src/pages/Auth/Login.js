@@ -11,6 +11,7 @@ function App() {
     userEmail: "",
     userPassword: ""
   });
+  let [loader, setloading] = useState(false);
   let getData = (event) => {
     let InputValue = event.target.value;
     let InputName = event.target.name;
@@ -20,6 +21,7 @@ function App() {
   }
   let postMan = async (event) => {
     event.preventDefault();
+    setloading(true);
     axios.post(`${process.env.REACT_APP_API_URL}/Login`, userData)
       .then((res) => {
         if (res.data.message === 'Fail') {
@@ -60,6 +62,8 @@ function App() {
       })
       .catch((err) => {
         console.log(err);
+      }).finally(() => {
+        setloading(false);
       });
   }
   return (
@@ -99,7 +103,18 @@ function App() {
               </div>
               <div>
                 <button type="submit" className="mc-login-btn w-100 text-white btn mt-3 mb-3">
-                  Login
+                  {
+                    loader
+                      ?
+                      (
+                        <div class="spinner-border text-white" role="status">
+                        </div>
+                      )
+                      :
+                      (
+                      <span>Login</span>
+                    )
+                  }
                 </button>
               </div>
               <div>

@@ -127,7 +127,14 @@ export default function Settings() {
                         </div>
                         <div>
                             <div class="form-check form-switch">
-                                <input class="form-check-input" checked={checkBtn} type="checkbox" role="switch" id="switchCheckDefault" />
+                                <input 
+                                class="form-check-input" 
+                                checked={checkBtn} 
+                                type="checkbox" 
+                                role="switch" 
+                                id="switchCheckDefault2"
+                                onClick={(e)=>{handleCheck(e)}}
+                                />
                                 <label class="form-check-label" for="switchCheckDefault"></label>
                             </div>
                         </div>

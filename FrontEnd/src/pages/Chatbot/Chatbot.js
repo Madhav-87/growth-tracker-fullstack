@@ -19,7 +19,7 @@ export default function Chatbot() {
         const updateMessage=[
             ...messages,
             {role:"user",text:text},
-            {role:"ai",text:"🤔Thinking..."}
+            {role:"ai",text:"🤔 Thinking..."}
         ]
         setMessages(updateMessage);
         axios.post(`${process.env.REACT_APP_API_URL}/chatbot`,{history:messages,data:text},{
