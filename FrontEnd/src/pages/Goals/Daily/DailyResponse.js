@@ -73,14 +73,14 @@ export default function DailyResponse() {
               toast.success("Goal Submited! Marks:" + res.data.marks);
               setloading(false);
               setTimeout(() => {
-                navigate('/Year')
+                navigate('/Home')
               }, 2000);
             }
             if (res.data.message === "Fail") {
               toast.error("Something went wrong!");
               setloading(false);
               setTimeout(() => {
-                navigate('/Year')
+                navigate('/Home')
               }, 2000);
             }
           }).catch((err) => {
