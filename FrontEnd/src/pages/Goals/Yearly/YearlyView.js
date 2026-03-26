@@ -110,7 +110,7 @@ function YearlyView() {
     useEffect(() => {
         if (task.length === 0)
             return
-        let completeTask = (yesScore*task.length)/100;
+        let completeTask =task.filter(item=>item.Is_Submit===1).length;
         setCompTask(completeTask);
     }, [task])
     return (

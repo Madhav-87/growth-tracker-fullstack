@@ -23,7 +23,6 @@ function WeeklyView() {
         }).then((res) => {
             const apiData = res.data.message || [];
             const result = [];
-            console.log(apiData);
             for (let i = 6; i >= 0; i--) {
                 const d = new Date();
                 d.setDate(d.getDate() - i);
@@ -35,13 +34,10 @@ function WeeklyView() {
                     console.log(value.DateOfDay+" "+dateStr)
                     return value.DateOfDay===dateStr
                 });
-                console.log("Data:"+found);
                 result.push({
                     DateOfDay: dateStr,
                     Avg: found ? found.Avg : 0
                 });
-                console.log("Result:");
-                console.log(result)
             }
             
             setData(result);
@@ -113,8 +109,8 @@ function WeeklyView() {
     useEffect(() => {
         if (task.length === 0)
             return
-        let completeTask=(yesScore*task.length)/100;
-        setCompTask(completeTask);
+       let taskComp=task.filter(item=>item.Is_Submit===1).length;
+       setCompTask(taskComp);
     }, [yesScore,task])
   
     return (

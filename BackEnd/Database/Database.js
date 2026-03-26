@@ -421,7 +421,7 @@ async function checkChildLock(user_id){
         WHERE
         User_ID=?
         AND
-        DateOfDay>=CURDATE()-INTERVAL 7 DAY;      
+        DateOfDay=CURDATE()-INTERVAL 1 DAY;      
         `,[user.id]
     );
     if(data.length===0){
