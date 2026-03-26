@@ -81,16 +81,7 @@ export default function Drawer() {
                     Settings
                   </div>
               </div>
-              <div className='drawer-panel'>
-                  <div className='drawer-icon'>
-                    <span className="material-symbols-outlined">
-                    editor_choice
-                    </span>
-                  </div>
-                  <div>
-                    Badges
-                  </div>
-              </div>
+             
               </div>
               
               

@@ -70,7 +70,8 @@ async function aiVerify(data) {
                 finalResult.push({
                     GoalText,
                     imageDesc: "Vision service disabled.",
-                    object: []
+                    object: [],
+                    imageProvided: false  
                 });
                 continue;
             }
@@ -105,7 +106,8 @@ async function aiVerify(data) {
             finalResult.push({
                 GoalText,
                 imageDesc,
-                object: objects
+                object: objects,
+                imageProvided: true
             });
         }
 
@@ -129,33 +131,35 @@ Each object contains:
 - GoalText
 - imageDesc
 - object (labels)
+- imageProvided (boolean)
 
-TASK (STRICT):
-Evaluate EACH object INDIVIDUALLY.
+MISSING IMAGE RULE (HIGHEST PRIORITY — CHECK FIRST):
+- If imageProvided is false OR imageDesc is "NO_IMAGE_PROVIDED":
+  - Assign score 0 IMMEDIATELY.
+  - Do NOT evaluate GoalText or imageDesc for this object.
+  - This object MUST be counted in the denominator.
 
-For EACH object:
+SCORING RULE (only for objects where imageProvided is true):
 - Assign score 100 if GoalText is CLEARLY related to imageDesc and object labels.
 - Assign score 0 if GoalText is NOT related.
 
 AGGREGATION RULE (MANDATORY):
-- The FINAL result MUST be the ARITHMETIC AVERAGE of all individual scores.
-- Formula:
-  (sum of individual scores) / (number of objects)
+- Count ALL objects including missing-image ones in the denominator.
+- Formula: (sum of all individual scores) / (TOTAL number of objects)
 - Round the final result to the nearest integer.
 
 FAILSAFE RULE:
-- If any object cannot be evaluated, treat it as score 0.
+- If any object cannot be evaluated for any reason, treat it as score 0.
 
 IMPORTANT RULES (DO NOT BREAK):
 - Do NOT explain.
 - Do NOT include text.
-- Do NOT include comments.
 - Do NOT include markdown.
 - Do NOT wrap output in backticks.
-- Do NOT return arrays or multiple objects.
-- Return ONLY ONE valid JSON object in EXACT format:
+- Return ONLY ONE valid JSON object:
 
 { "result": NUMBER }
+
 `
     });
 
