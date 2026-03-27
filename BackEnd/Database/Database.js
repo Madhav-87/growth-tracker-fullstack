@@ -415,7 +415,7 @@ async function checkChildLock(user_id){
     try{
         let [data]=await pool.query(
         `
-        SELECT Is_Submit
+        SELECT Is_Submit,Is_Complete
         FROM 
         daily_goals
         WHERE
