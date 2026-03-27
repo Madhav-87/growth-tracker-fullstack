@@ -100,8 +100,8 @@ async function checkChildLock(user_id){
 }
  async function dailyGoalsSubmit(Goal, user) {
     await pool.query(`
-        INSERT INTO daily_goals (User_ID,Goal_text)
-        VALUES(?,?)
+        INSERT INTO daily_goals (User_ID,Goal_text,Is_Complete)
+        VALUES(?,?,1)
         `, [user.id, Goal]);
 }
  async function dailyRetrive(user) {
