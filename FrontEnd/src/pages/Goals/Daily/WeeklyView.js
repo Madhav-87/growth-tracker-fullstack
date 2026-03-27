@@ -109,7 +109,7 @@ function WeeklyView() {
     useEffect(() => {
         if (task.length === 0)
             return
-       let taskComp=task.filter(item=>item.Is_Submit===1).length;
+       let taskComp=task.filter(item=>item.Is_Complete===1).length;
        setCompTask(taskComp);
     }, [yesScore,task])
   
