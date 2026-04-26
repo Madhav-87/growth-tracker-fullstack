@@ -1,7 +1,7 @@
 const express=require('express');
 const app=express();
 const cors=require('cors');
-const router=require('./router/routes.cjs');
+const router=require('./router/routes.js');
 const dotenv=require('dotenv');
 
 dotenv.config();

@@ -1,5 +1,5 @@
 const mysql = require('mysql2');
-const pool= require('../service/dbConn.js');
+const pool= require('../services/dbConn.js');
 
 
  async function InsertData(Name, Email, Password) {

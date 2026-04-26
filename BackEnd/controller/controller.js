@@ -1,5 +1,5 @@
 const path = require('path');
-const db = require('../Model/db.js');
+const db = require('../model/db.js');
 const chatbot = require('../services/chatbotServer.js');
 const ai = require('../services/goalVerification.js');
 const { generateToken, verify } = require('../utils/authMiddleware');
