@@ -3,8 +3,8 @@ const jwt=require('jsonwebtoken');
 function generateToken(userData){
     const token=jwt.sign(
         {
-            name:userData.name,
-            id:userData.id
+            name:userData[0].Name,
+            id:userData[0].ID
         },
         "security_key",
         {

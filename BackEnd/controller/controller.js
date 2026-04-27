@@ -1,18 +1,22 @@
 const path = require('path');
 const db = require('../model/db.js');
+const jwt =require("jsonwebtoken");
 const chatbot = require('../services/chatbotServer.js');
 const ai = require('../services/goalVerification.js');
 const { generateToken, verify } = require('../utils/authMiddleware');
+const console = require('console');
 
 
 async function getUserLogin(req, res) {
-    const userData = db.userLogin(userData.userEmail, userData.userPassword);
-    if (userData) {
-        const token = generateToken(userData);
-        let deviceLock = await db.checkChildLock(verify[0].ID);
+    const userData = req.body;
+    let resData=await db.userLogin(userData.userEmail, userData.userPassword);
+    if (resData) {
+        const token = generateToken(resData);
+        const verifyToken=jwt.verify(token,"security_key");
+        let deviceLock = await db.checkChildLock(verifyToken.id);
         let fingerprint = null;
         if (deviceLock == true) {
-            fingerprint = await db.retriveFingerPrint(verify[0].ID);
+            fingerprint = await db.retriveFingerPrint(verifyToken.id);
         }
         res.status(200).json({ message: "Done", data: "Login Successfully!", usertoken: token, name: userData.userName, isChildLockOn: deviceLock, blueprint: fingerprint });
     }
@@ -301,7 +305,13 @@ async function removeLock(req, res) {
         res.status(500).json({ message: "fail", errorMessage: err });
     }
 }
+async function defaultRes(req,res) {
+    res.status(200).json({
+        message: "server listening..!"
+    })
+}
 module.exports={
+defaultRes,
 getUserLogin,
 addUserAccount,
 getUserReport,
