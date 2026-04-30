@@ -15,7 +15,7 @@ export default function About() {
             <div className='about-headline-section'>
                 <div className='about-story'>
                     <div style={{ display: "flex", alignmentBaseline: "central", marginRight: "4px" }}>
-                        <span class="material-symbols-outlined">
+                        <span className="material-symbols-outlined">
                             fertile
                         </span>
                     </div>
@@ -47,7 +47,7 @@ export default function About() {
                 <div className='belive-section-heading'>What We Believe</div>
                 <div className='belive-panel'>
                     <div className='logo background-primary'>
-                        <span class="material-symbols-outlined">
+                        <span className="material-symbols-outlined">
                             target
                         </span>
                     </div>
@@ -60,7 +60,7 @@ export default function About() {
                 </div>
                 <div className='belive-panel'>
                     <div className='logo background-purple'>
-                        <span class="material-symbols-outlined">
+                        <span className="material-symbols-outlined">
                             favorite
                         </span>
                     </div>
@@ -73,7 +73,7 @@ export default function About() {
                 </div>
                 <div className='belive-panel'>
                     <div className='logo background-green'>
-                        <span class="material-symbols-outlined">
+                        <span className="material-symbols-outlined">
                             shield
                         </span>
                     </div>
@@ -89,7 +89,7 @@ export default function About() {
             <div className='credit-section'>
                 <div className='about-story'>
                     <div style={{ display: "flex", alignmentBaseline: "central", marginRight: "4px" }}>
-                        <span class="material-symbols-outlined">
+                        <span className="material-symbols-outlined">
                             workspace_premium
                         </span>
                     </div>
@@ -128,7 +128,7 @@ export default function About() {
                         Start Free
                     </div>
                     <div style={{display:"flex", marginLeft:"5px",alignSelf:"center"}}>
-                        <span class="material-symbols-outlined" style={{alignmentBaseline:"middle"}} >
+                        <span className="material-symbols-outlined" style={{alignmentBaseline:"middle"}} >
                             arrow_forward
                         </span>
                     </div>

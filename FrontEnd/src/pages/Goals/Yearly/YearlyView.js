@@ -110,12 +110,12 @@ function YearlyView() {
     useEffect(() => {
         if (task.length === 0)
             return
-        let completeTask =task.filter(item=>item.Is_Complete===1).length;
+        let completeTask = task.filter(item => item.Is_Complete === 1).length;
         setCompTask(completeTask);
     }, [task])
     return (
         <div className='body'>
-           <Header title={'Yearly Progress'}/>
+            <Header title={'Yearly Progress'} />
             <main className='weely-view-main'>
                 <div className='header-title'>
                     <div className='d-flex'>
@@ -165,7 +165,6 @@ function YearlyView() {
                                 {compTask.toFixed(1)}
                             </div>
                         </div>
-
                     </div>
                     <div className='progress-box border border-grey blue-box mb-5'>
                         <div className='bar-box-1'>
@@ -295,7 +294,7 @@ function YearlyView() {
                 </div>
 
             </main>
-           <Footer/>
+            <Footer />
         </div>
     )
 }

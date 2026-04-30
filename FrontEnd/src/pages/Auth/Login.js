@@ -107,7 +107,7 @@ function App() {
                     loader
                       ?
                       (
-                        <div class="spinner-border text-white" role="status">
+                        <div className="spinner-border text-white" role="status">
                         </div>
                       )
                       :

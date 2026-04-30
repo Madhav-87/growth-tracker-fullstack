@@ -7,9 +7,9 @@ export default function Loader() {
       <div className='blur-background'></div>
       <div className="box-loader">
       <div className='loader-message'>Loading...</div>
-      <div className="loader"><div class="d-flex justify-content-center">
-        <div class="spinner-border" role="status">
-          <span class="visually-hidden">Loading...</span>
+      <div className="loader"><div className="d-flex justify-content-center">
+        <div className="spinner-border" role="status">
+          <span className="visually-hidden">Loading...</span>
         </div>
       </div></div>
     </div>

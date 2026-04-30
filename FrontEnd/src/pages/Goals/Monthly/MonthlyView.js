@@ -15,7 +15,7 @@ function MonthlyView() {
     let [yesScore, setYesScore] = useState(0);
     let [task, setTask] = useState([]);
     let [compTask, setCompTask] = useState(0);
-     
+
     useEffect(() => {
         axios.post(`${process.env.REACT_APP_API_URL}/Check-Monthly-Score`, {}, {
             headers: {
@@ -24,12 +24,12 @@ function MonthlyView() {
         }).then((res) => {
             const apiData = res.data.message || [];
             const result = [];
-            const today=new Date();
-            const year1=today.getFullYear();
-            const month1=today.getMonth();
-            const todayDate=today.getDate();
+            const today = new Date();
+            const year1 = today.getFullYear();
+            const month1 = today.getMonth();
+            const todayDate = today.getDate();
             for (let dayNum = 1; dayNum <= todayDate; dayNum++) {
-                const d = new Date(year1,month1,dayNum);
+                const d = new Date(year1, month1, dayNum);
                 const day = String(d.getDate()).padStart(2, "0");
                 const month = String(d.getMonth() + 1);
                 const year = d.getFullYear();
@@ -72,9 +72,9 @@ function MonthlyView() {
         setBestScore(result);
     }, [data])
     useEffect(() => {
-        let today=new Date();
-        let todayDate=today.getDate();
-        let retrive=(todayDate-1)*-1;
+        let today = new Date();
+        let todayDate = today.getDate();
+        let retrive = (todayDate - 1) * -1;
         let sum = data.slice(retrive).reduce((prev, cur) => {
             return prev + cur.Avg;
         }, 0);
@@ -113,13 +113,13 @@ function MonthlyView() {
     useEffect(() => {
         if (task.length === 0)
             return
-        let completeTask=task.filter(item=>item.Is_Complete===1).length;
+        let completeTask = task.filter(item => item.Is_Complete === 1).length;
         setCompTask(completeTask);
     }, [task])
     return (
         <div className='body'>
-            <Drawer/>
-           <Header title={'Monthly Progress'}/>
+            <Drawer />
+            <Header title={'Monthly Progress'} />
             <main className='weely-view-main'>
                 <div className='header-title'>
                     <div className='d-flex'>
@@ -297,9 +297,8 @@ function MonthlyView() {
                         Monthly average. Stay focused and you'll even higher achievements! &#128170;
                     </div>
                 </div>
-
             </main>
-            <Footer/>
+            <Footer />
         </div>
     )
 }

@@ -6,8 +6,8 @@ import Header from '../../components/layout/Header.jsx';
 function Tips() {
     return (
         <div>
-            <Drawer/>
-            <Header title={'Tips'}/>
+            <Drawer />
+            <Header title={'Tips'} />
             <main className='main-tips'>
                 <div className='img-panel'>
                     <img src={dog} className="img-fluid img" alt="dog img"></img>
@@ -370,7 +370,7 @@ function Tips() {
                     </div>
                 </div>
             </main>
-           <Footer/>
+            <Footer />
         </div>
     );
 }

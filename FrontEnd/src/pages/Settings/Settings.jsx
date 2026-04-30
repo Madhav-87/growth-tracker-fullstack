@@ -1,4 +1,4 @@
-import React, { useEffect, useRef,useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import Header from '../../components/layout/Header'
 import './Settings.css';
 import Drawer from '../../components/common/Drawer.jsx';
@@ -8,65 +8,65 @@ import axios from 'axios';
 import ChildLock from '../../components/common/ChildLock';
 import ChildLockOff from '../../components/common/ChildLockOff.jsx';
 export default function Settings() {
-    const isChildLockOn=localStorage.getItem("isChildLockOn")==="true";
-    let [childLock,setChildLock]=useState(isChildLockOn);
-    let [checkBtn,setCheckBtn]=useState(childLock?true:false);
+    const isChildLockOn = localStorage.getItem("isChildLockOn") === "true";
+    let [childLock, setChildLock] = useState(isChildLockOn);
+    let [checkBtn, setCheckBtn] = useState(childLock ? true : false);
     //---------------- notify ON ---------------------------//
 
-    let [lockOffNotify,setlockOffNotify]=useState(false);
-    let [lockOnNotify,setlockOnNotify]=useState(false);
+    let [lockOffNotify, setlockOffNotify] = useState(false);
+    let [lockOnNotify, setlockOnNotify] = useState(false);
     //----------------- notify -----------------------------//
-    function turnON(){
+    function turnON() {
         setCheckBtn(true);
         setChildLock(true);
     }
-    function turnOff(){
+    function turnOff() {
         setCheckBtn(false);
         setChildLock(false);
     }
-    function showChildLockNotification(){
+    function showChildLockNotification() {
         setlockOnNotify(true);
         console.log(childLock);
     }
-    function showChildLockOffNotification(){
+    function showChildLockOffNotification() {
         setlockOffNotify(true);
     }
-    function handleCheck(event){
+    function handleCheck(event) {
         console.log("Function is calling");
-        if(checkBtn){
+        if (checkBtn) {
             showChildLockOffNotification();
         }
-        else{
-           showChildLockNotification(); 
+        else {
+            showChildLockNotification();
         }
     }
     return (
         <div className='setting-page'>
-            <Drawer/>
+            <Drawer />
             {
-            !(childLock===true)
-            ? 
-            (
-            <ChildLock 
-                setlockOnNotify={setlockOnNotify}
-                lockOnNotify={lockOnNotify}
-                turnON={turnON}
-            />
-            )
-            :
-            (
-            <ChildLockOff
-                setlockOffNotify={setlockOffNotify}
-                lockOffNotify={lockOffNotify}
-                turnOff={turnOff}
-            />
-            )
-        }
-        
+                !(childLock === true)
+                    ?
+                    (
+                        <ChildLock
+                            setlockOnNotify={setlockOnNotify}
+                            lockOnNotify={lockOnNotify}
+                            turnON={turnON}
+                        />
+                    )
+                    :
+                    (
+                        <ChildLockOff
+                            setlockOffNotify={setlockOffNotify}
+                            lockOffNotify={lockOffNotify}
+                            turnOff={turnOff}
+                        />
+                    )
+            }
+
             <Header title="Settings"></Header>
             <div className='title-section'>
                 <div className='setting-label'>
-                    <span class="material-symbols-outlined">
+                    <span className="material-symbols-outlined">
                         settings
                     </span>
                     <div>Settings</div>
@@ -87,10 +87,8 @@ export default function Settings() {
                     <div className='setting-box mb-3'>
                         <div className='setting-box-text-section'>
                             <div className='setting-box-text-title'>
-                                <span class="color-org lock">
+                                <span className="color-org lock">
                                     &#x1F9D2;&#x1F510;
-
-
                                 </span>
                                 <span>Child Lock</span>
                             </div>
@@ -99,23 +97,23 @@ export default function Settings() {
                             </div>
                         </div>
                         <div>
-                            <div class="form-check form-switch">
-                                <input 
-                                class="form-check-input" 
-                                type="checkbox"
-                                checked={checkBtn} 
-                                role="switch" 
-                                id="switchCheckDefault" 
-                                onClick={(e)=>{handleCheck(e)}}
-                               />
-                                <label class="form-check-label" for="switchCheckDefault"></label>
+                            <div className="form-check form-switch">
+                                <input
+                                    className="form-check-input"
+                                    type="checkbox"
+                                    checked={checkBtn}
+                                    role="switch"
+                                    id="switchCheckDefault"
+                                    onClick={(e) => { handleCheck(e) }}
+                                />
+                                <label className="form-check-label" for="switchCheckDefault"></label>
                             </div>
                         </div>
                     </div>
                     <div className='setting-box'>
                         <div className='setting-box-text-section'>
                             <div className='setting-box-text-title'>
-                                <span class="color-org lock">
+                                <span className="color-org lock">
                                     &#128274;
 
                                 </span>
@@ -126,16 +124,16 @@ export default function Settings() {
                             </div>
                         </div>
                         <div>
-                            <div class="form-check form-switch">
-                                <input 
-                                class="form-check-input" 
-                                checked={checkBtn} 
-                                type="checkbox" 
-                                role="switch" 
-                                id="switchCheckDefault2"
-                                onClick={(e)=>{handleCheck(e)}}
+                            <div className="form-check form-switch">
+                                <input
+                                    className="form-check-input"
+                                    checked={checkBtn}
+                                    type="checkbox"
+                                    role="switch"
+                                    id="switchCheckDefault2"
+                                    onClick={(e) => { handleCheck(e) }}
                                 />
-                                <label class="form-check-label" for="switchCheckDefault"></label>
+                                <label className="form-check-label" for="switchCheckDefault"></label>
                             </div>
                         </div>
                     </div>
@@ -148,7 +146,7 @@ export default function Settings() {
                     <div className='setting-box'>
                         <div className='setting-box-text-section'>
                             <div className='setting-box-text-title'>
-                                <span class="color-org lock">
+                                <span className="color-org lock">
                                     &#x1F514;
 
                                 </span>
@@ -159,9 +157,9 @@ export default function Settings() {
                             </div>
                         </div>
                         <div>
-                            <div class="form-check form-switch">
-                                <input class="form-check-input" type="checkbox" role="switch" id="switchCheckDefault" />
-                                <label class="form-check-label" for="switchCheckDefault"></label>
+                            <div className="form-check form-switch">
+                                <input className="form-check-input" type="checkbox" role="switch" id="switchCheckDefault" />
+                                <label className="form-check-label" for="switchCheckDefault"></label>
                             </div>
                         </div>
                     </div>

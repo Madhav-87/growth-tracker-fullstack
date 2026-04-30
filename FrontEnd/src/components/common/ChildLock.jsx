@@ -111,9 +111,9 @@ export default function ChildLock({ setlockOnNotify, lockOnNotify, turnON }) {
                         ?
                         (
                             <div>
-                                <div class="mb-3">
-                                    <label class="form-label">Enter the Child Lock PIN</label>
-                                    <input type="password" class="form-control" value={UserPIN.ChildLockPIN} name="ChildLockPIN" onChange={(e) => { handleChange(e) }} required />
+                                <div className="mb-3">
+                                    <label className="form-label">Enter the Child Lock PIN</label>
+                                    <input type="password" className="form-control" value={UserPIN.ChildLockPIN} name="ChildLockPIN" onChange={(e) => { handleChange(e) }} required />
                                 </div>
                                 <div>
                                     <button className="btn btn-primary mt-4 mb-4" onClick={() => { submitPIN() }}>Set PIN</button>

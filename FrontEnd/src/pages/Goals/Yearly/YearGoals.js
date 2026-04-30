@@ -15,20 +15,20 @@ import Header from '../../../components/layout/Header.jsx';
 import { useNavigate } from 'react-router-dom';
 export default function YearGoals() {
   const token = localStorage.getItem("token");
-  const navigate=useNavigate();
+  const navigate = useNavigate();
   let [submitBTN, setsubmitBTN] = useState(1);
   let [list, setList] = useState([]);
   let submitForm = (event) => {
     event.preventDefault();
     let item = event.target.items.value;
-    if(item===""){
+    if (item === "") {
       toast.error("Add Goal First..!");
     }
     else if (!list.includes(item)) {
       let oldData = [...list];
       oldData.push(item);
       setList(oldData);
-      event.target.items.value="";
+      event.target.items.value = "";
     }
     else {
       toast.error("Task already added");
@@ -66,9 +66,9 @@ export default function YearGoals() {
       if (res.data.message === "Done") {
         setsubmitBTN(++submitBTN);
         toast.success("Goals Submited");
-        setTimeout(()=>{
-            navigate('/Year')
-        },3000);
+        setTimeout(() => {
+          navigate('/Year')
+        }, 3000);
       }
       else {
         toast.error("Sending Fail!");
