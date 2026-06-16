@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
-import './progress.css';
 import '../../styles/Panel.css';
+import './progress.css';
 import Weeklyimg from '../../assets/images/WeeklyProgress.png';
 import Monthlyimg from '../../assets/images/MonthProgress.png';
 import Yearimg from '../../assets/images/YearProgress.png';

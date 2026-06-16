@@ -3,6 +3,7 @@
     width: 100vw;
     display: flex;
     flex-direction: column;
+    font-size: 18px;
 }
 
 .header-title {
@@ -22,7 +23,6 @@
     margin-right: 20px;
     align-self: center;
 }
-
 .weely-view-main {
     height: 500%;
     background-color: whitesmoke;
@@ -204,7 +204,7 @@
 }
 
 .weekly-icon-container {
-    height: 5% !important;
+    height: 5%;
     display: flex;
     align-items: center;
     margin-top: 20px;
@@ -303,15 +303,11 @@
 
 @media (max-width:480px) {
     .body {
-        height: 300vh;
+        height: auto;
     }
 
     .weekly-header {
         min-height: 2% !important;
-    }
-
-    .weely-view-main {
-        height: 450% !important;
     }
 
     .header-title {
@@ -374,7 +370,7 @@
     .last-panel {
         margin-right: 10px;
         width: 95%;
-        max-height: 8% !important;
+        max-height: 500px !important;
         margin-left: 10px;
         margin-bottom: 10px;
         height: 600px;
@@ -387,16 +383,34 @@
     footer {
         padding-top: 10px;
         text-align: center;
+        height: 300px !important;
     }
 }
 @media (max-width: 1024px) {
   .circular-bar-box {
     width: 90%;
     margin-right: 0 !important;
+    height: 900px;
+    padding-bottom: 20px !important;
+  }
+  .header-title{
+    width: 100%;
+    justify-content: flex-start;
+  }
+  .body{
+    height: auto;
+    font-size: 20px;
+  }
+  .weely-view-main{
+    height: auto;
   }
   .bar-box {
     width: 90%;
-    margin-right: 0 !important;
+    margin-right: 10px !important;
+    height: 600px;
+  }
+  .weekly-icon-container {
+   height: 130px;
   }
   .progress-box {
     width: 75%;
@@ -410,6 +424,16 @@
   .last-panel {
     width: 90%;
     margin-right: 0;
+    margin-bottom: 20px;
+  }
+  footer{
+    height: 200px;
+  }
+  footer div{
+    font-size: 20px;
+  }
+  .h4{
+    font-size: 30px !important;
   }
 }
 
@@ -418,7 +442,7 @@
     height: 350vh;
   }
   .weely-view-main {
-    height: 480%;
+    height: auto;
   }
   .circular-bar-box {
     width: 95%;
@@ -426,7 +450,8 @@
   }
   .bar-box {
     width: 95%;
-    margin-right: 0 !important;
+    margin-right: 10px !important;
+    padding-right: 5x;
   }
   .progress-box {
     width: 85%;

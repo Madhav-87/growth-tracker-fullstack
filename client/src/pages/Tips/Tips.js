@@ -95,7 +95,7 @@ function Tips() {
                             </div>
                         </div>
                     </div>
-                    <div className="accordion" id="accordionExample">
+                    
                         <div className="accordion-item">
                             <h2 className="accordion-header">
                                 <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
@@ -111,8 +111,8 @@ function Tips() {
                                     5. Write 3 things you're thankful for daily.
                                 </div>
                             </div>
-                        </div>
-                        <div className="accordion-item">
+                       
+                        
                             <h2 className="accordion-header">
                                 <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
                                     Avoid Too Much Screen Time
@@ -125,8 +125,8 @@ function Tips() {
                                     2. Study-related screen time should be balanced with breaks
                                 </div>
                             </div>
-                        </div>
-                        <div className="accordion-item">
+                       
+                        
                             <h2 className="accordion-header">
                                 <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
                                     Practice Good Hygiene
@@ -142,9 +142,9 @@ function Tips() {
                                     5. Keep your study area, school bag, books, and stationery clean.<br></br>
                                 </div>
                             </div>
-                        </div>
+                        
                     </div>
-                    <div className="accordion" id="accordionExample">
+                    
                         <div className="accordion-item">
                             <h2 className="accordion-header">
                                 <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
@@ -195,7 +195,7 @@ function Tips() {
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    
                 </div>
                 <div>
                     <figure className="text-center">
@@ -353,7 +353,7 @@ function Tips() {
                             </div>
                         </div>
                     </div>
-                    <div className="accordion-item">
+                    <div className="accordion-item mb-2">
                         <h2 className="accordion-header">
                             <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwenty" aria-expanded="false" aria-controls="collapseTwenty">
                                 Bad Habits

@@ -406,7 +406,7 @@ main{
   bottom: 40px;
 }
 footer{
-    height:20vh;
+    height:400px;
     background-color: #111827 ;
     display: flex;
     justify-content: center;
