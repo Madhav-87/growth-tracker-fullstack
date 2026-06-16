@@ -10,20 +10,110 @@
     box-shadow: 0px 1px 14px 3px rgba(0, 0, 0, 1) !important;
     
 }
-@media (max-width:480px) {
 
-    .mc-progress-cards {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center !important;
-    }
-    .mc-progress-card{
-        margin-top: 20px;
-        margin-top: 40px !important;
-        margin-right: 20px;
-        margin-left: 20px;
-        width:360px !important;
-        height: 560px !important;
-        padding-bottom: 10px !important;
+
+/* ── Small desktops / large tablets (901px – 1200px) ─────── */
+@media (max-width: 1200px) {
+  .mc-progress-cards {
+    gap: 30px !important;
+    padding: 0 20px;
+  }
+
+  .mc-progress-card {
+    width: calc(30% - 10px) !important;
+    height: 460px !important;
+  }
 }
+
+/* ── Tablets (601px – 900px) ─────────────────────────────── */
+@media (max-width: 900px) {
+  .mc-progress-cards {
+    gap: 24px !important;
+    padding: 0 24px;
+  }
+
+  .mc-progress-card {
+    width: calc(44% - 12px) !important;
+    height: auto !important;
+    margin-top: 24px !important;
+    padding-bottom: 16px !important;
+  }
+
+  .mc-progress-card .card-img-top {
+    height: 200px;
+    object-fit: cover;
+  }
+}
+
+/* ── Large phones (481px – 600px) ───────────────────────── */
+@media (max-width: 600px) {
+  .mc-progress-cards {
+    gap: 16px !important;
+    padding: 0 16px;
+  }
+
+  .mc-progress-card {
+    width: 100% !important;
+    height: auto !important;
+    margin-top: 16px !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    padding-bottom: 16px !important;
+  }
+
+  .mc-progress-card .card-img-top {
+    height: 200px;
+    object-fit: cover;
+  }
+}
+
+/* ── Small phones (320px – 480px) ── replaces existing block */
+@media (max-width: 480px) {
+  .mc-progress-cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center !important;
+    gap: 0 !important;
+    padding: 0 12px;
+  }
+
+  .mc-progress-card {
+    width: calc(100% - 24px) !important;
+    height: auto !important;
+    margin-top: 20px !important;
+    margin-left: 12px !important;
+    margin-right: 12px !important;
+    padding-bottom: 12px !important;
+  }
+
+  .mc-progress-card .card-img-top {
+    height: 180px;
+    object-fit: cover;
+  }
+}
+
+/* ── Extra small phones (below 360px) ───────────────────── */
+@media (max-width: 360px) {
+  .mc-progress-cards {
+    padding: 0 8px;
+  }
+
+  .mc-progress-card {
+    width: calc(100% - 16px) !important;
+    margin-left: 8px !important;
+    margin-right: 8px !important;
+    margin-top: 14px !important;
+  }
+
+  .mc-progress-card .card-img-top {
+    height: 160px;
+  }
+
+  .mc-progress-card .card-title {
+    font-size: 18px;
+  }
+
+  .mc-progress-card .card-text {
+    font-size: 14px;
+  }
 }

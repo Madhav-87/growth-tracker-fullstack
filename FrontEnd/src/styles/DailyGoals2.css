@@ -1,67 +1,77 @@
-.HomePage{
-    height:100vh;
+.HomePage {
+    height: 100vh;
 }
-header{
-    height:10%;
-    box-shadow: 3px 2px 6px 1px rgba(0,0,0,0.3);
+
+header {
+    height: 10%;
+    box-shadow: 3px 2px 6px 1px rgba(0, 0, 0, 0.3);
     position: sticky !important;
 }
-.mc-profile{
+
+.mc-profile {
     height: 230px;
-    width:230px;
+    width: 230px;
     background-color: white;
     position: absolute;
-    top:100%;
+    top: 100%;
     right: 90%;
-    box-shadow: 5px 5px 6px 5px rgba(1,6,12,0.3);
-    z-index:1 !important;
+    box-shadow: 5px 5px 6px 5px rgba(1, 6, 12, 0.3);
+    z-index: 1 !important;
     transition: all 1s ease;
     color: black;
-    display: flex ;
+    display: flex;
     align-items: center;
     flex-direction: column !important;
     border-radius: 10px;
 }
-.nonvisible{
+
+.nonvisible {
     display: none;
 }
-.DailyGoalMess{
-    width:100%;
+
+.DailyGoalMess {
+    width: 100%;
     display: flex;
     flex-direction: column;
-    
+
 }
-.character-img{
+
+.character-img {
     position: absolute;
     z-index: 1;
     left: 10px;
-    top:130px;
+    top: 130px;
 }
-.mc-items-list{
+
+.mc-items-list {
     border: 1px solid black !important;
     min-height: 20px !important;
     max-width: 500px !important;
     min-width: 500px !important;
     background-color: white !important;
-    line-break: anywhere; 
+    line-break: anywhere;
     justify-self: center;
 }
-.mc-profile-icon{
+
+.mc-profile-icon {
     height: 25%;
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
 }
-.mc-profile-txt{
+
+.mc-profile-txt {
     font-size: 18px;
     text-align: center;
     font-weight: 500;
 }
-.mc-profile-subtxt{
+
+.mc-profile-subtxt {
     font-size: 12px;
 }
-.mc-profile-btn{
+
+.mc-profile-btn {
     background-color: aliceblue;
     display: flex;
     justify-content: center;
@@ -69,13 +79,14 @@ header{
     border-radius: 5px;
     color: blue;
     cursor: pointer;
-    height:30px;
+    height: 30px;
     width: 75%;
 }
-.profile-icon-Home{
-    height:40px;
-    width:40px;
-    display:flex;
+
+.profile-icon-Home {
+    height: 40px;
+    width: 40px;
+    display: flex;
     justify-content: center;
     align-items: center;
     border-radius: 50%;
@@ -85,12 +96,13 @@ header{
     margin-top: 20px;
     margin-bottom: 10px;
 }
-.icon-Home{
+
+.icon-Home {
     position: absolute;
-    right:15%;
-    height:40px;
-    width:40px;
-    display:flex;
+    right: 15%;
+    height: 40px;
+    width: 40px;
+    display: flex;
     justify-content: center;
     align-items: center;
     border-radius: 50%;
@@ -99,24 +111,28 @@ header{
     color: white;
     z-index: 1000;
 }
-.text-color{
-  background: linear-gradient(135deg, #3b82f6, #9333ea);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  align-self:center;
+
+.text-color {
+    background: linear-gradient(135deg, #3b82f6, #9333ea);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    align-self: center;
 }
-.mc-navbar{
+
+.mc-navbar {
     display: flex;
-   width: 31.1%;
-   padding-left: 70px;
+    width: 31.1%;
+    padding-left: 70px;
 }
-.mc-nav-center{
+
+.mc-nav-center {
     position: relative;
-    left:50px;
+    left: 50px;
 }
-.mc-btn{
+
+.mc-btn {
     height: 50px;
-    width:150px;
+    width: 150px;
     text-align: center;
     border-radius: 999px;
     display: inline-flex !important;
@@ -124,12 +140,13 @@ header{
     justify-content: center;
     background: white !important;
     color: blue !important;
-    text-decoration:dotted !important;
+    text-decoration: dotted !important;
     font-size: 20px;
 }
-.mc-normalbtn{
+
+.mc-normalbtn {
     height: 50px;
-    width:100px;
+    width: 100px;
     font-size: 20px;
     display: inline-flex !important;
     align-items: center;
@@ -137,47 +154,55 @@ header{
     margin-left: 5px;
     border-radius: 999px;
     text-decoration: none;
-    color:grey;
+    color: grey;
 }
-.mc-normalbtn:hover{
-    background:aliceblue;
+
+.mc-normalbtn:hover {
+    background: aliceblue;
     border-radius: 999px;
     color: blue !important;
 }
-.mc-close-width{
-    width:50%;
+
+.mc-close-width {
+    width: 50%;
     display: flex;
 }
-main{
-    height:fit-content;
+
+main {
+    height: fit-content;
     margin-bottom: 32px;
 }
-.mc-progress-box{
+
+.mc-progress-box {
     display: flex;
     justify-content: center;
     align-items: center;
 }
-.mc-progress{
+
+.mc-progress {
     height: 250px;
-    width:500px;
+    width: 500px;
     box-shadow: 0 6px 15px rgba(0, 115, 255, 0.2);
     border-radius: 10px;
     margin-bottom: 25px;
 }
-.mc-plaintext{
-   
+
+.mc-plaintext {
+
     position: relative;
     left: 515px;
     color: grey;
 }
-.mc-input-boxes{
+
+.mc-input-boxes {
     display: flex;
     justify-self: center !important;
     margin-bottom: 15px;
     width: 500px;
 }
-.goals-panel{
-    min-height:200px;
+
+.goals-panel {
+    min-height: 200px;
     justify-self: center;
     width: 600px;
     display: flex;
@@ -188,23 +213,28 @@ main{
     border-radius: 5px;
     padding: 40px;
 }
-.mc-input-boxes input{
+
+.mc-input-boxes input {
     width: 500px;
 }
-.DailyGoalMess{
+
+.DailyGoalMess {
     justify-content: center;
 }
-.mc-input-boxes button{
+
+.mc-input-boxes button {
     background: linear-gradient(135deg, #3b82f6, #9333ea) !important;
     border: none;
-    width:100px;
+    width: 100px;
 }
-input{
+
+input {
     border-radius: 10px !important;
 }
-footer{
-    height:20vh;
-    background-color: #111827 ;
+
+footer {
+    height: 20vh;
+    background-color: #111827;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -212,69 +242,151 @@ footer{
     flex-direction: column;
     gap: 10px;
 }
-.button-section{
+
+.button-section {
     margin-top: 20px;
     display: flex;
     justify-content: center;
     align-items: center;
 }
-.button-section button{
-   width:250px;
-   background-color: #00C566;
-   border: green;
+
+.button-section button {
+    width: 250px;
+    background-color: #00C566;
+    border: green;
 }
+
 input[type="radio"] {
-  width: 15px;
-  height: 15px;
-  border: 2px solid #3b82f6;
-  border-radius: 50%;
-  position: relative;
-  cursor: pointer;
+    width: 15px;
+    height: 15px;
+    border: 2px solid #3b82f6;
+    border-radius: 50%;
+    position: relative;
+    cursor: pointer;
 }
 
 input[type="radio"]::before {
-  content: '';
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 8px;
-  height: 8px;
-  border: 2px solid #3b82f6;
-  border-radius: 50%;
-  transform: translate(-50%, -50%);
-  animation: wave 1.5s infinite;
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 8px;
+    height: 8px;
+    border: 2px solid #3b82f6;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    animation: wave 1.5s infinite;
 }
 
 input[type="radio"]::after {
-  content: '';
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 8px;
-  height: 8px;
-  background: #3b82f6;
-  border-radius: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 1;
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 8px;
+    height: 8px;
+    background: #3b82f6;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
 }
 
 @keyframes wave {
-  0% {
-    width: 8px;
-    height: 8px;
-    opacity: 1;
-  }
-  100% {
-    width: 30px;
-    height: 30px;
-    opacity: 0;
-  }
+    0% {
+        width: 8px;
+        height: 8px;
+        opacity: 1;
+    }
+
+    100% {
+        width: 30px;
+        height: 30px;
+        opacity: 0;
+    }
 }
+
+/* Tablets */
+@media (max-width: 1024px) {
+    .mc-navbar {
+        width: 45%;
+        padding-left: 30px;
+    }
+
+    .mc-progress {
+        width: 90%;
+        max-width: 500px;
+    }
+
+    .mc-input-boxes {
+        width: 90%;
+        max-width: 500px;
+    }
+
+    .mc-input-boxes input {
+        width: 100%;
+    }
+
+    .goals-panel {
+        width: 90%;
+        max-width: 600px;
+        padding: 25px;
+    }
+
+    .mc-items-list {
+        min-width: unset !important;
+        max-width: 100% !important;
+        width: 90%;
+    }
+
+    .mc-plaintext {
+        position: relative;
+        left: 0;
+        width: 90%;
+        justify-content: center;
+        margin: 0 auto;
+    }
+
+    .character-img {
+        display: none;
+    }
+}
+
+/* Tablets */
+@media (max-width: 768px) {
+    .mc-navbar {
+        width: 60%;
+        padding-left: 15px;
+    }
+
+    .mc-progress {
+        height: 220px;
+        width: 95%;
+    }
+
+    .mc-input-boxes {
+        width: 95%;
+    }
+
+    .goals-panel {
+        width: 95%;
+        padding: 20px;
+    }
+
+    .mc-items-list {
+        width: 90%;
+    }
+
+    .mc-close-width {
+        width: 80%;
+    }
+}
+
 @media (max-width:480px) {
-    .mc-nav-div{
+    .mc-nav-div {
         position: relative;
     }
-    .navbar-toggler{
+
+    .navbar-toggler {
         height: 40px;
         width: 40px;
         display: flex;
@@ -282,114 +394,132 @@ input[type="radio"]::after {
         align-items: center;
         border-radius: 50% !important;
     }
-    .navbar-toggler-icon{
+
+    .navbar-toggler-icon {
         height: 40px !important;
     }
-    .navbar-toggler:focus{
+
+    .navbar-toggler:focus {
         box-shadow: none !important;
-        outline:blue ;
+        outline: blue;
     }
-    .mc-nav-center{
-   position: static !important;
-}
-.mc-input-boxes{
-    display: flex;
-    justify-self: center !important;
-    margin-bottom: 25px;
-    width: 100%;
-}
-.panel-body{
-    background: linear-gradient(to bottom, #F5F7FA, #FAFBFC) !important;
-}
-.mc-plaintext{
-   
-    position: relative;
-    left: 13px !important;
-}
-.input-group{
-    margin-left: 10px;
-}
-.goals-panel{
-    width: 100% !important;
-    padding: 2px;
-    padding-top: 20px;
-}
-.mc-items-list{
-    border: 1px solid black !important;
-    min-height: 20px !important;
-    max-width: 350px !important;
-    min-width: 350px !important;
-    background-color: white !important;
-    line-break: anywhere; 
-    justify-self: center;
-}
-.DailyGoalMess{
-    text-align: center !important;
-}
-    .mc-profile{
-    height: 230px;
-    width:230px;
-    background-color: white;
-    position:fixed;
-    top:8%;
-    right: 10%;
-    box-shadow: 5px 5px 6px 5px rgba(1,6,12,0.3);
-    z-index:1 !important;
-    transition: all 1s ease;
-    color: black;
-    display: flex ;
-    align-items: center;
-    flex-direction: column !important;
-    border-radius: 10px;
-}
-    .mc-navbar{
-    width:100vw;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding-left: 20px;
-    padding-right: 10px;
+
+    .mc-nav-center {
+        position: static !important;
     }
-    .mc-navbar button{
-       position: relative;
-       left:25px;
+
+    .mc-input-boxes {
+        display: flex;
+        justify-self: center !important;
+        margin-bottom: 25px;
+        width: 100%;
     }
-    .mc-close-width{
-      width:100%; 
-      padding-left: 20px; 
+
+    .panel-body {
+        background: linear-gradient(to bottom, #F5F7FA, #FAFBFC) !important;
     }
-    .mc-btn{
+
+    .mc-plaintext {
+
+        position: relative;
+        left: 13px !important;
+    }
+
+    .input-group {
+        margin-left: 10px;
+    }
+
+    .goals-panel {
+        width: 100% !important;
+        padding: 2px;
+        padding-top: 20px;
+    }
+
+    .mc-items-list {
+        border: 1px solid black !important;
+        min-height: 20px !important;
+        max-width: 350px !important;
+        min-width: 350px !important;
+        background-color: white !important;
+        line-break: anywhere;
+        justify-self: center;
+    }
+
+    .DailyGoalMess {
+        text-align: center !important;
+    }
+
+    .mc-profile {
+        height: 230px;
+        width: 230px;
+        background-color: white;
+        position: fixed;
+        top: 8%;
+        right: 10%;
+        box-shadow: 5px 5px 6px 5px rgba(1, 6, 12, 0.3);
+        z-index: 1 !important;
+        transition: all 1s ease;
+        color: black;
+        display: flex;
+        align-items: center;
+        flex-direction: column !important;
+        border-radius: 10px;
+    }
+
+    .mc-navbar {
+        width: 100vw;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-left: 20px;
+        padding-right: 10px;
+    }
+
+    .mc-navbar button {
+        position: relative;
+        left: 25px;
+    }
+
+    .mc-close-width {
+        width: 100%;
+        padding-left: 20px;
+    }
+
+    .mc-btn {
         margin-top: 10px;
-       height:auto;
-       width:95%;
-       border-radius: 10px;
-       display: inline-flex !important;
-    justify-content: left;
-    padding-left: 20px !important;
+        height: auto;
+        width: 95%;
+        border-radius: 10px;
+        display: inline-flex !important;
+        justify-content: left;
+        padding-left: 20px !important;
     }
-    .mc-normalbtn{
-    height: 50px;
-    width:100px;
-    font-size: 20px;
-    display: inline-flex !important;
-    align-items: center;
-    justify-content: left;
-    padding-left: 20px !important;
-}
-.icon-Home{
-    position: static;
-    height:40px;
-    width:40px;
-    display:flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 50%;
-    background: linear-gradient(135deg, #3b82f6, #9333ea) !important;
-    cursor: pointer;
-    color: white;
-    z-index: 1000;
-}
-footer{
-    font-size: 13px;
-}
+
+    .mc-normalbtn {
+        height: 50px;
+        width: 100px;
+        font-size: 20px;
+        display: inline-flex !important;
+        align-items: center;
+        justify-content: left;
+        padding-left: 20px !important;
+    }
+
+    .icon-Home {
+        position: static;
+        height: 40px;
+        width: 40px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 50%;
+        background: linear-gradient(135deg, #3b82f6, #9333ea) !important;
+        cursor: pointer;
+        color: white;
+        z-index: 1000;
+    }
+
+    footer {
+        font-size: 13px;
+    }
 }

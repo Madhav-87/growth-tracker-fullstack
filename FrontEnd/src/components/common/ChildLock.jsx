@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import '../../styles/Panel.css';
+import './ChildLock.css';
 import { toast, ToastContainer } from "react-toastify";
 import axios from 'axios';
 export default function ChildLock({ setlockOnNotify, lockOnNotify, turnON }) {

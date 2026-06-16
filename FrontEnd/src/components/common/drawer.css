@@ -86,3 +86,34 @@
     margin-right: 10px;
 
 }
+@media (max-width: 480px) {
+  .drawer-cicle {
+    height: 60px;
+    width: 60px;
+    bottom: 20px;
+  }
+  .open {
+    width: 85vw;
+    height: 75vh;
+    max-height: 480px;
+    right: 8px;
+    bottom: 20px;
+  }
+}
+
+@media (max-width: 360px) {
+  .drawer-cicle {
+    height: 55px;
+    width: 55px;
+  }
+  .open {
+    width: 90vw;
+    padding-left: 6px;
+    padding-right: 6px;
+  }
+  .drawer-panel {
+    height: 50px;
+    padding-left: 14px;
+    padding-right: 14px;
+  }
+}

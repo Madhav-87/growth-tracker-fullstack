@@ -1,5 +1,6 @@
 import { useState } from "react";
 import '../../styles/Panel.css';
+import './GoalWarningBox.css';
 export default function AlertBox() {
     let [btn,setBtn]=useState(false);
     return (

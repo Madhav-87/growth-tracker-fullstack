@@ -389,59 +389,58 @@
         text-align: center;
     }
 }
+@media (max-width: 1024px) {
+  .circular-bar-box {
+    width: 90%;
+    margin-right: 0 !important;
+  }
+  .bar-box {
+    width: 90%;
+    margin-right: 0 !important;
+  }
+  .progress-box {
+    width: 75%;
+  }
+  .progress-box:hover {
+    width: 75%;
+  }
+  .panels {
+    width: 80%;
+  }
+  .last-panel {
+    width: 90%;
+    margin-right: 0;
+  }
+}
 
-@media (max-width:360px) {
-    .circular-bar-box {
-        width: 95%;
-        padding-top: 20px;
-    }
-
-    .mc-container-cirbar {
-        margin-bottom: 100px !important;
-    }
-
-    .progress-box {
-        height: 20% !important;
-    }
-
-    .heading-titles {
-        font-size: 20px !important;
-        margin-left: 16px !important;
-        font-weight: bold !important;
-
-    }
-
-    .weekly-icon-container {
-        height: 6% !important;
-    }
-
-    #bar-box2 {
-        height: 25%;
-    }
-
-    .panels {
-        height: 25%;
-    }
-
-    .last-panel {
-        max-height: 10% !important;
-        margin-bottom: 15px;
-    }
-
-    .weekly-icons-1 {
-        height: 35px;
-        width: 35px;
-    }
-
-    .margin-top {
-        margin-top: 2px;
-    }
-
-    .mc-barChart .recharts-wrapper {
-        left:-20px !important;
-    }
-    .circle{
-        height: 30px !important;
-        width:30px !important;
-    }
+@media (max-width: 768px) {
+  .body {
+    height: 350vh;
+  }
+  .weely-view-main {
+    height: 480%;
+  }
+  .circular-bar-box {
+    width: 95%;
+    margin-right: 0 !important;
+  }
+  .bar-box {
+    width: 95%;
+    margin-right: 0 !important;
+  }
+  .progress-box {
+    width: 85%;
+  }
+  .progress-box:hover {
+    width: 85%;
+  }
+  .panels {
+    width: 85%;
+  }
+  .last-panel {
+    width: 95%;
+    margin-right: 0;
+    height: auto;
+    padding: 20px;
+  }
 }

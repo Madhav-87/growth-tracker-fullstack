@@ -113,51 +113,294 @@
     cursor: pointer;
 }
 
-@media (max-width:380px) {
-    .title-section {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-    }
 
-    .setting-heading {
-        font-size: 25px;
-    }
+/* ── Small desktops / large tablets (901px – 1200px) ─────── */
+@media (max-width: 1200px) {
+  .setting-label {
+    width: 14%;
+  }
 
-    .setting-label {
-        width: 40%;
-    }
+  .setting-heading {
+    font-size: 38px;
+  }
 
-    .setting-subtxt {
-        margin-top: 0px;
-    }
+  .setting-subtxt {
+    width: 50%;
+  }
 
-    .setting-subtxt {
-        width: 88%;
-    }
+  .box-div {
+    width: 88%;
+  }
+}
 
-    .box-div {
-        width: 90%;
-        min-height: 315px;
-        padding-left: 15px;
-        padding-right: 15px;
-    }
+/* ── Tablets (601px – 900px) ─────────────────────────────── */
+@media (max-width: 900px) {
+  .title-section {
+    height: auto;
+    padding: 40px 20px 30px;
+  }
 
-    .setting-box {
-        display: flex;
-        flex-wrap: wrap;
-        height: 204px;
-        border-radius: 10px;
-        
-    }
+  .setting-label {
+    width: 22%;
+    font-size: 14px;
+  }
 
-    .setting-box-text-section {
-        gap: 15px;
-    }
+  .setting-heading {
+    font-size: 32px;
+    line-height: 40px;
+    text-align: center;
+  }
 
-    .setting-box-text-title {
-        display: flex;
-        align-items: center;
-        gap: 12px;
-    }
+  .setting-subtxt {
+    width: 65%;
+    font-size: 15px;
+  }
+
+  .box-section {
+    gap: 30px;
+    margin-bottom: 40px;
+  }
+
+  .box-div {
+    width: 88%;
+    padding-left: 28px;
+    padding-right: 28px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+
+  .settings-title {
+    font-size: 18px;
+  }
+
+  .setting-box {
+    padding: 16px;
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .setting-box-text-title {
+    font-size: 16px;
+  }
+
+  .lock {
+    font-size: 22px;
+  }
+}
+
+/* ── Large phones (481px – 600px) ───────────────────────── */
+@media (max-width: 600px) {
+  .title-section {
+    height: auto;
+    padding: 30px 16px 24px;
+  }
+
+  .setting-label {
+    width: 30%;
+    font-size: 13px;
+    height: 36px;
+  }
+
+  .setting-heading {
+    font-size: 26px;
+    line-height: 34px;
+    text-align: center;
+    padding: 0 12px;
+  }
+
+  .setting-subtxt {
+    width: 82%;
+    font-size: 14px;
+    margin-top: 8px;
+  }
+
+  .box-section {
+    gap: 22px;
+    margin-bottom: 30px;
+  }
+
+  .box-div {
+    width: 92%;
+    padding: 18px 18px 18px 18px;
+    min-height: unset;
+    border-radius: 12px;
+  }
+
+  .settings-title {
+    font-size: 17px;
+  }
+
+  .setting-box {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 14px;
+    gap: 12px;
+    height: auto;
+    border-radius: 8px;
+  }
+
+  .setting-box-text-section {
+    width: 100%;
+    gap: 8px;
+  }
+
+  .setting-box-text-title {
+    font-size: 15px;
+    gap: 8px;
+    align-items: center;
+  }
+
+  .lock {
+    font-size: 20px;
+  }
+
+  .form-check.form-switch {
+    padding-left: 0;
+  }
+}
+
+/* ── Small phones (381px – 480px) ───────────────────────── */
+@media (max-width: 480px) {
+  .title-section {
+    height: auto;
+    padding: 24px 14px 20px;
+  }
+
+  .setting-label {
+    width: 36%;
+    font-size: 13px;
+    height: 34px;
+  }
+
+  .setting-heading {
+    font-size: 23px;
+    line-height: 30px;
+    text-align: center;
+    padding: 0 10px;
+  }
+
+  .setting-subtxt {
+    width: 88%;
+    font-size: 13px;
+    margin-top: 6px;
+  }
+
+  .box-section {
+    gap: 18px;
+    margin-bottom: 24px;
+  }
+
+  .box-div {
+    width: 92%;
+    min-height: unset;
+    padding: 16px 14px;
+    border-radius: 12px;
+  }
+
+  .settings-title {
+    font-size: 16px;
+  }
+
+  .setting-box {
+    flex-direction: column;
+    align-items: flex-start;
+    height: auto;
+    padding: 14px;
+    gap: 12px;
+    border-radius: 8px;
+  }
+
+  .setting-box-text-section {
+    width: 100%;
+    gap: 8px;
+  }
+
+  .setting-box-text-title {
+    font-size: 15px;
+    gap: 10px;
+    align-items: center;
+  }
+
+  .lock {
+    font-size: 20px;
+  }
+
+  .form-check.form-switch {
+    padding-left: 0;
+  }
+}
+
+/* ── Extra small phones ≤380px ── replaces existing block ── */
+@media (max-width: 380px) {
+  .title-section {
+    height: auto;
+    padding: 20px 12px 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .setting-label {
+    width: 42%;
+    font-size: 12px;
+    height: 32px;
+  }
+
+  .setting-heading {
+    font-size: 22px;
+    line-height: 28px;
+    text-align: center;
+  }
+
+  .setting-subtxt {
+    width: 90%;
+    font-size: 13px;
+    margin-top: 6px;
+  }
+
+  .box-section {
+    gap: 16px;
+    margin-bottom: 20px;
+  }
+
+  .box-div {
+    width: 92%;
+    min-height: unset;
+    padding: 14px 12px;
+    border-radius: 10px;
+  }
+
+  .settings-title {
+    font-size: 15px;
+  }
+
+  .setting-box {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    height: auto;
+    padding: 12px;
+    gap: 10px;
+    border-radius: 8px;
+  }
+
+  .setting-box-text-section {
+    width: 100%;
+    gap: 10px;
+  }
+
+  .setting-box-text-title {
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .lock {
+    font-size: 20px;
+  }
+
+  .form-check.form-switch {
+    padding-left: 0;
+  }
 }

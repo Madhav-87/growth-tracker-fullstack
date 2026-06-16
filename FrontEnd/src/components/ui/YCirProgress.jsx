@@ -2,6 +2,7 @@ import React from 'react'
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import '../../styles/DailyGoals2.css';
+import './YCirProgress.css';
 import { buildStyles, CircularProgressbar } from 'react-circular-progressbar';
 export default function YCirProgress() {
     let token = localStorage.getItem('token');

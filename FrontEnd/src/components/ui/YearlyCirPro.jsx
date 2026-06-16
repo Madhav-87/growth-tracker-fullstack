@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
 import { useState, useEffect } from 'react';
+
 export default function YearlyGoals() {
     let token = localStorage.getItem("token");
     let [Response, setResponse] = useState(true);

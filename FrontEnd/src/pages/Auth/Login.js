@@ -2,6 +2,7 @@
 import '../../styles/form.css';
 import arrow from '../../assets/images/arrow.png'
 import axios from 'axios';
+import './Login.css';
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { toast, ToastContainer } from 'react-toastify';

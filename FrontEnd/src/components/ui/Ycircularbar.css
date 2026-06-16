@@ -8,3 +8,23 @@
     dominant-baseline: middle;
     transition: all 1s ease;
 }
+@media (max-width: 768px) {
+  .mc-container-cirbar {
+    height: 150px;
+    width: 150px;
+  }
+}
+
+@media (max-width: 480px) {
+  .mc-container-cirbar {
+    height: 130px;
+    width: 130px;
+  }
+}
+
+@media (max-width: 360px) {
+  .mc-container-cirbar {
+    height: 110px;
+    width: 110px;
+  }
+}

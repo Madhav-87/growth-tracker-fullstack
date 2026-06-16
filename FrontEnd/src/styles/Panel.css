@@ -415,178 +415,413 @@ footer{
     flex-direction: column;
     gap: 10px;
 }
-@media (max-width:480px) {
-    .mc-nav-div{
-        position: relative;
-    }
-.card-body .btn1,
-.card-body .btn2,
-.card-body .btn3,
-.card-body .btn4 {
-  position: static;
-}
-    .navbar-toggler{
-        height: 40px;
-        width: 40px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        border-radius: 50% !important;
-    }
-    .navbar-toggler-icon{
-        height: 40px !important;
-    }
-    .navbar-toggler:focus{
-        box-shadow: none !important;
-        outline:blue ;
-    }
-    .mc-crousel{
-    position: relative;
-    margin-top: 40px;
-    height:196.88px !important;
-    width:350px !important;
-    justify-self: center;
-    margin-left: 10%;
-    margin-right: 10%;
-    box-shadow: 5px 5px 6px 5px rgba(1,6,12,0.3);
-    border-radius: 20px !important;
-    background-color: white;
-    z-index: 0;
-    overflow: hidden;
-}
-    .alertBox {
-        position: absolute;
-        background-color: white;
-        width: 80%;
-        min-height: 25%;
-        top: 30%;
-        left: 50%;
-        box-shadow: 0px 1px 14px 3px rgba(0, 0, 0, 1) !important;
-        margin: 0px;
-        padding-left: 10px;
-        transform: translate(-50%);
-        z-index: 1000;
-        animation-name: AlertBox;
-        animation-duration: 1s;
-        animation-timing-function: ease-out;
-    }
-    .setaalertbox {
-        transition: all 1s ease;
-        transform: translateY(-700%);
-        transform: translateX(-700%) !important;
 
-    }
-    .mc-res-blocks {
-    min-width: 95% !important;
-    max-width: 95% !important;
+/* ── Small desktops / large tablets (901px – 1200px) ─────── */
+@media (max-width: 1200px) {
+  .mc-crousel {
+    width: calc(100% - 60px) !important;
+    margin-left: 30px;
+    margin-right: 30px;
+    height: 360px;
+  }
+
+  .mc-Cards .card {
+    width: 44% !important;
+    margin-bottom: 24px;
+  }
+
+  .alertBox {
+    width: 50%;
+  }
+
+  .mc-profile {
+    right: 60px;
+  }
 }
-    .mc-profile{
-    height: 230px;
-    width:230px;
-    background-color: white;
-    position: absolute;
-    top:80%;
+
+/* ── Tablets (601px – 900px) ─────────────────────────────── */
+@media (max-width: 900px) {
+
+  .mc-crousel {
+    width: calc(100% - 40px) !important;
+    margin-left: 20px;
+    margin-right: 20px;
+    height: 300px;
+    margin-top: 28px;
+    border-radius: 16px !important;
+  }
+
+  .mc-crousel .carousel-item img {
+    height: 300px !important;
+    object-fit: cover;
+  }
+
+  .mc-heading {
+    font-size: 26px !important;
+    text-align: center;
+    padding: 0 20px;
+  }
+
+  .mc-subtxt {
+    font-size: 16px !important;
+    padding: 0 24px;
+  }
+
+  .mc-Cards {
+    padding: 0 20px;
+  }
+
+  .mc-Cards .card {
+    width: 44% !important;
+    margin-right: 10px;
+    margin-left: 10px;
+    margin-bottom: 24px;
+    height: auto !important;
+  }
+
+  .card-body .btn1,
+  .card-body .btn2,
+  .card-body .btn3,
+  .card-body .btn4 {
+    position: static !important;
+    width: 80%;
+    margin-top: 16px;
+  }
+
+  .alertBox {
+    width: 65%;
+    top: 25%;
+  }
+
+  .mc-profile {
+    right: 40px;
+    top: 90%;
+  }
+
+  .icon-Home {
     right: 10%;
-    box-shadow: 5px 5px 6px 5px rgba(1,6,12,0.3);
-    z-index:1 !important;
-    transition: all 1s ease;
-    color: black;
-    display: flex ;
-    align-items: center;
-    flex-direction: column !important;
-    border-radius: 10px;
+  }
+
+  footer {
+    font-size: 14px;
+    height: auto;
+    padding: 20px;
+  }
 }
-    .mc-navbar{
-    width:100vw;
+
+/* ── Large phones (481px – 600px) ───────────────────────── */
+@media (max-width: 600px) {
+
+  .mc-crousel {
+    width: calc(100% - 28px) !important;
+    margin-left: 14px;
+    margin-right: 14px;
+    height: 240px;
+    margin-top: 20px;
+    border-radius: 14px !important;
+  }
+
+  .mc-crousel .carousel-item img {
+    height: 240px !important;
+    object-fit: cover;
+  }
+
+
+  .mc-heading {
+    font-size: 22px !important;
+    padding: 0 16px;
+  }
+
+  .mc-subtxt {
+    font-size: 15px !important;
+    padding: 0 20px;
+  }
+
+
+  .mc-Cards {
+    padding: 0 14px;
+  }
+
+  .mc-Cards .card {
+    width: 100% !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    margin-bottom: 20px;
+    height: auto !important;
+  }
+
+  .card-body {
+    padding: 20px !important;
+  }
+
+  .card-body .btn1,
+  .card-body .btn2,
+  .card-body .btn3,
+  .card-body .btn4 {
+    position: static !important;
+    width: 75%;
+    margin-top: 14px;
+  }
+
+
+  .alertBox {
+    width: 78%;
+    top: 22%;
+  }
+
+  .mc-profile {
+    right: 10px;
+    top: 85%;
+    width: 200px;
+  }
+
+  footer {
+    font-size: 13px;
+    height: auto;
+    padding: 20px 16px;
+  }
+}
+
+/* ── Small phones (320px – 480px) ── replaces existing block  */
+@media (max-width: 480px) {
+
+  .mc-nav-div {
+    position: relative;
+  }
+
+  .navbar-toggler {
+    height: 40px;
+    width: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50% !important;
+  }
+
+  .navbar-toggler-icon {
+    height: 40px !important;
+  }
+
+  .navbar-toggler:focus {
+    box-shadow: none !important;
+    outline: blue;
+  }
+
+  .navbar-collapse.show {
+    display: block !important;
+    width: 100%;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: white;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 999;
+  }
+
+  .mc-navbar {
+    width: 100vw;
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding-left: 20px;
     padding-right: 10px;
-    }
-      .mc-nav-center{
-   position: static !important;
-}
-    .mc-navbar button{
-       position: relative;
-       left:25px;
-    }
-    .mc-close-width{
-      width:100%; 
-      padding-left: 20px; 
-      position: static !important;
-    }
-    .mc-btn{
-        margin-top: 10px;
-       height:auto;
-       width:95%;
-       border-radius: 10px;
-       display: inline-flex !important;
+  }
+
+  .mc-nav-center {
+    position: static !important;
+  }
+
+  .mc-navbar button {
+    position: relative;
+    left: 25px;
+  }
+
+  .mc-close-width {
+    width: 100% !important;
+    padding-left: 0 !important;
+    position: static !important;
+    left: 0 !important;
+  }
+
+  .mc-btn {
+    margin-top: 10px;
+    height: auto;
+    width: 95%;
+    border-radius: 10px;
+    display: inline-flex !important;
     justify-content: left;
     padding-left: 20px !important;
-    }
-    .mc-normalbtn{
+  }
+
+  .mc-normalbtn {
     height: 50px;
-    width:100px;
+    width: 100px;
     font-size: 20px;
     display: inline-flex !important;
     align-items: center;
     justify-content: left;
     padding-left: 20px !important;
-}
-.icon-Home{
+  }
+
+  .icon-Home {
     position: static;
-    height:40px;
-    width:40px;
-    display:flex;
+    height: 40px;
+    width: 40px;
+    display: flex;
     justify-content: center;
     align-items: center;
     border-radius: 50%;
     background: linear-gradient(135deg, #3b82f6, #9333ea) !important;
     cursor: pointer;
     color: white;
+  }
 
-}
-.mc-Cards .card{
-    width:100% !important;
-    margin-right: 12px;
-    margin-left: 12px;
-    border:none;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.08);
-    margin-bottom: 40px;
-}
-.mc-subtxt{
-    font-size: 16px !important;
+  .mc-crousel {
+    width: calc(100% - 24px) !important;
+    margin-left: 12px !important;
+    margin-right: 12px !important;
+    height: 200px;
+    margin-top: 20px;
+    border-radius: 12px !important;
+  }
+
+  .mc-crousel .carousel-item img {
+    height: 200px !important;
+    object-fit: cover;
+  }
+
+  .mc-heading {
+    font-size: 21px !important;
     text-align: center;
-    padding-left: 20px;
-    padding-right: 20px;
-    
-}
-.mc-heading {
-    font-size: 23px !important;
-}
-footer{
+    padding: 0 14px;
+  }
+
+  .mc-subtxt {
+    font-size: 14px !important;
+    text-align: center;
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .mc-Cards {
+    height: auto;
+    padding: 0 12px;
+  }
+
+  .mc-Cards .card {
+    width: 100% !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    margin-bottom: 20px;
+    height: auto !important;
+  }
+
+  .card-body {
+    padding: 20px !important;
+  }
+
+  .card-body .btn1,
+  .card-body .btn2,
+  .card-body .btn3,
+  .card-body .btn4 {
+    position: static !important;
+    width: 70%;
+    margin-top: 14px;
+  }
+
+  .alertBox {
+    width: 82%;
+    top: 30%;
+    left: 50%;
+    padding-left: 10px;
+    transform: translate(-50%);
+  }
+
+  .setaalertbox {
+    transition: all 1s ease;
+    transform: translateX(-700%) !important;
+  }
+
+  .mc-res-blocks {
+    min-width: 95% !important;
+    max-width: 95% !important;
+  }
+
+  .mc-profile {
+    height: 230px;
+    width: 210px;
+    position: absolute;
+    top: 80%;
+    right: 10px;
+    z-index: 1 !important;
+    border-radius: 10px;
+  }
+
+
+  footer {
     font-size: 13px;
+    height: auto;
+    padding: 18px 12px;
+  }
 }
-.mc-Cards{
-    height:auto;
-}
- .navbar-collapse.show {
-        display: block !important;
-        width: 100%;
-        position: absolute;
-        top: 100%;
-        left: 0;
-        background-color: white;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        z-index: 999;
-    }
-    
-    .mc-close-width {
-        width: 100% !important;
-        padding-left: 0 !important;
-        position: static !important;
-        left: 0 !important;
-    }
- 
+
+/* ── Extra small phones (below 360px) ───────────────────── */
+@media (max-width: 360px) {
+  .mc-crousel {
+    width: calc(100% - 16px) !important;
+    margin-left: 8px !important;
+    margin-right: 8px !important;
+    height: 175px;
+  }
+
+  .mc-crousel .carousel-item img {
+    height: 175px !important;
+  }
+
+  .mc-heading {
+    font-size: 18px !important;
+    padding: 0 10px;
+  }
+
+  .mc-subtxt {
+    font-size: 13px !important;
+    padding: 0 12px;
+  }
+
+  .mc-Cards {
+    padding: 0 8px;
+  }
+
+  .mc-Cards .card {
+    margin-bottom: 16px;
+  }
+
+  .card-body {
+    padding: 16px !important;
+  }
+
+  .card-body .btn1,
+  .card-body .btn2,
+  .card-body .btn3,
+  .card-body .btn4 {
+    width: 80%;
+    font-size: 14px;
+    height: auto;
+    padding: 10px;
+  }
+
+  .alertBox {
+    width: 90%;
+    top: 20%;
+  }
+
+  .mc-profile {
+    width: 190px;
+    right: 6px;
+  }
+
+  footer {
+    font-size: 12px;
+    padding: 14px 10px;
+  }
 }

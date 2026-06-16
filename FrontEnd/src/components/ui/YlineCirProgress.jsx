@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import '../../styles/circularbar.css';
+import './YlineCirProgress.css';
 import { buildStyles, CircularProgressbar } from 'react-circular-progressbar';
 export default function YlineCirProgress() {
     let token = localStorage.getItem('token');
