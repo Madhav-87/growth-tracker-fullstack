@@ -1,0 +1,26 @@
+@media (max-width: 768px) {
+  .mc-container-circularbar {
+    width: 90%;
+    margin: 0 auto;
+  }
+  .mc-circularbar {
+    max-width: 150px;
+    margin: 0 auto;
+  }
+  .mc-container-circularbar > div:last-child {
+    width: 80% !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .mc-circularbar {
+    max-width: 120px;
+  }
+  .mc-container-title {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .mc-container-circularbar > div:last-child {
+    width: 70% !important;
+  }
+}

@@ -1,0 +1,13 @@
+@media (max-width: 480px) {
+  .mc-container-title {
+    margin: 12px;
+    font-size: 16px;
+  }
+  .mc-circularbar {
+    height: 80px !important;
+    width: 80px !important;
+  }
+  .mc-container-circularbar > div:last-child {
+    width: 70% !important;
+  }
+}

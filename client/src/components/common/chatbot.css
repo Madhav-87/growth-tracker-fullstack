@@ -1,0 +1,49 @@
+.chatbot-layout{
+    height:100px !important;
+    width:100px !important;
+    position:fixed;
+    bottom: 140px;
+    right:-1px;
+    z-index: 12;
+    cursor: pointer;
+    display: flex;
+    border-radius: 50%;
+    display: flex;
+   
+}
+.chatbot-icon{
+    width:90px !important;
+    height: 90px !important;
+    position: fixed;
+    margin: 0px !important;
+    padding: 0px !important;
+    background-color: white;
+    border-radius: 50%;
+    border-color: black !important;
+box-shadow: 0 8px 18px rgba(0, 0, 0, 0.35);
+
+}
+@media (max-width: 768px) {
+  .chatbot-layout {
+    height: 75px !important;
+    width: 75px !important;
+    bottom: 100px;
+  }
+  .chatbot-icon {
+    width: 65px !important;
+    height: 65px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .chatbot-layout {
+    height: 60px !important;
+    width: 60px !important;
+    bottom: 80px;
+    right: 5px;
+  }
+  .chatbot-icon {
+    width: 50px !important;
+    height: 50px !important;
+  }
+}
