@@ -1,0 +1,17 @@
+@media (max-width: 600px) {
+  .Alertbox-heading span.h3 {
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .Alertbox-heading span.h3 {
+    font-size: 18px;
+  }
+  .alertBox {
+    padding-right: 10px !important;
+  }
+  .alertBox button {
+    width: 100%;
+  }
+}
