@@ -506,6 +506,7 @@ footer{
     font-size: 14px;
     height: auto;
     padding: 20px;
+    height: 200px;
   }
 }
 
@@ -577,8 +578,9 @@ footer{
 
   footer {
     font-size: 13px;
-    height: auto;
+    height: 200px;
     padding: 20px 16px;
+
   }
 }
 
@@ -760,7 +762,7 @@ footer{
 
   footer {
     font-size: 13px;
-    height: auto;
+    height: 200px;
     padding: 18px 12px;
   }
 }
@@ -823,5 +825,6 @@ footer{
   footer {
     font-size: 12px;
     padding: 14px 10px;
+    height: 200px;
   }
 }

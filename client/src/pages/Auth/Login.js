@@ -108,7 +108,7 @@ function App() {
                     loader
                       ?
                       (
-                        <div className="spinner-border text-white" role="status">
+                        <div className="loader text-white fa-solid fa-spinner " role="status">
                         </div>
                       )
                       :

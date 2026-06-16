@@ -1,3 +1,15 @@
+.loader{
+  font-size: 18px;
+  animation: loader-animation 0.9s ease-in infinite;
+}
+@keyframes loader-animation{
+  from{
+    transform: rotate(0deg);
+  }
+  to{
+    transform: rotate(360deg);
+  }
+}
 /*  Responsive media query    */
 
 /* ── Small desktops / large tablets (901px – 1200px) ──────── */
