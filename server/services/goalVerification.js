@@ -36,10 +36,9 @@ async function aigetQuestionaries(data) {
         return JSON.parse(reply);
     }
     catch (err) {
-        console.log("Gemini Error:" + err);
-        return false;
+        throw (err);
     }
-} 
+}
 async function aiVerify(data) {
     try {
         // ---------- BASIC CHECKS ----------
@@ -56,7 +55,7 @@ async function aiVerify(data) {
         }
         for (let i = 0; i < data.length; i++) {
             if (data[i].image.length > 8_000_000) {
-                 throw new Error("Image too large");
+                throw new Error("Image too large");
             }
         }
         const finalResult = []; // ✅ array result
@@ -71,7 +70,7 @@ async function aiVerify(data) {
                     GoalText,
                     imageDesc: "Vision service disabled.",
                     object: [],
-                    imageProvided: false  
+                    imageProvided: false
                 });
                 continue;
             }
@@ -114,16 +113,14 @@ async function aiVerify(data) {
         return { success: true, data: finalResult };
 
     } catch (err) {
-        console.error("Vision API Error:", err.message);
-        return { success: false, error: err.message };
+        throw (err);
     }
 }
 async function getScore(finalArray) {
-    console.log(finalArray)
-  try {
-    const model = genAI.getGenerativeModel({
-      model: "gemini-2.5-flash",
-      systemInstruction: `
+    try {
+        const model = genAI.getGenerativeModel({
+            model: "gemini-2.5-flash",
+            systemInstruction: `
 You are a STRICT, RULE-BASED evaluator.
 
 You will receive an ARRAY of OBJECTS.
@@ -161,39 +158,38 @@ IMPORTANT RULES (DO NOT BREAK):
 { "result": NUMBER }
 
 `
-    });
+        });
 
-    // Send ONLY data as prompt
-    const response = await model.generateContent(
-      JSON.stringify(finalArray)
-    );
+        // Send ONLY data as prompt
+        const response = await model.generateContent(
+            JSON.stringify(finalArray)
+        );
 
-    const text = response.response.text().trim();
+        const text = response.response.text().trim();
 
-    // Safety parse
-    let finalResult;
-    try {
-      finalResult = JSON.parse(text);
-    } catch {
-      throw new Error("Gemini did not return valid JSON");
+        // Safety parse
+        let finalResult;
+        try {
+            finalResult = JSON.parse(text);
+        } catch {
+            throw new Error("Gemini did not return valid JSON");
+        }
+
+        // Validate response
+        if (
+            typeof finalResult.result !== "number" ||
+            finalResult.result < 0 ||
+            finalResult.result > 100
+        ) {
+            throw new Error("Invalid score from Gemini");
+        }
+
+
+        return { success: true, data: finalResult };
+
+    } catch (err) {
+        throw (err);
     }
-
-    // Validate response
-    if (
-      typeof finalResult.result !== "number" ||
-      finalResult.result < 0 ||
-      finalResult.result > 100
-    ) {
-      throw new Error("Invalid score from Gemini");
-    }
-    console.log(finalResult)
-
-    return { success: true, data: finalResult };
-
-  } catch (err) {
-    console.error("Gemini Scoring Error:", err.message);
-    return { success: false, error: err.message };
-  }
 }
 
 module.exports = { aigetQuestionaries, aiVerify, getScore };

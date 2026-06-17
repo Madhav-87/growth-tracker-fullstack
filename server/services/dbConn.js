@@ -2,10 +2,16 @@ const mysql = require('mysql2');
 const dotenv = require('dotenv');
 const path=require('path');
 dotenv.config({path:path.join(__dirname,'..','config','.env')});
-const ca = Buffer.from(
+let ca;
+try{
+     ca = Buffer.from(
   process.env.CA,
   "base64"
 );
+}
+catch(err){
+    throw(err);
+}
 const pool = mysql.createPool({
     host: process.env.MYSQL_HOST,
     user: process.env.MYSQL_USER,
