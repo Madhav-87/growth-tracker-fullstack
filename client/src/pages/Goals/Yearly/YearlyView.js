@@ -14,6 +14,7 @@ function YearlyView() {
     let [yesScore, setYesScore] = useState(0);
     let [task, setTask] = useState([]);
     let [compTask, setCompTask] = useState(0);
+    /* eslint-disable react-hooks/exhaustive-deps */
     useEffect(() => {
         axios.post(`${process.env.REACT_APP_API_URL}/Check-Yearly-Score`, {}, {
             headers: {

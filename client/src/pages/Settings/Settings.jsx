@@ -1,10 +1,9 @@
-import React, { useEffect, useRef, useState } from 'react'
+
+import React, {useState } from 'react'
 import Header from '../../components/layout/Header'
 import './Settings.css';
 import Drawer from '../../components/common/Drawer.jsx';
-import DeviceAlertBox from '../../components/common/DeviceAlertBox';
 import Footer from '../../components/layout/Footer';
-import axios from 'axios';
 import ChildLock from '../../components/common/ChildLock';
 import ChildLockOff from '../../components/common/ChildLockOff.jsx';
 export default function Settings() {
