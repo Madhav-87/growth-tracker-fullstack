@@ -44,9 +44,7 @@ function App() {
           }
           localStorage.setItem("token", res.data.usertoken);
           localStorage.setItem("isChildLockOn", res.data.isChildLockOn);
-
           toast.success("Login successfully!");
-
         }
       }).then((res) => {
         axios.post(`${process.env.REACT_APP_API_URL}/report`, {}, {
@@ -98,9 +96,6 @@ function App() {
               <div className='mb-3'>
                 <label for="exampleFormControlInput1" className="form-label">Password</label>
                 <input type="password" className="form-control" id="exampleFormControlInput1" placeholder="Enter your password" name="userPassword" onChange={getData} value={userData.userPassword} required></input>
-              </div>
-              <div className='d-flex flex-column align-items-end mc-login-txt'>
-                forgot password?
               </div>
               <div>
                 <button type="submit" className="mc-login-btn w-100 text-white btn mt-3 mb-3">
