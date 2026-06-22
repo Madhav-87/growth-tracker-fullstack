@@ -10,7 +10,9 @@ const redisClient=createClient({
         port:process.env.REDIS_PORT
     }
 });
-
+redisClient.on('error',(error)=>{
+    console.log("Redis error:"+error);
+})
 const redisConnection=redisClient.connect().then(()=>redisClient);
 
 module.exports=redisConnection;

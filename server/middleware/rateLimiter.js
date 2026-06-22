@@ -14,7 +14,7 @@ const limiter=rateLimiter.rateLimit({
     },
 
     store: new RedisStore({
-        sendCommand: (...args) => redisConnection.sendCommand(args),
+        sendCommand: (...args) => redisConnection.then((client)=>client.sendCommand(args)).catch((err)=>{throw err}),
     }),
 })
 
