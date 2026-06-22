@@ -24,7 +24,7 @@ app.use((err, req, res, next) => {
 
 async function startServer() {
    try{
-    const ratelimiter = await limiter();
+    const ratelimiter = await limiter;
     app.use(ratelimiter);
     app.use('/', router);
     app.listen(process.env.PORT, () => {
