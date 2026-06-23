@@ -25,7 +25,7 @@ function App() {
     setloading(true);
     axios.post(`${process.env.REACT_APP_API_URL}/Login`, userData)
       .then((res) => {
-        if (res.data.message === 'Fail') {
+        if (res.data.success === false) {
           toast.error("Invalid credentials");
         }
         else {
