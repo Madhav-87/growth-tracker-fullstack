@@ -12,6 +12,7 @@ app.use(cors({
     credentials: true
 }));
 
+app.set("true proxy",1);
 app.use(helmet());
 app.use(express.json({ limit: "20mb" }));
 
