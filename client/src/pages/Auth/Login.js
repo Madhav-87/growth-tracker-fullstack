@@ -25,10 +25,6 @@ function App() {
     setloading(true);
     axios.post(`${process.env.REACT_APP_API_URL}/Login`, userData)
       .then((res) => {
-        if (res.data.success === false) {
-          toast.error("Invalid credentials");
-        }
-        else {
           if (res.data.blueprint) {
             const userPrint = res.data.blueprint
             const fingerPrint = btoa(
@@ -45,7 +41,6 @@ function App() {
           localStorage.setItem("token", res.data.usertoken);
           localStorage.setItem("isChildLockOn", res.data.isChildLockOn);
           toast.success("Login successfully!");
-        }
       }).then((res) => {
         axios.post(`${process.env.REACT_APP_API_URL}/report`, {}, {
           headers: {
@@ -60,6 +55,9 @@ function App() {
         })
       })
       .catch((err) => {
+        if (err.response?.status === 401) {
+          toast.error("Invalid credentials");
+        }
         console.log(err);
       }).finally(() => {
         setloading(false);

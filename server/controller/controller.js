@@ -21,6 +21,7 @@ async function getUserLogin(req, res, next) {
             }
             res.status(200).json({ message: "Done", data: "Login Successfully!", usertoken: token, name: userData.userName, isChildLockOn: deviceLock, blueprint: fingerprint });
         }
+        res.status(401).json({message:"Unauthorized user..!",success:false});
     }
     catch (err) {
         next(err);
