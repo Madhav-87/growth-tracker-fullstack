@@ -1,4 +1,3 @@
-const mysql = require('mysql2');
 const pool = require('../services/dbConn.js');
 
 
@@ -30,31 +29,11 @@ async function checkData(userData) {
         throw (err);
     }
 }
-async function report(user) {
-    try {
-        let [result] = await pool.query(`
+async function getRecentScoresForReport(user) {
+    const [scores] = await pool.query(`
         SELECT Avg FROM Score WHERE DateOfDay>= CURDATE() - INTERVAL 3 DAY AND User_ID=?;
         `, [user.id]);
-        if (result.length === 0) {
-            return "safe";
-        }
-        let total = result.reduce((pre, cur, index) => {
-            if (index === 1)
-                return pre.Avg + cur.Avg;
-            else
-                return pre + cur.Avg;
-        });
-        let report = (total * 10) / 3;
-        if (report < 50) {
-            return "alert";
-        }
-        else {
-            return "safe";
-        }
-    }
-    catch (err) {
-        throw (err);
-    }
+    return scores;
 }
 async function userLogin(Email, Password) {
     try {
@@ -215,39 +194,23 @@ async function YearlyScore(user) {
         throw (err);
     }
 }
-async function MonthlyProgress(user) {
-    try {
-        let [answer] = await pool.query(`
+async function getMonthlyProgressScores(user) {
+    const [scores] = await pool.query(`
     SELECT Avg FROM Monthly_progress
     WHERE DateOfDay>=CURDATE()-INTERVAL 1 MONTH
     AND DateOfDay<=CURDATE()+ INTERVAL 1 MONTH
     AND User_ID=?
     `, [user.id]);
-        if (answer.length == 1) {
-            let DailyScore = answer[0]["Avg"] * 10;
-            let [MonthlyScore] = await pool.query(`SELECT Avg FROM Monthly_Score
+    return scores;
+}
+async function getPreviousMonthScores(user) {
+    const [scores] = await pool.query(`SELECT Avg FROM Monthly_Score
             WHERE User_ID=?
             AND
             DateOfDay>=DATE_FORMAT(CURDATE(),'%Y-%m-01') - INTERVAL 1 MONTH
             AND
             DateOfDay<=DATE_FORMAT(CURDATE(),'%Y-%m-01') - INTERVAL 1 DAY;`, [user.id]);
-            if (MonthlyScore.length === 0) {
-                return DailyScore;
-            }
-            let sum2 = MonthlyScore.reduce((prev, current) => {
-                return prev + current["Avg"];
-            }, 0);
-            sum2 = (sum2 * 10) / MonthlyScore.length;
-            let Total = (DailyScore + sum2) / 2;
-            return Total;
-        }
-        else {
-            return "fewDays";
-        }
-    }
-    catch (err) {
-        throw (err);
-    }
+    return scores;
 }
 async function MonthlyGoals(value, user) {
     try {
@@ -375,104 +338,32 @@ async function YearlyResSubmit(user, Score) {
         throw (err);
     }
 }
-async function YearlyProgress(user) {
-    try {
-        let [answer] = await pool.query(`
+async function getYearlyProgressScores(user) {
+    const [scores] = await pool.query(`
     SELECT Avg FROM Monthly_progress
     WHERE DateOfDay>=DATE_FORMAT(CURDATE(),'%Y-01-01') - INTERVAL 1 YEAR
     AND DateOfDay<=DATE_FORMAT(CURDATE(),'%Y-01-01') - INTERVAL 1 DAY
     AND User_ID=?
     `, [user.id]);
-        if (answer.length <= 12 && answer.length > 0) {
-            let day = answer.reduce((prev, current) => {
-                return prev + current["Avg"];
-            }, 0);
-            day = (day * 10) / answer.length;
-            let [MonthlyScore] = await pool.query(`SELECT Avg FROM Monthly_Score
+    return scores;
+}
+async function getYearMonthlyScores(user) {
+    const [scores] = await pool.query(`SELECT Avg FROM Monthly_Score
             WHERE User_ID=?
             AND
             DateOfDay>=DATE_FORMAT(CURDATE(),'%Y-01-01') - INTERVAL 1 YEAR
             AND
             DateOfDay<=DATE_FORMAT(CURDATE(),'%Y-01-01') - INTERVAL 1 DAY;`, [user.id]);
-            if (MonthlyScore.length === 0) {
-                let [YearlyScore] = await pool.query(`SELECT Avg FROM Yearly_Score
+    return scores;
+}
+async function getYearAnnualScores(user) {
+    const [scores] = await pool.query(`SELECT Avg FROM Yearly_Score
             WHERE User_ID=?
             AND
             DateOfDay>=DATE_FORMAT(CURDATE(),'%Y-01-01') - INTERVAL 1 YEAR
             AND
             DateOfDay<=DATE_FORMAT(CURDATE(),'%Y-01-01') - INTERVAL 1 DAY;`, [user.id]);
-                if (YearlyScore.length === 0) {
-                    return day;
-                }
-                let year = YearlyScore.reduce((prev, current) => {
-                    return prev + current["Avg"];
-                }, 0);
-                year = (year * 10) / YearlyScore.length;
-                let Total = (day + year) / 2;
-                return Total;
-            }
-            let month = MonthlyScore.reduce((prev, current) => {
-                return prev + current["Avg"];
-            }, 0);
-            month = (month * 10) / MonthlyScore.length;
-            let [YearlyScore] = await pool.query(`SELECT Avg FROM Yearly_Score
-            WHERE User_ID=?
-            AND
-            DateOfDay>=DATE_FORMAT(CURDATE(),'%Y-01-01') - INTERVAL 1 YEAR
-            AND
-            DateOfDay<=DATE_FORMAT(CURDATE(),'%Y-01-01') - INTERVAL 1 DAY;`, [user.id]);
-            let year = YearlyScore.reduce((prev, current) => {
-                return prev + current["Avg"];
-            }, 0);
-            year = (year * 10) / YearlyScore.length;
-            let Total = (day + month + year) / 3;
-            return Total;
-        }
-        else {
-            let [MonthlyScore] = await pool.query(`SELECT Avg FROM Monthly_Score
-            WHERE User_ID=?
-            AND
-            DateOfDay>=DATE_FORMAT(CURDATE(),'%Y-01-01') - INTERVAL 1 YEAR
-            AND
-            DateOfDay<=DATE_FORMAT(CURDATE(),'%Y-01-01') - INTERVAL 1 DAY;`, [user.id]);
-            if (MonthlyScore.length === 0) {
-                let [YearlyScore] = await pool.query(`SELECT Avg FROM Yearly_Score
-            WHERE User_ID=?
-            AND
-            DateOfDay>=DATE_FORMAT(CURDATE(),'%Y-01-01') - INTERVAL 1 YEAR
-            AND
-            DateOfDay<=DATE_FORMAT(CURDATE(),'%Y-01-01') - INTERVAL 1 DAY;`, [user.id]);
-                let year = YearlyScore.reduce((prev, current) => {
-                    return prev + current["Avg"];
-                }, 0);
-                if (year.length === 0) {
-                    return "fewDays";
-                }
-                year = (year * 10) / YearlyScore.length;
-                let Total = (year) / 1;
-                return Total;
-            }
-            let month = MonthlyScore.reduce((prev, current) => {
-                return prev + current["Avg"];
-            }, 0);
-            month = (month * 10) / MonthlyScore.length;
-            let [YearlyScore] = await pool.query(`SELECT Avg FROM Yearly_Score
-            WHERE User_ID=?
-            AND
-            DateOfDay>=DATE_FORMAT(CURDATE(),'%Y-01-01') - INTERVAL 1 YEAR
-            AND
-            DateOfDay<=DATE_FORMAT(CURDATE(),'%Y-01-01') - INTERVAL 1 DAY;`, [user.id]);
-            let year = YearlyScore.reduce((prev, current) => {
-                return prev + current["Avg"];
-            }, 0);
-            year = (year * 10) / YearlyScore.length;
-            let Total = (month + year) / 2;
-            return Total;
-        }
-    }
-    catch (err) {
-        throw (err);
-    }
+    return scores;
 }
 async function taskInfo(user) {
     try {
@@ -553,7 +444,7 @@ async function retriveFingerPrint(user_id) {
 module.exports = {
     InsertData,
     checkData,
-    report,
+    getRecentScoresForReport,
     userLogin,
     dailyGoalsSubmit,
     dailyRetrive,
@@ -563,7 +454,8 @@ module.exports = {
     WeeklyScore,
     MonthlyScore,
     YearlyScore,
-    MonthlyProgress,
+    getMonthlyProgressScores,
+    getPreviousMonthScores,
     MonthlyGoals,
     MonthlyResponse,
     MonthlyReport,
@@ -572,7 +464,9 @@ module.exports = {
     YearlyRes,
     YearlyResCheck,
     YearlyResSubmit,
-    YearlyProgress,
+    getYearlyProgressScores,
+    getYearMonthlyScores,
+    getYearAnnualScores,
     taskInfo,
     setFingerPrint,
     checkChildLock,

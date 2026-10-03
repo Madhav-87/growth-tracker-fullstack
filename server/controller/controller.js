@@ -1,5 +1,6 @@
 const path = require('path');
 const db = require('../model/db.js');
+const progressService = require('../services/progressService.js');
 const jwt = require("jsonwebtoken");
 const chatbot = require('../services/chatbotServer.js');
 const ai = require('../services/goalVerification.js');
@@ -53,7 +54,7 @@ async function addUserAccount(req, res, next) {
 
 async function getUserReport(req, res, next) {
     try {
-        let ans = await db.report(req.user);
+        let ans = await progressService.getReport(req.user);
         res.status(200).json({ report: ans });
     }
     catch (err) {
@@ -177,7 +178,7 @@ async function getUserYearlyScore(req, res, next) {
 
 async function getUserMonthlyProgress(req, res, next) {
     try {
-        let result = await db.MonthlyProgress(req.user);
+        let result = await progressService.getMonthlyProgress(req.user);
         res.status(200).json({ message: result });
     }
     catch (err) {
@@ -187,7 +188,7 @@ async function getUserMonthlyProgress(req, res, next) {
 
 async function getUserYearlyProgress(req, res, next) {
     try {
-        let result = await db.YearlyProgress(req.user);
+        let result = await progressService.getYearlyProgress(req.user);
         res.status(200).json({ message: result });
     }
     catch (err) {
