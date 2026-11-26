@@ -48,6 +48,7 @@
 
 .Goal-panel {
     width: calc(100vw - 160px);
+    container: daily-task-card / inline-size;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -91,9 +92,112 @@
     border-radius: 1px !important;
 }
 
-.manual-task-actions .btn {
-    min-block-size: 44px;
-    min-inline-size: 120px;
+.manual-task-actions {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(132px, 1fr));
+    gap: 10px;
+    width: min(100%, 360px);
+}
+
+.manual-status-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    min-block-size: 46px;
+    padding: 10px 14px;
+    border: 1px solid transparent;
+    border-radius: 10px;
+    background: #fff;
+    font: inherit;
+    font-size: 15px;
+    font-weight: 650;
+    line-height: 1.2;
+    white-space: nowrap;
+    cursor: pointer;
+    transition: color 150ms ease, background-color 150ms ease, border-color 150ms ease, box-shadow 150ms ease;
+}
+
+.manual-status-button svg {
+    flex: 0 0 19px;
+    width: 19px;
+    height: 19px;
+    stroke: currentColor;
+    stroke-width: 1.8;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.manual-status-button--complete {
+    color: #17663b;
+    border-color: #b7ddc5;
+    background: #f1f8f3;
+}
+
+.manual-status-button--complete:hover:not(:disabled) {
+    border-color: #77b78f;
+    background: #e3f2e8;
+}
+
+.manual-status-button--complete.is-selected {
+    color: #fff;
+    border-color: #26764a;
+    background: #26764a;
+}
+
+.manual-status-button--complete.is-selected:hover:not(:disabled) {
+    border-color: #1d633c;
+    background: #1d633c;
+}
+
+.manual-status-button--incomplete {
+    color: #9e3c36;
+    border-color: #e6c4c1;
+    background: #fff6f5;
+}
+
+.manual-status-button--incomplete:hover:not(:disabled) {
+    border-color: #d69a95;
+    background: #fce9e7;
+}
+
+.manual-status-button--incomplete.is-selected {
+    color: #fff;
+    border-color: #a8443e;
+    background: #a8443e;
+}
+
+.manual-status-button--incomplete.is-selected:hover:not(:disabled) {
+    border-color: #8e3732;
+    background: #8e3732;
+}
+
+.manual-status-button:active:not(:disabled) {
+    transform: translateY(1px);
+}
+
+.manual-status-button:focus-visible {
+    outline: 3px solid #245ea8;
+    outline-offset: 3px;
+    z-index: 1;
+}
+
+.manual-status-button:disabled {
+    cursor: wait;
+    opacity: 0.68;
+}
+
+@container daily-task-card (max-width: 420px) {
+    .manual-task-actions {
+        grid-template-columns: minmax(0, 1fr);
+        width: 100%;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .manual-status-button {
+        transition: none;
+    }
 }
 
 .Goal-header-conatiner {

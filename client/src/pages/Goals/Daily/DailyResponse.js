@@ -132,25 +132,33 @@ export default function DailyResponse() {
                     <div className='Goal-number circle'>{index + 1}</div>
                     <div className='Goal-header'>
                       <div>{goal.Goal_text}</div>
-                      <div className='manual-task-actions d-flex flex-wrap gap-2 mt-2'>
+                      <div className='manual-task-actions mt-2' role='group' aria-label={`Completion status for ${goal.Goal_text}`}>
                         <button
                           type="button"
-                          className={`btn ${isComplete ? 'btn-success' : 'btn-outline-success'}`}
+                          className={`manual-status-button manual-status-button--complete${isComplete ? ' is-selected' : ''}`}
                           aria-label={`Complete ${goal.Goal_text}`}
                           aria-pressed={isComplete}
                           disabled={updatingTaskId !== null}
                           onClick={() => updateCompletion(goal, true)}
                         >
+                          <svg aria-hidden="true" viewBox="0 0 24 24" fill="none">
+                            <circle cx="12" cy="12" r="9" />
+                            <path d="m8 12 2.5 2.5L16.5 9" />
+                          </svg>
                           {isUpdating ? 'Saving…' : 'Complete'}
                         </button>
                         <button
                           type="button"
-                          className={`btn ${isComplete ? 'btn-outline-danger' : 'btn-danger'}`}
+                          className={`manual-status-button manual-status-button--incomplete${!isComplete ? ' is-selected' : ''}`}
                           aria-label={`Not Complete ${goal.Goal_text}`}
                           aria-pressed={!isComplete}
                           disabled={updatingTaskId !== null}
                           onClick={() => updateCompletion(goal, false)}
                         >
+                          <svg aria-hidden="true" viewBox="0 0 24 24" fill="none">
+                            <circle cx="12" cy="12" r="9" />
+                            <path d="m9 9 6 6m0-6-6 6" />
+                          </svg>
                           Not Complete
                         </button>
                       </div>
