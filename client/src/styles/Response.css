@@ -91,6 +91,11 @@
     border-radius: 1px !important;
 }
 
+.manual-task-actions .btn {
+    min-block-size: 44px;
+    min-inline-size: 120px;
+}
+
 .Goal-header-conatiner {
     font-size: 18px;
     font-weight: 600;

@@ -4,6 +4,7 @@ const progressService = require('../services/progressService.js');
 const jwt = require("jsonwebtoken");
 const chatbot = require('../services/chatbotServer.js');
 const ai = require('../services/goalVerification.js');
+const { calculateManualScore } = require('../services/manualScoring.js');
 const { generateToken, verify } = require('../utils/authMiddleware');
 
 
@@ -80,15 +81,37 @@ async function setUserDailyGoals(req, res, next) {
 async function getUserDailyGoals(req, res, next) {
     try {
         let result = await db.dailyRetrive(req.user);
-        if (result) {
-            res.status(200).json({ data: "Duplicate", message: result });
-        }
-        else {
-            res.status(200).json({ data: "allowed" });
-        }
+        const score = result.length > 0
+            ? calculateManualScore(result.map((goal) => Number(goal.Is_Complete) === 1))
+            : { marks: 0, average: 0 };
+        res.status(200).json({
+            data: result.length > 0 ? "Duplicate" : "allowed",
+            message: result,
+            marks: score.marks,
+            average: score.average
+        });
     }
     catch (err) {
         next(err);
+    }
+}
+
+async function setUserDailyTaskCompletion(req, res, next) {
+    const taskId = Number(req.params.taskId);
+    const { isComplete } = req.body || {};
+
+    if (!Number.isSafeInteger(taskId) || taskId <= 0 || typeof isComplete !== 'boolean') {
+        return res.status(400).json({ message: 'A valid task ID and boolean isComplete value are required.' });
+    }
+
+    try {
+        const result = await db.updateDailyTaskCompletion(req.user, taskId, isComplete);
+        return res.status(200).json({ message: 'done', ...result });
+    } catch (error) {
+        if (error.statusCode) {
+            return res.status(error.statusCode).json({ message: error.message });
+        }
+        return next(error);
     }
 }
 
@@ -430,6 +453,7 @@ module.exports = {
     getUserReport,
     setUserDailyGoals,
     getUserDailyGoals,
+    setUserDailyTaskCompletion,
     checkDailyGoalIsSubmit,
     setUserDailyScore,
     getUserDailyScore,

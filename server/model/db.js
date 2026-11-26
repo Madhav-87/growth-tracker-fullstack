@@ -1,4 +1,13 @@
 const pool = require('../services/dbConn.js');
+const { calculateManualScore } = require('../services/manualScoring.js');
+const {
+    createManualTaskRepository,
+    ensureTransactionalTables,
+    lockAccount,
+    persistDailyScore
+} = require('./manualTaskRepository.js');
+
+const manualTaskRepository = createManualTaskRepository(pool, calculateManualScore);
 
 
 async function InsertData(Name, Email, Password) {
@@ -31,7 +40,14 @@ async function checkData(userData) {
 }
 async function getRecentScoresForReport(user) {
     const [scores] = await pool.query(`
-        SELECT Avg FROM Score WHERE DateOfDay>= CURDATE() - INTERVAL 3 DAY AND User_ID=?;
+        SELECT S.Avg
+        FROM Score S
+        INNER JOIN (
+            SELECT MAX(ID) AS ID
+            FROM Score
+            WHERE DateOfDay>=CURDATE()-INTERVAL 3 DAY AND User_ID=?
+            GROUP BY DateOfDay
+        ) Latest ON Latest.ID=S.ID;
         `, [user.id]);
     return scores;
 }
@@ -77,7 +93,7 @@ async function dailyGoalsSubmit(Goal, user) {
     try {
         await pool.query(`
         INSERT INTO daily_goals (User_ID,Goal_text,Is_Complete)
-        VALUES(?,?,1)
+        VALUES(?,?,0)
         `, [user.id, Goal]);
     }
     catch (err) {
@@ -87,7 +103,7 @@ async function dailyGoalsSubmit(Goal, user) {
 async function dailyRetrive(user) {
     try {
         let [result] = await pool.query(`
-        SELECT Goal_text FROM daily_goals
+        SELECT ID,Goal_text,Is_Complete,Is_Submit FROM daily_goals
         WHERE User_ID=? AND DateOfDay=(CURRENT_DATE);
         `, [user.id]);
         return result;
@@ -114,22 +130,38 @@ async function IsSubmit(user) {
     }
 }
 async function SubmitResponse(user, AVG) {
+    const connection = await pool.getConnection();
     try {
-        await pool.query(`UPDATE Daily_goals SET Is_Submit=1
-        WHERE User_ID=? AND DateOfDay=CURRENT_DATE;
+        await connection.beginTransaction();
+        await ensureTransactionalTables(connection);
+        await lockAccount(connection, user.id);
+        await connection.query(`
+            UPDATE Daily_goals SET Is_Submit=1
+            WHERE User_ID=? AND DateOfDay=CURRENT_DATE;
         `, [user.id]);
-        await pool.query(`INSERT INTO Score (User_ID,Avg,DateOfDay)
-        VALUES(?,?,CURRENT_DATE);
-        `, [user.id, AVG]);
+        await persistDailyScore(connection, user.id, AVG);
+        await connection.commit();
         return true;
     }
     catch (err) {
+        await connection.rollback();
         throw (err);
+    } finally {
+        connection.release();
     }
+}
+
+async function updateDailyTaskCompletion(user, taskId, isComplete) {
+    return manualTaskRepository.updateCompletion(user, taskId, isComplete);
 }
 async function retriveData(user) {
     try {
-        let [Score] = await pool.query(`SELECT Avg FROM Score WHERE DateOfDay=CURDATE()-INTERVAL 1 DAY AND User_ID=?`, [user.id]);
+        let [Score] = await pool.query(`
+            SELECT Avg FROM Score
+            WHERE DateOfDay=CURDATE()-INTERVAL 1 DAY AND User_ID=?
+            ORDER BY ID DESC
+            LIMIT 1;
+        `, [user.id]);
         if (Score.length === 0)
             return [{ Avg: "0" }];
         else
@@ -144,8 +176,15 @@ async function WeeklyScore(user) {
         let [answer] = await pool.query(`
         SELECT DateOfDay,Avg 
         FROM Score
-        WHERE User_ID=? AND 
-        (DateOfDay<=CURDATE() AND DateOfDay>CURDATE()- INTERVAL 7 DAY);`, [user.id]);
+        WHERE ID IN (
+            SELECT MAX(ID)
+            FROM Score
+            WHERE User_ID=?
+            AND DateOfDay<=CURDATE()
+            AND DateOfDay>CURDATE()-INTERVAL 7 DAY
+            GROUP BY DateOfDay
+        )
+        ORDER BY DateOfDay;`, [user.id]);
 
         let result = answer.map((value, index) => {
             let date = new Date(value.DateOfDay);
@@ -162,8 +201,16 @@ async function WeeklyScore(user) {
 }
 async function MonthlyScore(user) {
     try {
-        let [answer] = await pool.query(`SELECT DateOfDay,Avg FROM Score
-         WHERE User_ID=? AND (DateOfDay<=CURDATE() AND DateOfDay>=DATE_FORMAT(CURDATE(),'%Y-%m-01'));`, [user.id]);
+        let [answer] = await pool.query(`
+         SELECT DateOfDay,Avg FROM Score
+         WHERE ID IN (
+            SELECT MAX(ID)
+            FROM Score
+            WHERE User_ID=? AND DateOfDay<=CURDATE()
+            AND DateOfDay>=DATE_FORMAT(CURDATE(),'%Y-%m-01')
+            GROUP BY DateOfDay
+         )
+         ORDER BY DateOfDay;`, [user.id]);
         let result = answer.map((value, index) => {
             let date = new Date(value.DateOfDay);
             return {
@@ -179,8 +226,16 @@ async function MonthlyScore(user) {
 }
 async function YearlyScore(user) {
     try {
-        let [answer] = await pool.query(`SELECT DateOfDay,Avg FROM Score
-         WHERE User_ID=? AND (DateOfDay<=CURDATE() AND DateOfDay>=DATE_FORMAT(CURDATE(),'%Y-01-01'));`, [user.id]);
+        let [answer] = await pool.query(`
+         SELECT DateOfDay,Avg FROM Score
+         WHERE ID IN (
+            SELECT MAX(ID)
+            FROM Score
+            WHERE User_ID=? AND DateOfDay<=CURDATE()
+            AND DateOfDay>=DATE_FORMAT(CURDATE(),'%Y-01-01')
+            GROUP BY DateOfDay
+         )
+         ORDER BY DateOfDay;`, [user.id]);
         let result = answer.map((value, index) => {
             let date = new Date(value.DateOfDay);
             return {
@@ -450,6 +505,7 @@ module.exports = {
     dailyRetrive,
     IsSubmit,
     SubmitResponse,
+    updateDailyTaskCompletion,
     retriveData,
     WeeklyScore,
     MonthlyScore,

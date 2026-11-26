@@ -5,7 +5,8 @@ const {
 getUserLogin,addUserAccount,getUserReport,setUserDailyGoals,getUserDailyGoals,checkDailyGoalIsSubmit,setUserDailyScore,getUserDailyScore,
 getUserWeeklyScore,getUserMonthlyScore,getUserYearlyScore,getUserMonthlyProgress,getUserYearlyProgress,
 setUserMonthlyGoals,getUserMonthlyGoals,checkUserMonthlyRes,setUserMonthlyScore,setUserYearlyGoals,
-getUserYearlyRes,checkUserYearlyRes,setUserYearlyScore,sendPrompt,getUserDailyTaskInfo,setFingerPrintLock,removeLock,defaultRes
+getUserYearlyRes,checkUserYearlyRes,setUserYearlyScore,sendPrompt,getUserDailyTaskInfo,setFingerPrintLock,removeLock,defaultRes,
+setUserDailyTaskCompletion
 }=require('../controller/controller.js');
 
 
@@ -14,6 +15,7 @@ router.post('/addRecord',addUserAccount);
 router.post('/report',verify,getUserReport);
 router.post('/daily-goals-submit',verify,setUserDailyGoals);
 router.get('/send-goals',verify,getUserDailyGoals);
+router.put('/daily-goals/:taskId/completion',verify,setUserDailyTaskCompletion);
 router.get('/Is-Submit',verify,checkDailyGoalIsSubmit);
 router.post('/Submit-Response',verify,setUserDailyScore);
 router.post('/Score',verify,getUserDailyScore);
